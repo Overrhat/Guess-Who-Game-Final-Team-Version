@@ -1,10 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class MenuController {
@@ -33,8 +36,11 @@ public class MenuController {
    */
   @FXML
   private void handleStartClick(MouseEvent event) {
+    // this switches the scene to the main room
     try {
-      App.setRoot("mainRoom");
+      Rectangle rect = (Rectangle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
       System.out.println("Error loading mainRoom.fxml");
       System.exit(0);
