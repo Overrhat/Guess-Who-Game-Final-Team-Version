@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8B4513;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8B4513;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/menu.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0084ff00" height="56.0" layoutX="170.0" layoutY="322.0" stroke="TRANSPARENT" strokeType="INSIDE" width="261.0" />
+      <Rectangle fx:id="rectStart" arcHeight="5.0" arcWidth="5.0" fill="#0084ff00" height="56.0" layoutX="170.0" layoutY="322.0" onMouseClicked="#handleStartClick" stroke="TRANSPARENT" strokeType="INSIDE" width="261.0" />
    </children>
 </Pane>
