@@ -3,12 +3,18 @@ package nz.ac.auckland.se206.controllers;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class MainRoomController {
   @FXML private Label lblTime;
@@ -63,6 +69,21 @@ public class MainRoomController {
       Thread backgroundThread = new Thread(countingTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
+    }
+  }
+
+  @FXML
+  /**
+   * This switches the scene to the old man
+   */
+  private void oldMan(MouseEvent event) {
+    try {
+      Rectangle rect = (Rectangle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
+    } catch (Exception e) {
+      System.out.println("Error loading oldManRoom.fxml");
+      System.exit(0);
     }
   }
 }
