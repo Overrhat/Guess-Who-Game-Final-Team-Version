@@ -139,4 +139,13 @@ public class MainRoomController {
     // Put the text on the text area
     txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
   }
+
+  /** Handles the click event on the piano rectangle. */
+  @FXML
+  private void handlePianoClick(MouseEvent event) {
+    MenuController.playMedia("/sounds/sound11.mp3");
+
+    // Put the text on the text area
+    txtaChat.appendText("Type: C or E to guess the note\n\n");
+  }
 }
