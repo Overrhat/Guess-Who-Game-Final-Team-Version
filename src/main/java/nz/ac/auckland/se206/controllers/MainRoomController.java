@@ -122,6 +122,7 @@ public class MainRoomController {
   @FXML
   private void handleFootprintClick(MouseEvent event) {
     if (footprintNum == 0) {
+      txtaChat.clear();
       MenuController.playMedia("/sounds/sound09.mp3");
       footprintNum++;
     } else if (footprintNum == 6) {
@@ -137,6 +138,7 @@ public class MainRoomController {
     MenuController.playMedia("/sounds/sound13.mp3");
 
     // Put the text on the text area
+    txtaChat.clear();
     txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
   }
 
@@ -146,6 +148,7 @@ public class MainRoomController {
     MenuController.playMedia("/sounds/sound11.mp3");
 
     // Put the text on the text area
+    txtaChat.clear();
     txtaChat.appendText("Type: C or E to guess the note\n\n");
   }
 }
