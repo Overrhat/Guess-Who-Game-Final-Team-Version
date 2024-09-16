@@ -50,7 +50,7 @@
       <Rectangle fx:id="rectWoman" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="748.0" layoutY="47.0" onMouseClicked="#woman" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
       <Rectangle fx:id="rectCrimeScene" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="815.0" layoutY="49.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
       <Rectangle fx:id="rectPiano" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="188.0" layoutX="1.0" layoutY="241.0" stroke="TRANSPARENT" strokeType="INSIDE" width="198.0" />
-      <Rectangle fx:id="rectCase" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="328.0" layoutX="210.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" width="201.0" />
+      <Rectangle fx:id="rectCase" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="328.0" layoutX="210.0" layoutY="136.0" onMouseClicked="#handleCaseClick" stroke="TRANSPARENT" strokeType="INSIDE" width="201.0" />
       <Rectangle fx:id="rectFootprint" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="71.0" layoutX="265.0" layoutY="491.0" onMouseClicked="#handleFootprintClick" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
    </children>
 </Pane>

@@ -130,4 +130,13 @@ public class MainRoomController {
       footprintNum++;
     }
   }
+
+  /** Handles the click event on the case rectangle. */
+  @FXML
+  private void handleCaseClick(MouseEvent event) {
+    MenuController.playMedia("/sounds/sound13.mp3");
+
+    // Put the text on the text area
+    txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
+  }
 }
