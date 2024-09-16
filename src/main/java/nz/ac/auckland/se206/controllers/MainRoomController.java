@@ -60,12 +60,14 @@ public class MainRoomController {
                     String time = minute + ":" + "0" + second;
                     Platform.runLater(() -> {lblTime.setText(time);
                       SceneManager.getOldManController().setLblTime(time);
+                      SceneManager.getYoungManController().setLblTime(time);
                     });
                     continue;
                   }
                   String time = minute + ":" + second;
                   Platform.runLater(() -> {lblTime.setText(time);
                   SceneManager.getOldManController().setLblTime(time);
+                  SceneManager.getYoungManController().setLblTime(time);
                   });
                 }
               }

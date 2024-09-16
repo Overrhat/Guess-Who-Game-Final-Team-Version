@@ -8,10 +8,10 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class OldManController {
+public class YoungManController {
   @FXML private Label lblTime;
   @FXML private Rectangle rectCrimeScene;
-  @FXML private Rectangle rectYoungMan;
+  @FXML private Rectangle rectOldMan;
 
   public void initialize() {}
 
@@ -35,13 +35,13 @@ public class OldManController {
   }
 
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void oldMan(MouseEvent event) {
     try {
       Rectangle rect = (Rectangle) event.getSource();
       Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
+      scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
     } catch (Exception e) {
-      System.out.println("Error loading youngManRoom.fxml");
+      System.out.println("Error loading oldManRoom.fxml");
       System.exit(0);
     }
   }

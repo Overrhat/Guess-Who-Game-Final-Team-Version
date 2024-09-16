@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.controllers.OldManController;
+import nz.ac.auckland.se206.controllers.YoungManController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -90,8 +91,9 @@ public class App extends Application {
     
     SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
     SceneManager.setOldManController(oldMan.getController());
+
     SceneManager.addUi(AppUi.YOUNGMANROOM, youngMan.load());
-    
+    SceneManager.setYoungManController(youngMan.getController());
 
     Parent root = SceneManager.getUiRoot(AppUi.MENU);
     scene = new Scene(SceneManager.getUiRoot(AppUi.MENU));
