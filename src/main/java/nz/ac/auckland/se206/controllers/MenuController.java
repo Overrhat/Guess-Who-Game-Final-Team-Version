@@ -30,8 +30,7 @@ public class MenuController {
       // Provide intro by media player
       playMedia("/sounds/sound01.mp3");
 
-      System.out.println(
-          "test"); // we can make it say tts with this code when they first load the game
+       // we can make it say tts with this code when they first load the game
       isFirstTimeInit = false;
     }
   }
