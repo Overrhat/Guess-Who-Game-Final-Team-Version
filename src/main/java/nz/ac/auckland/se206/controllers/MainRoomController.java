@@ -33,6 +33,7 @@ public class MainRoomController {
   private static boolean isFirstTimeInit = true;
   private static GameStateContext context;
 
+
   /** 
    * starts the timer on the main room once we switch to the main room
    */
@@ -56,10 +57,16 @@ public class MainRoomController {
                   }
                   int second = j;
                   if (j < 10) {
-                    Platform.runLater(() -> lblTime.setText(minute + ":" + "0" + second));
+                    String time = minute + ":" + "0" + second;
+                    Platform.runLater(() -> {lblTime.setText(time);
+                      SceneManager.getOldManController().setLblTime(time);
+                    });
                     continue;
                   }
-                  Platform.runLater(() -> lblTime.setText(minute + ":" + second));
+                  String time = minute + ":" + second;
+                  Platform.runLater(() -> {lblTime.setText(time);
+                  SceneManager.getOldManController().setLblTime(time);
+                  });
                 }
               }
               return null;
