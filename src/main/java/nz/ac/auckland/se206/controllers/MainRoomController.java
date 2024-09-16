@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -32,11 +30,9 @@ public class MainRoomController {
 
   private static boolean isFirstTimeInit = true;
   private static GameStateContext context;
+  private int footprintNum = 0; // number of times the footprint has been clicked
 
-
-  /** 
-   * starts the timer on the main room once we switch to the main room
-   */
+  /** starts the timer on the main room once we switch to the main room */
   @FXML
   public void initialize() {
     if (isFirstTimeInit) {
@@ -58,15 +54,19 @@ public class MainRoomController {
                   int second = j;
                   if (j < 10) {
                     String time = minute + ":" + "0" + second;
-                    Platform.runLater(() -> {lblTime.setText(time);
-                      SceneManager.getOldManController().setLblTime(time);
-                    });
+                    Platform.runLater(
+                        () -> {
+                          lblTime.setText(time);
+                          SceneManager.getOldManController().setLblTime(time);
+                        });
                     continue;
                   }
                   String time = minute + ":" + second;
-                  Platform.runLater(() -> {lblTime.setText(time);
-                  SceneManager.getOldManController().setLblTime(time);
-                  });
+                  Platform.runLater(
+                      () -> {
+                        lblTime.setText(time);
+                        SceneManager.getOldManController().setLblTime(time);
+                      });
                 }
               }
               return null;
@@ -79,9 +79,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the old man
-   */
+  /** This switches the scene to the old man */
   @FXML
   private void oldMan(MouseEvent event) {
     try {
@@ -94,9 +92,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the young man
-   */
+  /** This switches the scene to the young man */
   @FXML
   private void youngMan(MouseEvent event) {
     try {
@@ -109,9 +105,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the woman
-   */
+  /** This switches the scene to the woman */
   @FXML
   private void woman(MouseEvent event) {
     try {
@@ -124,4 +118,16 @@ public class MainRoomController {
     }
   }
 
+  /** Handles the click event on the footprint rectangle. */
+  @FXML
+  private void handleFootprintClick(MouseEvent event) {
+    if (footprintNum == 0) {
+      MenuController.playMedia("/sounds/sound09.mp3");
+      footprintNum++;
+    } else if (footprintNum == 6) {
+      MenuController.playMedia("/sounds/sound10.mp3");
+    } else {
+      footprintNum++;
+    }
+  }
 }
