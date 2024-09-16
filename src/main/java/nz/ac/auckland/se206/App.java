@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
@@ -79,8 +80,15 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("room");
-    scene = new Scene(root);
+    // this just adds all the fxml to the scene manager so when we switch root in the scene we use these
+    SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.MAINROOM, loadFxml("mainRoom"));
+    SceneManager.addUi(AppUi.WOMANROOM, loadFxml("womanRoom"));
+    SceneManager.addUi(AppUi.OLDMANROOM, loadFxml("oldManRoom"));
+    SceneManager.addUi(AppUi.YOUNGMANROOM, loadFxml("youngManRoom"));
+
+    Parent root = SceneManager.getUiRoot(AppUi.MENU);
+    scene = new Scene(SceneManager.getUiRoot(AppUi.MENU));
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
