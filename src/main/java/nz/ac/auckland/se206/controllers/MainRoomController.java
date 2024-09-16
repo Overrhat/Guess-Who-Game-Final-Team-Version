@@ -72,10 +72,10 @@ public class MainRoomController {
     }
   }
 
-  @FXML
   /**
    * This switches the scene to the old man
    */
+  @FXML
   private void oldMan(MouseEvent event) {
     try {
       Rectangle rect = (Rectangle) event.getSource();
@@ -86,4 +86,35 @@ public class MainRoomController {
       System.exit(0);
     }
   }
+
+  /**
+   * This switches the scene to the young man
+   */
+  @FXML
+  private void youngMan(MouseEvent event) {
+    try {
+      Rectangle rect = (Rectangle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
+    } catch (Exception e) {
+      System.out.println("Error loading youngManRoom.fxml");
+      System.exit(0);
+    }
+  }
+
+  /**
+   * This switches the scene to the woman
+   */
+  @FXML
+  private void woman(MouseEvent event) {
+    try {
+      Rectangle rect = (Rectangle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
+    } catch (Exception e) {
+      System.out.println("Error loading womanRoom.fxml");
+      System.exit(0);
+    }
+  }
+
 }
