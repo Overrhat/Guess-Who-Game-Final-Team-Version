@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.net.URISyntaxException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
@@ -46,6 +47,7 @@ public class MenuController {
     try {
       Rectangle rect = (Rectangle) event.getSource();
       Scene scene = rect.getScene();
+      SceneManager.addUi(AppUi.MAINROOM, new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml")).load());
       scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
       System.out.println("Error loading mainRoom.fxml");
@@ -82,4 +84,14 @@ public class MenuController {
       System.err.println("An error occurred while trying to play media: " + e.getMessage());
     }
   }
+
+  /**
+   * Returns the game state context.
+   * @return the game state context
+   */
+  public static GameStateContext getContext() {
+    return context;
+  }
+
+  
 }
