@@ -31,6 +31,8 @@ public class MainRoomController {
   private static boolean isFirstTimeInit = true;
   private static GameStateContext context;
   private int footprintNum = 0; // number of times the footprint has been clicked
+  private boolean isCaseClicked = false; // whether the case has been clicked
+  private boolean isPianoClicked = false; // whether the piano has been clicked
 
   /** starts the timer on the main room once we switch to the main room */
   @FXML
@@ -130,6 +132,14 @@ public class MainRoomController {
     } else {
       footprintNum++;
     }
+
+    // set case and piano clicked to false
+    isCaseClicked = false;
+    isPianoClicked = false;
+
+    // clear the text field
+    txtaChat.clear();
+    txtaInput.clear();
   }
 
   /** Handles the click event on the case rectangle. */
@@ -140,6 +150,10 @@ public class MainRoomController {
     // Put the text on the text area
     txtaChat.clear();
     txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
+
+    // Set the case clicked to true
+    isCaseClicked = true;
+    isPianoClicked = false;
   }
 
   /** Handles the click event on the piano rectangle. */
@@ -150,5 +164,58 @@ public class MainRoomController {
     // Put the text on the text area
     txtaChat.clear();
     txtaChat.appendText("Type: C or E to guess the note\n\n");
+
+    // Set the piano clicked to true
+    isPianoClicked = true;
+    isCaseClicked = false;
+  }
+
+  /** Handles the click event for the send button. */
+  @FXML
+  private void handleSendButtonClick(MouseEvent event) {
+    String userInput = txtaInput.getText().trim();
+    if (!isCaseClicked && !isPianoClicked) {
+      txtaChat.clear();
+      // clear the text field
+      txtaInput.clear();
+      return;
+    } else if (isPianoClicked) {
+      if (userInput.equalsIgnoreCase("C")) {
+        txtaChat.clear();
+        txtaChat.appendText("Correct! The note is C\n\n");
+        MenuController.playMedia("/sounds/sound12.mp3");
+
+        // set case and piano clicked to false
+        isCaseClicked = false;
+        isPianoClicked = false;
+
+      } else if (userInput.equalsIgnoreCase("E")) {
+        txtaChat.clear();
+        txtaChat.appendText("Incorrect! Try again!\n\n");
+      } else {
+        txtaChat.clear();
+        txtaChat.appendText("Invalid input! Please type C or E\n\n");
+      }
+    } else if (isCaseClicked) {
+      if (userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("Y")) {
+        txtaChat.clear();
+        txtaChat.appendText("Opened the case.\n\n");
+        MenuController.playMedia("/sounds/sound14.mp3");
+
+        // set case and piano clicked to false
+        isCaseClicked = false;
+        isPianoClicked = false;
+
+      } else if (userInput.equalsIgnoreCase("No") || userInput.equalsIgnoreCase("N")) {
+        txtaChat.clear();
+        txtaChat.appendText("Didn't open the case.\n\n");
+      } else {
+        txtaChat.clear();
+        txtaChat.appendText("Invalid input!\n\n");
+      }
+    }
+
+    // clear the text field
+    txtaInput.clear();
   }
 }
