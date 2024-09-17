@@ -17,7 +17,7 @@
             <Image url="@../images/womanRoom.png" />
          </image>
       </ImageView>
-      <Label layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="0" textFill="RED">
+      <Label fx:id="lblTime" layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="0" textFill="RED">
          <font>
             <Font size="35.0" />
          </font>

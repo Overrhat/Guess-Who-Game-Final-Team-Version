@@ -61,6 +61,7 @@ public class MainRoomController {
                     Platform.runLater(() -> {lblTime.setText(time);
                       SceneManager.getOldManController().setLblTime(time);
                       SceneManager.getYoungManController().setLblTime(time);
+                      SceneManager.getWomanController().setLblTime(time);
                     });
                     continue;
                   }
@@ -68,6 +69,7 @@ public class MainRoomController {
                   Platform.runLater(() -> {lblTime.setText(time);
                   SceneManager.getOldManController().setLblTime(time);
                   SceneManager.getYoungManController().setLblTime(time);
+                  SceneManager.getWomanController().setLblTime(time);
                   });
                 }
               }
