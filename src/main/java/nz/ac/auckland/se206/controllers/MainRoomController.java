@@ -120,6 +120,20 @@ public class MainRoomController {
     }
   }
 
+  /** This switches the scene to the guessing scene when guess button is clicked */
+  @FXML
+  private void handleGuessButtonClick(MouseEvent event) {
+    try {
+      // Get the current scene
+      Scene scene = btnGuess.getScene();
+      // Switch to the GUESSROOM scene
+      scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+    } catch (Exception e) {
+      System.out.println("Error loading guessingRoom.fxml");
+      System.exit(0);
+    }
+  }
+
   /** Handles the click event on the footprint rectangle. */
   @FXML
   private void handleFootprintClick(MouseEvent event) {

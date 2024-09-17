@@ -5,13 +5,19 @@ import javafx.scene.Parent;
 import nz.ac.auckland.se206.controllers.OldManController;
 
 /**
- * Manages the scenes of the application so when we want to switch from the main room to the chat and back to the main room
- * it makes sure we switch back to the same instance of the main room so it will remember stuff like timer and clues
+ * Manages the scenes of the application so when we want to switch from the main room to the chat
+ * and back to the main room it makes sure we switch back to the same instance of the main room so
+ * it will remember stuff like timer and clues
  */
 public class SceneManager {
-  
+
   public enum AppUi {
-    MENU, MAINROOM, OLDMANROOM, WOMANROOM, YOUNGMANROOM
+    MENU,
+    MAINROOM,
+    OLDMANROOM,
+    WOMANROOM,
+    YOUNGMANROOM,
+    GUESSROOM
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();
@@ -32,6 +38,4 @@ public class SceneManager {
   public static void setOldManController(OldManController oldManController) {
     SceneManager.oldManController = oldManController;
   }
-
-  
 }

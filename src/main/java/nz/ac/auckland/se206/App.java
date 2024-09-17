@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
-import nz.ac.auckland.se206.controllers.OldManController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -81,17 +80,19 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    // this just adds all the fxml to the scene manager so when we switch root in the scene we use these
+    // this just adds all the fxml to the scene manager so when we switch root in the scene we use
+    // these
     FXMLLoader woman = new FXMLLoader(App.class.getResource("/fxml/" + "womanRoom" + ".fxml"));
     FXMLLoader oldMan = new FXMLLoader(App.class.getResource("/fxml/" + "oldManRoom" + ".fxml"));
-    FXMLLoader youngMan = new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));  
+    FXMLLoader youngMan =
+        new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
     SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.GUESSROOM, loadFxml("guessingRoom"));
     SceneManager.addUi(AppUi.WOMANROOM, woman.load());
-    
+
     SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
     SceneManager.setOldManController(oldMan.getController());
     SceneManager.addUi(AppUi.YOUNGMANROOM, youngMan.load());
-    
 
     Parent root = SceneManager.getUiRoot(AppUi.MENU);
     scene = new Scene(SceneManager.getUiRoot(AppUi.MENU));
