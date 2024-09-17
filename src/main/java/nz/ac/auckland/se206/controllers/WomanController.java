@@ -35,6 +35,9 @@ public class WomanController {
     }
   }
 
+  /**
+   * This switches to the old man room.
+   */
   @FXML
   private void oldMan(MouseEvent event) {
     try {
@@ -46,7 +49,10 @@ public class WomanController {
       System.exit(0);
     }
   }
-  
+
+  /**
+   * This switches to the young man room.
+   */
   @FXML
   private void youngMan(MouseEvent event) {
     try {
