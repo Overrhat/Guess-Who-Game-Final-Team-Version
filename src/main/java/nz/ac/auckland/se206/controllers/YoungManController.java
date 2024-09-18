@@ -1,10 +1,17 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -14,7 +21,21 @@ public class YoungManController {
   @FXML private Rectangle rectOldMan;
   @FXML private Rectangle rectWoman;
 
-  public void initialize() {}
+  @FXML private TextArea txtaChat;
+  @FXML private TextField txtInput;
+  @FXML private Button btnSend;
+
+
+
+  private ChatController chat;
+
+  public void initialize() {
+    chat = new ChatController();
+    chat.setTxtaChat(txtaChat);
+    chat.setTxtInput(txtInput);
+    chat.setBtnSend(btnSend);
+    chat.setProfession("youngMan");
+  }
 
   public void setLblTime(String time) {
     lblTime.setText(time);
@@ -64,4 +85,9 @@ public class YoungManController {
       System.exit(0);
     }
   }
+
+  @FXML
+  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    chat.onSendMessage(event);
+  } 
 }

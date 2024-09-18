@@ -3,6 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,15 +43,30 @@ public class ChatController {
     // Any required initialization code can be placed here
   }
 
+   // Setter for txtaChat
+  public void setTxtaChat(TextArea txtaChat) {
+    this.txtaChat = txtaChat;
+  }
+
+  // Setter for txtFieldInput
+  public void setTxtInput(TextField txtInput) {
+    this.txtInput = txtInput;
+  }
+
+  // Setter for btnSend
+  public void setBtnSend(Button btnSend) {
+    this.btnSend = btnSend;
+  }
+
   /**
    * Generates the system prompt based on the profession.
    *
    * @return the system prompt string
    */
-  private String getSystemPrompt() {
+  private String getSystemPrompt(String person) {
     Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
-    return PromptEngineering.getPrompt("chat.txt", map);
+    map.put("profession", person);
+    return PromptEngineering.getPrompt(person, map);
   }
 
   /**
@@ -67,7 +84,7 @@ public class ChatController {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
-      runGpt(new ChatMessage("system", getSystemPrompt()));
+      runGpt(new ChatMessage("system", getSystemPrompt(profession + ".txt")));
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
@@ -79,7 +96,25 @@ public class ChatController {
    * @param msg the chat message to append
    */
   private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    String role = msg.getRole();
+    if (role.equals("assistant")) {
+        switch (profession) {
+          case "oldMan":
+            role = "Old man";
+            break;
+          case "youngMan":
+            role = "Young man";
+            break;
+          case "woman":
+            role = "Woman";
+            break;
+          default:
+            break;
+        }
+    } else if (role.equals("user")) {
+      role = "You";
+    }
+    txtaChat.appendText(role + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -89,21 +124,37 @@ public class ChatController {
    * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
-    try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
-      FreeTextToSpeech.speak(result.getChatMessage().getContent());
-      return result.getChatMessage();
-    } catch (ApiProxyException e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
+  private void runGpt(ChatMessage msg) throws ApiProxyException {
+    Task<ChatMessage> task = new Task<>() {
+      @Override
+      protected ChatMessage call() throws ApiProxyException {
+        // loading = true;
+        // disableText();
+        chatCompletionRequest.addMessage(msg);
+        ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+        Choice result = chatCompletionResult.getChoices().iterator().next();
+        chatCompletionRequest.addMessage(result.getChatMessage());
+        return result.getChatMessage();
+        }
 
+        @Override
+        protected void succeeded() {
+          // loading = false;
+          // enableText();
+          ChatMessage response = getValue();
+          appendChatMessage(response);
+        }
+
+        @Override
+        protected void failed() {
+          Throwable exception = getException();
+          exception.printStackTrace();
+          // Handle failure (e.g., show an error message to the user)
+        }
+      };
+
+      new Thread(task).start();
+    }
   /**
    * Sends a message to the GPT model.
    *
@@ -111,8 +162,7 @@ public class ChatController {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */
-  @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
