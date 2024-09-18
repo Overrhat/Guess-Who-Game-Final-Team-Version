@@ -12,16 +12,12 @@ public class GuessingRoomController {
   @FXML private Label lblTime;
   @FXML private TextArea txtaChat;
   @FXML private TextField txtaInput;
-  @FXML private Button btnGuess;
-  @FXML private Button btnMenu;
-  @FXML private Rectangle rectOldMan;
-  @FXML private Rectangle rectYoungMan;
-  @FXML private Rectangle rectWoman;
+  @FXML private Button btnSend;
+  
 
-  private static GameStateContext context;
 
   @FXML
   public void initialize() {
-    context = MenuController.getContext();
+    
   }
 }
