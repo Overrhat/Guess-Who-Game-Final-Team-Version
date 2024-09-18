@@ -56,19 +56,19 @@ public class MainRoomController {
                   int second = j;
                   if (j < 10) {
                     String time = minute + ":" + "0" + second;
-                    Platform.runLater(
-                        () -> {
-                          lblTime.setText(time);
-                          SceneManager.getOldManController().setLblTime(time);
-                        });
+                    Platform.runLater(() -> {lblTime.setText(time);
+                      SceneManager.getOldManController().setLblTime(time);
+                      SceneManager.getYoungManController().setLblTime(time);
+                      SceneManager.getWomanController().setLblTime(time);
+                    });
                     continue;
                   }
                   String time = minute + ":" + second;
-                  Platform.runLater(
-                      () -> {
-                        lblTime.setText(time);
-                        SceneManager.getOldManController().setLblTime(time);
-                      });
+                  Platform.runLater(() -> {lblTime.setText(time);
+                  SceneManager.getOldManController().setLblTime(time);
+                  SceneManager.getYoungManController().setLblTime(time);
+                  SceneManager.getWomanController().setLblTime(time);
+                  });
                 }
               }
               return null;

@@ -3,6 +3,8 @@ package nz.ac.auckland.se206;
 import java.util.HashMap;
 import javafx.scene.Parent;
 import nz.ac.auckland.se206.controllers.OldManController;
+import nz.ac.auckland.se206.controllers.YoungManController;
+import nz.ac.auckland.se206.controllers.WomanController;
 
 /**
  * Manages the scenes of the application so when we want to switch from the main room to the chat
@@ -22,6 +24,8 @@ public class SceneManager {
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();
   private static OldManController oldManController;
+  private static YoungManController youngManController;
+  private static WomanController womanController;
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
     sceneMap.put(appUi, uiRoot);
@@ -37,5 +41,21 @@ public class SceneManager {
 
   public static void setOldManController(OldManController oldManController) {
     SceneManager.oldManController = oldManController;
+  }
+
+  public static YoungManController getYoungManController() {
+    return youngManController;
+  }
+
+  public static void setYoungManController(YoungManController youngManController) {
+    SceneManager.youngManController = youngManController;
+  }
+
+  public static WomanController getWomanController() {
+    return womanController;
+  }
+
+  public static void setWomanController(WomanController womanController) {
+    SceneManager.womanController = womanController;
   }
 }
