@@ -41,6 +41,21 @@ public class ChatController {
     // Any required initialization code can be placed here
   }
 
+   // Setter for txtaChat
+  public void setTxtaChat(TextArea txtaChat) {
+    this.txtaChat = txtaChat;
+  }
+
+  // Setter for txtFieldInput
+  public void setTxtInput(TextField txtInput) {
+    this.txtInput = txtInput;
+  }
+
+  // Setter for btnSend
+  public void setBtnSend(Button btnSend) {
+    this.btnSend = btnSend;
+  }
+
   /**
    * Generates the system prompt based on the profession.
    *
@@ -96,7 +111,7 @@ public class ChatController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
-      FreeTextToSpeech.speak(result.getChatMessage().getContent());
+      // FreeTextToSpeech.speak(result.getChatMessage().getContent());
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
