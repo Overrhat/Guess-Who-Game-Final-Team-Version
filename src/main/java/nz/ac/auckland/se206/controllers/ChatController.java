@@ -101,6 +101,12 @@ public class ChatController {
         switch (profession) {
           case "oldMan":
             role = "Old man";
+            break;
+          case "youngMan":
+            role = "Young man";
+            break;
+          default:
+            break;
         }
     } else if (role.equals("user")) {
       role = "You";
