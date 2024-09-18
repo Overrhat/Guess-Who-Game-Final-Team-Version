@@ -96,7 +96,16 @@ public class ChatController {
    * @param msg the chat message to append
    */
   private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    String role = msg.getRole();
+    if (role.equals("assistant")) {
+        switch (profession) {
+          case "oldMan":
+            role = "Old man";
+        }
+    } else if (role.equals("user")) {
+      role = "You";
+    }
+    txtaChat.appendText(role + ": " + msg.getContent() + "\n\n");
   }
 
   /**
