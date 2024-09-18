@@ -105,6 +105,9 @@ public class ChatController {
           case "youngMan":
             role = "Young man";
             break;
+          case "woman":
+            role = "Woman";
+            break;
           default:
             break;
         }
