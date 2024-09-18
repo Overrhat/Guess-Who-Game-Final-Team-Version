@@ -63,10 +63,10 @@ public class ChatController {
    *
    * @return the system prompt string
    */
-  private String getSystemPrompt() {
+  private String getSystemPrompt(String person) {
     Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
-    return PromptEngineering.getPrompt("chat.txt", map);
+    map.put("profession", person);
+    return PromptEngineering.getPrompt(person, map);
   }
 
   /**
@@ -84,7 +84,7 @@ public class ChatController {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
-      runGpt(new ChatMessage("system", getSystemPrompt()));
+      runGpt(new ChatMessage("system", getSystemPrompt(profession + ".txt")));
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }

@@ -35,7 +35,7 @@ public class OldManController {
     chat.setTxtaChat(txtaChat);
     chat.setTxtInput(txtInput);
     chat.setBtnSend(btnSend);
-    chat.setProfession("Detective");
+    chat.setProfession("oldMan");
   }
 
   public void setLblTime(String time) {
