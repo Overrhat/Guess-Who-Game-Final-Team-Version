@@ -3,6 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -104,21 +106,37 @@ public class ChatController {
    * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
-    try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
-      // FreeTextToSpeech.speak(result.getChatMessage().getContent());
-      return result.getChatMessage();
-    } catch (ApiProxyException e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
+  private void runGpt(ChatMessage msg) throws ApiProxyException {
+    Task<ChatMessage> task = new Task<>() {
+      @Override
+      protected ChatMessage call() throws ApiProxyException {
+        // loading = true;
+        // disableText();
+        chatCompletionRequest.addMessage(msg);
+        ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+        Choice result = chatCompletionResult.getChoices().iterator().next();
+        chatCompletionRequest.addMessage(result.getChatMessage());
+        return result.getChatMessage();
+        }
 
+        @Override
+        protected void succeeded() {
+          // loading = false;
+          // enableText();
+          ChatMessage response = getValue();
+          appendChatMessage(response);
+        }
+
+        @Override
+        protected void failed() {
+          Throwable exception = getException();
+          exception.printStackTrace();
+          // Handle failure (e.g., show an error message to the user)
+        }
+      };
+
+      new Thread(task).start();
+    }
   /**
    * Sends a message to the GPT model.
    *
