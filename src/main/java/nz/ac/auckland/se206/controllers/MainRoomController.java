@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -32,11 +30,11 @@ public class MainRoomController {
 
   private static boolean isFirstTimeInit = true;
   private static GameStateContext context;
+  private int footprintNum = 0; // number of times the footprint has been clicked
+  private boolean isCaseClicked = false; // whether the case has been clicked
+  private boolean isPianoClicked = false; // whether the piano has been clicked
 
-
-  /** 
-   * starts the timer on the main room once we switch to the main room
-   */
+  /** starts the timer on the main room once we switch to the main room */
   @FXML
   public void initialize() {
     if (isFirstTimeInit) {
@@ -83,9 +81,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the old man
-   */
+  /** This switches the scene to the old man */
   @FXML
   private void oldMan(MouseEvent event) {
     try {
@@ -98,9 +94,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the young man
-   */
+  /** This switches the scene to the young man */
   @FXML
   private void youngMan(MouseEvent event) {
     try {
@@ -113,9 +107,7 @@ public class MainRoomController {
     }
   }
 
-  /**
-   * This switches the scene to the woman
-   */
+  /** This switches the scene to the woman */
   @FXML
   private void woman(MouseEvent event) {
     try {
@@ -128,4 +120,116 @@ public class MainRoomController {
     }
   }
 
+  /** This switches the scene to the guessing scene when guess button is clicked */
+  @FXML
+  private void handleGuessButtonClick(MouseEvent event) {
+    try {
+      // Get the current scene
+      Scene scene = btnGuess.getScene();
+      // Switch to the GUESSROOM scene
+      scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+    } catch (Exception e) {
+      System.out.println("Error loading guessingRoom.fxml");
+      System.exit(0);
+    }
+  }
+
+  /** Handles the click event on the footprint rectangle. */
+  @FXML
+  private void handleFootprintClick(MouseEvent event) {
+    if (footprintNum == 0) {
+      txtaChat.clear();
+      MenuController.playMedia("/sounds/sound09.mp3");
+      footprintNum++;
+    } else if (footprintNum == 6) {
+      MenuController.playMedia("/sounds/sound10.mp3");
+    } else {
+      footprintNum++;
+    }
+
+    // set case and piano clicked to false
+    isCaseClicked = false;
+    isPianoClicked = false;
+
+    // clear the text field
+    txtaChat.clear();
+    txtaInput.clear();
+  }
+
+  /** Handles the click event on the case rectangle. */
+  @FXML
+  private void handleCaseClick(MouseEvent event) {
+    MenuController.playMedia("/sounds/sound13.mp3");
+
+    // Put the text on the text area
+    txtaChat.clear();
+    txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
+
+    // Set the case clicked to true
+    isCaseClicked = true;
+    isPianoClicked = false;
+  }
+
+  /** Handles the click event on the piano rectangle. */
+  @FXML
+  private void handlePianoClick(MouseEvent event) {
+    MenuController.playMedia("/sounds/sound11.mp3");
+
+    // Put the text on the text area
+    txtaChat.clear();
+    txtaChat.appendText("Type: C or E to guess the note\n\n");
+
+    // Set the piano clicked to true
+    isPianoClicked = true;
+    isCaseClicked = false;
+  }
+
+  /** Handles the click event for the send button. */
+  @FXML
+  private void handleSendButtonClick(MouseEvent event) {
+    String userInput = txtaInput.getText().trim();
+    if (!isCaseClicked && !isPianoClicked) {
+      txtaChat.clear();
+      // clear the text field
+      txtaInput.clear();
+      return;
+    } else if (isPianoClicked) {
+      if (userInput.equalsIgnoreCase("C")) {
+        txtaChat.clear();
+        txtaChat.appendText("Correct! The note is C\n\n");
+        MenuController.playMedia("/sounds/sound12.mp3");
+
+        // set case and piano clicked to false
+        isCaseClicked = false;
+        isPianoClicked = false;
+
+      } else if (userInput.equalsIgnoreCase("E")) {
+        txtaChat.clear();
+        txtaChat.appendText("Incorrect! Try again!\n\n");
+      } else {
+        txtaChat.clear();
+        txtaChat.appendText("Invalid input! Please type C or E\n\n");
+      }
+    } else if (isCaseClicked) {
+      if (userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("Y")) {
+        txtaChat.clear();
+        txtaChat.appendText("Opened the case.\n\n");
+        MenuController.playMedia("/sounds/sound14.mp3");
+
+        // set case and piano clicked to false
+        isCaseClicked = false;
+        isPianoClicked = false;
+
+      } else if (userInput.equalsIgnoreCase("No") || userInput.equalsIgnoreCase("N")) {
+        txtaChat.clear();
+        txtaChat.appendText("Didn't open the case.\n\n");
+      } else {
+        txtaChat.clear();
+        txtaChat.appendText("Invalid input!\n\n");
+      }
+    }
+
+    // clear the text field
+    txtaInput.clear();
+  }
 }
