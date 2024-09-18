@@ -10,19 +10,19 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MainRoomController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/mainRoom.png" />
          </image>
       </ImageView>
-      <Label layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="0" textFill="RED">
+      <Label fx:id="lblTime" layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="5:00" textFill="RED">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="653.0" layoutY="4.0" prefHeight="30.0" prefWidth="203.0" text="Click to change the room" textFill="#c6945f">
+      <Label layoutX="643.0" layoutY="4.0" prefHeight="30.0" prefWidth="213.0" text="Click to change the room" textFill="#c6945f">
          <font>
             <Font size="19.0" />
          </font></Label>
@@ -41,16 +41,16 @@
             <Image url="@../images/inputBackground.png" />
          </image>
       </ImageView>
-      <TextArea layoutX="660.0" layoutY="162.0" prefHeight="264.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent; -fx-text-fill: black;" wrapText="true" />
-      <TextField layoutX="653.0" layoutY="482.0" prefHeight="45.0" prefWidth="207.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent; -fx-text-fill: black;" />
-      <Button layoutX="640.0" layoutY="550.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #FFF8DC;" text="Make a Guess" />
-      <Button layoutX="785.0" layoutY="550.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #FFF8DC;" text="Send" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="615.0" layoutY="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="682.0" layoutY="46.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="748.0" layoutY="47.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="815.0" layoutY="49.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="188.0" layoutX="1.0" layoutY="241.0" stroke="TRANSPARENT" strokeType="INSIDE" width="198.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="328.0" layoutX="210.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" width="201.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="71.0" layoutX="265.0" layoutY="491.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
+      <TextArea fx:id="txtaChat" layoutX="660.0" layoutY="162.0" prefHeight="264.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent; -fx-text-fill: black;" wrapText="true" />
+      <TextField fx:id="txtaInput" layoutX="653.0" layoutY="482.0" prefHeight="45.0" prefWidth="207.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent; -fx-text-fill: black;" />
+      <Button fx:id="btnGuess" layoutX="640.0" layoutY="550.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #FFF8DC;" text="Make a Guess" />
+      <Button fx:id="btnSend" layoutX="785.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#handleSendButtonClick" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #FFF8DC;" text="Send" />
+      <Rectangle fx:id="rectOldMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="615.0" layoutY="50.0" onMouseClicked="#oldMan" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+      <Rectangle fx:id="rectYoungMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="682.0" layoutY="46.0" onMouseClicked="#youngMan" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+      <Rectangle fx:id="rectWoman" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="748.0" layoutY="47.0" onMouseClicked="#woman" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+      <Rectangle fx:id="rectCrimeScene" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="815.0" layoutY="49.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+      <Rectangle fx:id="rectPiano" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="188.0" layoutX="1.0" layoutY="241.0" onMouseClicked="#handlePianoClick" stroke="TRANSPARENT" strokeType="INSIDE" width="198.0" />
+      <Rectangle fx:id="rectCase" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="328.0" layoutX="210.0" layoutY="136.0" onMouseClicked="#handleCaseClick" stroke="TRANSPARENT" strokeType="INSIDE" width="201.0" />
+      <Rectangle fx:id="rectFootprint" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="71.0" layoutX="265.0" layoutY="491.0" onMouseClicked="#handleFootprintClick" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
    </children>
 </Pane>

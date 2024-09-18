@@ -10,14 +10,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OldManController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/oldManRoom.png" />
          </image>
       </ImageView>
-      <Label layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="0" textFill="RED">
+      <Label fx:id="lblTime" layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="0" textFill="RED">
          <font>
             <Font size="35.0" />
          </font>
@@ -48,6 +48,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="615.0" layoutY="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="682.0" layoutY="46.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="748.0" layoutY="47.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="815.0" layoutY="49.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+      <Rectangle fx:id="rectCrimeScene" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="815.0" layoutY="49.0" onMouseClicked="#crimeScene" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
    </children>
 </Pane>
