@@ -10,7 +10,6 @@ import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -20,7 +19,6 @@ public class MenuController {
   @FXML private Rectangle rectStart;
 
   private static boolean isFirstTimeInit = true;
-  private static GameStateContext context = new GameStateContext();
 
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
@@ -86,14 +84,5 @@ public class MenuController {
     } catch (Exception e) {
       System.err.println("An error occurred while trying to play media: " + e.getMessage());
     }
-  }
-
-  /**
-   * Returns the game state context.
-   *
-   * @return the game state context
-   */
-  public static GameStateContext getContext() {
-    return context;
   }
 }

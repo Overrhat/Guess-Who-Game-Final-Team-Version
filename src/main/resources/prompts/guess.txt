@@ -43,3 +43,5 @@ EXAMPLES FOR EVALUATING RESPONSES:
 	•	Feedback: “You guessed the thief correctly, but your explanation isn’t quite right. The clues showed that the criminal is not very strong, a good dancer, and has blond hair. Your reasoning didn’t align with these points.”
 
 Use this structure to provide appropriate feedback to the player’s guess and explanation.
+
+The player's guess was {person}

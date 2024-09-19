@@ -10,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -29,7 +28,6 @@ public class MainRoomController {
   @FXML private Rectangle rectFootprint;
 
   private static boolean isFirstTimeInit = true;
-  private static GameStateContext context;
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
   private boolean isPianoClicked = false; // whether the piano has been clicked
@@ -38,7 +36,6 @@ public class MainRoomController {
   @FXML
   public void initialize() {
     if (isFirstTimeInit) {
-      context = MenuController.getContext();
       Task<Void> countingTask =
           new Task<Void>() {
             @Override
