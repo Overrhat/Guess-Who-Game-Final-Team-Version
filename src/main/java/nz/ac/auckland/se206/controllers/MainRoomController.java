@@ -35,6 +35,7 @@ public class MainRoomController {
   public static boolean isOldManClicked = false; // whether the user has chated with the old man
   public static boolean isYoungManClicked = false; // whether the user has chated with the young man
   public static boolean isWomanClicked = false; // whether the user has chated with the woman
+  public static boolean guessClicked = false; // where the user has press the guess button or not
 
   /** starts the timer on the main room once we switch to the main room */
   @FXML
@@ -45,8 +46,8 @@ public class MainRoomController {
             @Override
             protected Void call() {
               // start timer for 5 x 60 seconds
-              lblTime.setText("5:00");
-              for (int i = 4; i >= 0; i--) {
+              Platform.runLater(() -> lblTime.setText("5:00"));
+              for (int i = 0; i >= 0; i--) { // TEMP CHANGE THIS BEFORE PUSH
                 int minute = i;
                 for (int j = 59; j >= 0; j--) {
                   try {
@@ -55,6 +56,7 @@ public class MainRoomController {
                     e.printStackTrace();
                   }
                   int second = j;
+                  // special formatting for it time is less than 10 seconds
                   if (j < 10) {
                     String time = minute + ":" + "0" + second;
                     Platform.runLater(
@@ -67,6 +69,7 @@ public class MainRoomController {
                         });
                     continue;
                   }
+                  // normal formatting for greater than 10 seconds
                   String time = minute + ":" + second;
                   Platform.runLater(
                       () -> {
@@ -78,10 +81,48 @@ public class MainRoomController {
                       });
                 }
               }
+              // after the timer ends, if we are not in the guessing room move us there and give another minute
+              if (!guessClicked) {
+                Platform.runLater(() -> SceneManager.getGuessController().setLblTime("1:00"));
+                MenuController.playMedia("/sounds/sound06.mp3");
+                Scene scene = lblTime.getScene();
+                scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+                for (int i = 59; i >= 0; i--) {
+                  try {
+                    Thread.sleep(1000);
+                  } catch (InterruptedException e) {
+                    e.printStackTrace();
+                  }
+                  if (i < 10) {
+                    String time = "0:" + "0" + i;
+                    Platform.runLater(
+                        () -> {
+                          lblTime.setText(time);
+                          SceneManager.getOldManController().setLblTime(time);
+                          SceneManager.getYoungManController().setLblTime(time);
+                          SceneManager.getWomanController().setLblTime(time);
+                          SceneManager.getGuessController().setLblTime(time);
+                        });
+                    continue;
+                  }
+                  String time = "0:" + i;
+                  Platform.runLater(
+                      () -> {
+                        lblTime.setText(time);
+                        SceneManager.getOldManController().setLblTime(time);
+                        SceneManager.getYoungManController().setLblTime(time);
+                        SceneManager.getWomanController().setLblTime(time);
+                        SceneManager.getGuessController().setLblTime(time);
+                      });
+                }
+                MenuController.playMedia("/sounds/sound16.mp3");
+                // PUT WHATEVER YOU WANT TO HAPPEN AFTER THE 60 SECONDS IN GUESSING IS UP HERE
+              }
               return null;
             }
           };
       isFirstTimeInit = false;
+      // run the background task
       Thread backgroundThread = new Thread(countingTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
@@ -139,6 +180,8 @@ public class MainRoomController {
     try {
       // Get the current scene
       Scene scene = btnGuess.getScene();
+      // Enable guess clicked boolean
+      guessClicked = true;
       // Switch to the GUESSROOM scene
       scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
     } catch (Exception e) {
