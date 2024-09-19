@@ -129,7 +129,7 @@ public class ChatController {
       @Override
       protected ChatMessage call() throws ApiProxyException {
         // loading = true;
-        // disableText();
+        btnSend.setDisable(true);
         chatCompletionRequest.addMessage(msg);
         ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
         Choice result = chatCompletionResult.getChoices().iterator().next();
@@ -140,7 +140,7 @@ public class ChatController {
         @Override
         protected void succeeded() {
           // loading = false;
-          // enableText();
+          btnSend.setDisable(false);
           ChatMessage response = getValue();
           appendChatMessage(response);
         }
