@@ -31,6 +31,10 @@ public class MainRoomController {
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
   private boolean isPianoClicked = false; // whether the piano has been clicked
+  public static boolean isClueFound = false; // whether the clue has been found
+  public static boolean isOldManClicked = false; // whether the user has chated with the old man
+  public static boolean isYoungManClicked = false; // whether the user has chated with the young man
+  public static boolean isWomanClicked = false; // whether the user has chated with the woman
 
   /** starts the timer on the main room once we switch to the main room */
   @FXML
@@ -53,19 +57,23 @@ public class MainRoomController {
                   int second = j;
                   if (j < 10) {
                     String time = minute + ":" + "0" + second;
-                    Platform.runLater(() -> {lblTime.setText(time);
-                      SceneManager.getOldManController().setLblTime(time);
-                      SceneManager.getYoungManController().setLblTime(time);
-                      SceneManager.getWomanController().setLblTime(time);
-                    });
+                    Platform.runLater(
+                        () -> {
+                          lblTime.setText(time);
+                          SceneManager.getOldManController().setLblTime(time);
+                          SceneManager.getYoungManController().setLblTime(time);
+                          SceneManager.getWomanController().setLblTime(time);
+                        });
                     continue;
                   }
                   String time = minute + ":" + second;
-                  Platform.runLater(() -> {lblTime.setText(time);
-                  SceneManager.getOldManController().setLblTime(time);
-                  SceneManager.getYoungManController().setLblTime(time);
-                  SceneManager.getWomanController().setLblTime(time);
-                  });
+                  Platform.runLater(
+                      () -> {
+                        lblTime.setText(time);
+                        SceneManager.getOldManController().setLblTime(time);
+                        SceneManager.getYoungManController().setLblTime(time);
+                        SceneManager.getWomanController().setLblTime(time);
+                      });
                 }
               }
               return null;
@@ -120,6 +128,12 @@ public class MainRoomController {
   /** This switches the scene to the guessing scene when guess button is clicked */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
+    // Checking the requirements to switch to the guessing scene
+    if (!(isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked)) {
+      MenuController.playMedia("/sounds/sound17.mp3");
+      return;
+    }
+
     try {
       // Get the current scene
       Scene scene = btnGuess.getScene();
@@ -134,6 +148,9 @@ public class MainRoomController {
   /** Handles the click event on the footprint rectangle. */
   @FXML
   private void handleFootprintClick(MouseEvent event) {
+    // the user has found the clue
+    isClueFound = true;
+
     if (footprintNum == 0) {
       txtaChat.clear();
       MenuController.playMedia("/sounds/sound09.mp3");
@@ -156,11 +173,14 @@ public class MainRoomController {
   /** Handles the click event on the case rectangle. */
   @FXML
   private void handleCaseClick(MouseEvent event) {
+    // the user has found the clue
+    isClueFound = true;
+
     MenuController.playMedia("/sounds/sound13.mp3");
 
     // Put the text on the text area
     txtaChat.clear();
-    txtaChat.appendText("Type: (Yes) or (No) to open the case\n\n");
+    txtaChat.appendText("Type: Yes or No to open the case\n\n");
 
     // Set the case clicked to true
     isCaseClicked = true;
@@ -170,6 +190,9 @@ public class MainRoomController {
   /** Handles the click event on the piano rectangle. */
   @FXML
   private void handlePianoClick(MouseEvent event) {
+    // the user has found the clue
+    isClueFound = true;
+
     MenuController.playMedia("/sounds/sound11.mp3");
 
     // Put the text on the text area
