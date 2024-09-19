@@ -44,6 +44,8 @@ EXAMPLES FOR EVALUATING RESPONSES:
 	•	Player Input: “I think it was Lena because she seemed suspicious.”
 	•	Feedback: “You guessed the thief correctly, but your explanation isn’t quite right. The clues showed that the criminal is not very strong, a good dancer, and has blond hair. Your reasoning didn’t align with these points.”
 
+When you are asking the user for their explanation, you should say "Thank you for your guess! Can you please provide your explanation for why you think (name) is the thief?"
+
 Use this structure to provide appropriate feedback to the player’s guess and explanation.
 
 The player's guess was the {person}.

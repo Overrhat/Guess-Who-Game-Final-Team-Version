@@ -24,8 +24,8 @@ public class GuessingRoomController {
   @FXML private Label selection;
   
   @FXML private Rectangle rectOldMan;
-  // @FXML private Rectangle rectCrimeScene;
-  // @FXML private Rectangle rectWoman;
+  @FXML private Rectangle rectYoungMan;
+  @FXML private Rectangle rectWoman;
 
   private String guess;
   
@@ -55,7 +55,25 @@ public class GuessingRoomController {
   @FXML
   private void oldMan(MouseEvent event) {
     rectOldMan.setDisable(true);
+    rectYoungMan.setDisable(false);
+    rectWoman.setDisable(false);
     enterReasoning("Edgar Thompson");
+  }
+
+  @FXML
+  private void youngMan(MouseEvent event) {
+    rectOldMan.setDisable(false);
+    rectYoungMan.setDisable(true);
+    rectWoman.setDisable(false);
+    enterReasoning("Alex Carter");
+  }
+
+  @FXML
+  private void woman(MouseEvent event) {
+    rectOldMan.setDisable(false);
+    rectYoungMan.setDisable(false);
+    rectWoman.setDisable(true);
+    enterReasoning("Lena Stone");
   }
 
 
@@ -67,6 +85,8 @@ public class GuessingRoomController {
     title.setVisible(false);
     selection.setVisible(false);
     rectOldMan.setDisable(true);
+    rectYoungMan.setDisable(true);
+    rectWoman.setDisable(true);
     chat.onSendMessage(event);
   }
 

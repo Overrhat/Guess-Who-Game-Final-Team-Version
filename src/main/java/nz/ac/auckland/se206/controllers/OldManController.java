@@ -88,7 +88,7 @@ public class OldManController {
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     // Checking the requirements to switch to the guessing scene
-    if ((MainRoomController.isClueFound // normally !
+    if (!(MainRoomController.isClueFound
         && MainRoomController.isOldManClicked
         && MainRoomController.isYoungManClicked
         && MainRoomController.isWomanClicked)) {
