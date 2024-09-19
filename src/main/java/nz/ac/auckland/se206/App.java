@@ -93,7 +93,9 @@ public class App extends Application {
     SceneManager.addUi(AppUi.WOMANROOM, woman.load());
     SceneManager.setWomanController(woman.getController());
     
-    SceneManager.addUi(AppUi.GUESSROOM, loadFxml("guessingRoom"));
+    FXMLLoader guess = new FXMLLoader(App.class.getResource("/fxml/" + "guessingRoom" + ".fxml"));
+    SceneManager.addUi(AppUi.GUESSROOM, guess.load());
+    SceneManager.setGuessController(guess.getController());
     
     SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
     SceneManager.setOldManController(oldMan.getController());

@@ -19,4 +19,8 @@ public class GuessingRoomController {
   public void initialize() {
     
   }
+
+  public void setLblTime(String time) {
+    lblTime.setText(time);
+  }
 }

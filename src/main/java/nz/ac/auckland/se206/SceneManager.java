@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.util.HashMap;
 import javafx.scene.Parent;
+import nz.ac.auckland.se206.controllers.GuessingRoomController;
 import nz.ac.auckland.se206.controllers.OldManController;
 import nz.ac.auckland.se206.controllers.YoungManController;
 import nz.ac.auckland.se206.controllers.WomanController;
@@ -26,6 +27,7 @@ public class SceneManager {
   private static OldManController oldManController;
   private static YoungManController youngManController;
   private static WomanController womanController;
+  private static GuessingRoomController guesssController;
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
     sceneMap.put(appUi, uiRoot);
@@ -57,5 +59,13 @@ public class SceneManager {
 
   public static void setWomanController(WomanController womanController) {
     SceneManager.womanController = womanController;
+  }
+
+  public static void setGuessController(GuessingRoomController guessController) {
+    SceneManager.guesssController = guessController;
+  }
+
+  public static GuessingRoomController getGuessController() {
+    return guesssController;
   }
 }
