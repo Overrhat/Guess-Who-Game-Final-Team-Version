@@ -32,6 +32,7 @@ public class ChatController {
 
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
+  private String guess = "None so don't say anything yet.";
 
   /**
    * Initializes the chat view.
@@ -58,6 +59,11 @@ public class ChatController {
     this.btnSend = btnSend;
   }
 
+  // Setter for guess
+  public void setGuess(String guess) {
+    this.guess = guess;
+  }
+
   /**
    * Generates the system prompt based on the profession.
    *
@@ -65,7 +71,7 @@ public class ChatController {
    */
   private String getSystemPrompt(String person) {
     Map<String, String> map = new HashMap<>();
-    map.put("profession", person);
+    map.put("person", guess);
     return PromptEngineering.getPrompt(person, map);
   }
 
@@ -108,6 +114,8 @@ public class ChatController {
           case "woman":
             role = "Woman";
             break;
+          case "guess":
+            role = "Feedback";
           default:
             break;
         }
