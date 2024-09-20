@@ -10,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -111,8 +110,7 @@ public class YoungManController {
       System.exit(0);
     }
   }
-
-
+  
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
@@ -131,7 +129,8 @@ public class YoungManController {
     circle.setOpacity(1);
   }
 
-  @FXML private void hoverOff(MouseEvent event) {
+  @FXML
+  private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
 

@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +17,6 @@ import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
  * Controller class for the chat view. Handles user interactions and communication with the GPT
@@ -34,6 +32,8 @@ public class ChatController {
   private String profession;
   private String guess = "None so don't say anything yet.";
 
+  private boolean loading = false;
+
   /**
    * Initializes the chat view.
    *
@@ -44,7 +44,7 @@ public class ChatController {
     // Any required initialization code can be placed here
   }
 
-   // Setter for txtaChat
+  // Setter for txtaChat
   public void setTxtaChat(TextArea txtaChat) {
     this.txtaChat = txtaChat;
   }
@@ -104,25 +104,29 @@ public class ChatController {
   private void appendChatMessage(ChatMessage msg) {
     String role = msg.getRole();
     if (role.equals("assistant")) {
-        switch (profession) {
-          case "oldMan":
-            role = "Old man";
-            break;
-          case "youngMan":
-            role = "Young man";
-            break;
-          case "woman":
-            role = "Woman";
-            break;
-          case "guess":
-            role = "Feedback";
-          default:
-            break;
-        }
+      switch (profession) {
+        case "oldMan":
+          role = "Old man";
+          break;
+        case "youngMan":
+          role = "Young man";
+          break;
+        case "woman":
+          role = "Woman";
+          break;
+        case "guess":
+          role = "Feedback";
+        default:
+          break;
+      }
     } else if (role.equals("user")) {
       role = "You";
     }
     txtaChat.appendText(role + ": " + msg.getContent() + "\n\n");
+  }
+
+  public boolean isLoading() {
+    return loading;
   }
 
   /**
@@ -133,36 +137,38 @@ public class ChatController {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
-    Task<ChatMessage> task = new Task<>() {
-      @Override
-      protected ChatMessage call() throws ApiProxyException {
-        // loading = true;
-        btnSend.setDisable(true);
-        chatCompletionRequest.addMessage(msg);
-        ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-        Choice result = chatCompletionResult.getChoices().iterator().next();
-        chatCompletionRequest.addMessage(result.getChatMessage());
-        return result.getChatMessage();
-        }
+    Task<ChatMessage> task =
+        new Task<>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            loading = true;
+            btnSend.setDisable(true);
+            chatCompletionRequest.addMessage(msg);
+            ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+            Choice result = chatCompletionResult.getChoices().iterator().next();
+            chatCompletionRequest.addMessage(result.getChatMessage());
+            return result.getChatMessage();
+          }
 
-        @Override
-        protected void succeeded() {
-          // loading = false;
-          btnSend.setDisable(false);
-          ChatMessage response = getValue();
-          appendChatMessage(response);
-        }
+          @Override
+          protected void succeeded() {
+            loading = false;
+            btnSend.setDisable(false);
+            ChatMessage response = getValue();
+            appendChatMessage(response);
+          }
 
-        @Override
-        protected void failed() {
-          Throwable exception = getException();
-          exception.printStackTrace();
-          // Handle failure (e.g., show an error message to the user)
-        }
-      };
+          @Override
+          protected void failed() {
+            Throwable exception = getException();
+            exception.printStackTrace();
+            // Handle failure (e.g., show an error message to the user)
+          }
+        };
 
-      new Thread(task).start();
-    }
+    new Thread(task).start();
+  }
+
   /**
    * Sends a message to the GPT model.
    *
