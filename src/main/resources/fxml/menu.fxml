@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.shape.Rectangle?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #8B4513;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
@@ -12,6 +16,29 @@
             <Image url="@../images/menu.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rectStart" arcHeight="5.0" arcWidth="5.0" fill="#0084ff00" height="82.0" layoutX="259.0" layoutY="485.0" onMouseClicked="#handleStartClick" stroke="TRANSPARENT" strokeType="INSIDE" width="390.0" />
+      <Line fx:id="topLine" endX="95.0" layoutX="452.0" layoutY="505.0" startX="-91.0" stroke="WHITE" strokeWidth="5.0" visible="false">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Line>
+      <Line fx:id="bottomLine" endX="95.0" layoutX="452.0" layoutY="548.0" startX="-91.0" stroke="WHITE" strokeWidth="5.0" visible="false">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Line>
+      <QuadCurve fx:id="rightLine" controlX="31.0" controlY="-62.0" endX="2.5" endY="-86.0" fill="#1f93ff00" layoutX="547.0" layoutY="587.0" startX="2.5" startY="-36.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" visible="false">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </QuadCurve>
+      <QuadCurve fx:id="leftLine" controlX="-27.0" controlY="-61.0" endX="2.5" endY="-86.0" fill="#1f93ff00" layoutX="356.0" layoutY="587.0" startX="2.5" startY="-36.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" visible="false">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </QuadCurve>
+      <Rectangle fx:id="rectStart" arcHeight="5.0" arcWidth="5.0" fill="#0084ff00" height="50.0" layoutX="345.0" layoutY="499.0" onMouseClicked="#handleStartClick" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" stroke="TRANSPARENT" strokeType="INSIDE" width="214.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
    </children>
 </Pane>
