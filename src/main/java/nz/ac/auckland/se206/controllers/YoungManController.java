@@ -28,6 +28,7 @@ public class YoungManController {
   private ChatController chat;
 
   public void initialize() {
+    // Initialize the controller
     chat = new ChatController();
     chat.setTxtaChat(txtaChat);
     chat.setTxtInput(txtInput);
@@ -46,44 +47,27 @@ public class YoungManController {
   /** This switches the scene to the crime scene. */
   @FXML
   private void crimeScene(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading mainRoom.fxml");
-      System.exit(0);
-    }
+    // Switch to crime scene by using the switchScene method
+    switchScene(event, AppUi.MAINROOM, "crimeScene");
   }
 
   /** This switches to the old man room. */
   @FXML
   private void oldMan(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading oldManRoom.fxml");
-      System.exit(0);
-    }
+    // Switch to oldman room by using the switchScene method
+    switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
   /** This switches to the woman room. */
   @FXML
   private void woman(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading womanRoom.fxml");
-      System.exit(0);
-    }
+    // Switch to woman room by using the switchScene method
+    switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    // Send the message to the chat with youngman prompt
     MainRoomController.isYoungManClicked = true;
     chat.onSendMessage(event);
   }
@@ -110,21 +94,20 @@ public class YoungManController {
       System.exit(0);
     }
   }
-  
+
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /**
-   * This method sets the scene to the guessing room
-   */
+  /** This method sets the scene to the guessing room */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
-  
-  @FXML private void hoverOn(MouseEvent event) {
+
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
@@ -133,6 +116,17 @@ public class YoungManController {
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
+  }
 
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    // Switch to scene to the inputed scene
+    try {
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
   }
 }

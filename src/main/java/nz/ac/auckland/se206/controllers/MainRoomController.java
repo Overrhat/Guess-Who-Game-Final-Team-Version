@@ -15,6 +15,14 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class MainRoomController {
+  // static fields
+  public static boolean isClueFound = false; // whether the clue has been found
+  public static boolean isOldManClicked = false; // whether the user has chated with the old man
+  public static boolean isYoungManClicked = false; // whether the user has chated with the young man
+  public static boolean isWomanClicked = false; // whether the user has chated with the woman
+  public static boolean guessClicked = false; // where the user has press the guess button or not
+  private static boolean isFirstTimeInit = true;
+
   @FXML private Label lblTime;
   @FXML private TextArea txtaChat;
   @FXML private TextField txtaInput;
@@ -28,15 +36,9 @@ public class MainRoomController {
   @FXML private Rectangle rectCase;
   @FXML private Rectangle rectFootprint;
 
-  private static boolean isFirstTimeInit = true;
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
   private boolean isPianoClicked = false; // whether the piano has been clicked
-  public static boolean isClueFound = false; // whether the clue has been found
-  public static boolean isOldManClicked = false; // whether the user has chated with the old man
-  public static boolean isYoungManClicked = false; // whether the user has chated with the young man
-  public static boolean isWomanClicked = false; // whether the user has chated with the woman
-  public static boolean guessClicked = false; // where the user has press the guess button or not
 
   /** starts the timer on the main room once we switch to the main room */
   @FXML
@@ -163,8 +165,7 @@ public class MainRoomController {
                 resetBooleans();
                 SceneManager.getGuessController().setSceneMenu();
                 return null;
-              }
-              else {
+              } else {
                 MenuController.playMedia("/sounds/sound07.mp3");
                 resetBooleans();
                 SceneManager.getGuessController().setSceneMenu();
@@ -181,47 +182,28 @@ public class MainRoomController {
       circleWoman.setOpacity(0);
       circleYoungMan.setOpacity(0);
       circleOldMan.setOpacity(0);
-
     }
   }
 
   /** This switches the scene to the old man */
   @FXML
   private void oldMan(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading oldManRoom.fxml");
-      System.exit(0);
-    }
+    // Use the switchScene method to switch
+    switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
   /** This switches the scene to the young man */
   @FXML
   private void youngMan(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading youngManRoom.fxml");
-      System.exit(0);
-    }
+    // Use the switchScene method to switch
+    switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
   /** This switches the scene to the woman */
   @FXML
   private void woman(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading womanRoom.fxml");
-      System.exit(0);
-    }
+    // Use the switchScene method to switch
+    switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
   /** This switches the scene to the guessing scene when guess button is clicked */
@@ -354,35 +336,51 @@ public class MainRoomController {
     txtaInput.clear();
   }
 
-
   public void resetBooleans() {
+    // reset all the booleans to initial state
     isFirstTimeInit = true;
-    footprintNum = 0; // number of times the footprint has been clicked
-    isCaseClicked = false; // whether the case has been clicked
-    isPianoClicked = false; // whether the piano has been clicked
-    isClueFound = false; // whether the clue has been found
-    isOldManClicked = false; // whether the user has chated with the old man
-    isYoungManClicked = false; // whether the user has chated with the young man
-    isWomanClicked = false; // whether the user has chated with the woman
-    guessClicked = false; // where the user has press the guess button or not
+    footprintNum = 0;
+    isCaseClicked = false;
+    isPianoClicked = false;
+    isClueFound = false;
+    isOldManClicked = false;
+    isYoungManClicked = false;
+    isWomanClicked = false;
+    guessClicked = false;
   }
-  @FXML private void hoverOn(MouseEvent event) {
+
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
-  @FXML private void hoverOff(MouseEvent event) {
+  @FXML
+  private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
-  @FXML private void clueHoverOn(MouseEvent event) {
+  @FXML
+  private void clueHoverOn(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0.2);
   }
 
-  @FXML private void clueHoverOff(MouseEvent event) {
+  @FXML
+  private void clueHoverOff(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0);
+  }
+
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    try {
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
   }
 }
