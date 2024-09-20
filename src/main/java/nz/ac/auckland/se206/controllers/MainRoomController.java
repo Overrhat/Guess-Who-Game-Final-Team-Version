@@ -246,4 +246,14 @@ public class MainRoomController {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
+
+  @FXML private void clueHoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0.2);
+  }
+
+  @FXML private void clueHoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
+  }
 }
