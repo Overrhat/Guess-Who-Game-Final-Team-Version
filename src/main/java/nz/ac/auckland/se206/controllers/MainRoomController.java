@@ -47,9 +47,9 @@ public class MainRoomController {
             protected Void call() {
               // start timer for 5 x 60 seconds
               Platform.runLater(() -> lblTime.setText("5:00"));
-              for (int i = 0; i >= 0; i--) { // TEMP CHANGE THIS BEFORE PUSH
+              for (int i = 4; i >= 0; i--) { // TEMP CHANGE THIS BEFORE PUSH set to 4
                 int minute = i;
-                for (int j = 59; j >= 0; j--) {
+                for (int j = 59; j >= 0; j--) { // temp change this before push set to 59
                   try {
                     Thread.sleep(1000);
                   } catch (InterruptedException e) {
@@ -81,12 +81,54 @@ public class MainRoomController {
                       });
                 }
               }
-              // after the timer ends, if we are not in the guessing room move us there and give another minute
+              // if we dont meet conditions to guess just make us lose automatically
+              if (!(isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked)) {
+                MenuController.playMedia("/sounds/sound15.mp3");
+                // WE CAN DECIDE WHAT TO DO AFTER THE GAME AUTO LOSES HERE
+                // for now im just gonna kick them to the menu so they can play again
+                resetBooleans();
+
+                // WE CAN CHANGE THIS BUT THIS IS JUST AN EASY WAY TO CHANGE TO MENU ON ANY SCENE WE
+                // ARE ON
+                SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
+                switch (currentRoom) {
+                  case OLDMANROOM:
+                    SceneManager.getOldManController().setSceneMenu();
+                    break;
+                  case YOUNGMANROOM:
+                    SceneManager.getYoungManController().setSceneMenu();
+                    break;
+                  case WOMANROOM:
+                    SceneManager.getWomanController().setSceneMenu();
+                    break;
+                  default:
+                    Scene scene = lblTime.getScene();
+                    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+                    break;
+                }
+                return null;
+              }
+              // after the timer ends, if we are not in the guessing room move us there and give
+              // another minute
               if (!guessClicked) {
                 Platform.runLater(() -> SceneManager.getGuessController().setLblTime("1:00"));
                 MenuController.playMedia("/sounds/sound06.mp3");
-                Scene scene = lblTime.getScene();
-                scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+                SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
+                switch (currentRoom) {
+                  case OLDMANROOM:
+                    SceneManager.getOldManController().setSceneGuess();
+                    break;
+                  case YOUNGMANROOM:
+                    SceneManager.getYoungManController().setSceneGuess();
+                    break;
+                  case WOMANROOM:
+                    SceneManager.getWomanController().setSceneGuess();
+                    break;
+                  default:
+                    Scene scene = lblTime.getScene();
+                    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+                    break;
+                }
                 for (int i = 59; i >= 0; i--) {
                   try {
                     Thread.sleep(1000);
@@ -117,6 +159,8 @@ public class MainRoomController {
                 }
                 MenuController.playMedia("/sounds/sound16.mp3");
                 // PUT WHATEVER YOU WANT TO HAPPEN AFTER THE 60 SECONDS IN GUESSING IS UP HERE
+                resetBooleans();
+                SceneManager.getGuessController().setSceneMenu();
               }
               return null;
             }
@@ -296,5 +340,17 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
+  }
+
+  public void resetBooleans() {
+    isFirstTimeInit = true;
+    footprintNum = 0; // number of times the footprint has been clicked
+    isCaseClicked = false; // whether the case has been clicked
+    isPianoClicked = false; // whether the piano has been clicked
+    isClueFound = false; // whether the clue has been found
+    isOldManClicked = false; // whether the user has chated with the old man
+    isYoungManClicked = false; // whether the user has chated with the young man
+    isWomanClicked = false; // whether the user has chated with the woman
+    guessClicked = false; // where the user has press the guess button or not
   }
 }

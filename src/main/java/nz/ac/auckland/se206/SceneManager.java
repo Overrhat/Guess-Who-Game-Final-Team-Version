@@ -28,12 +28,14 @@ public class SceneManager {
   private static YoungManController youngManController;
   private static WomanController womanController;
   private static GuessingRoomController guesssController;
+  private static AppUi currentRoom;
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
     sceneMap.put(appUi, uiRoot);
   }
 
   public static Parent getUiRoot(AppUi appUi) {
+    currentRoom = appUi;
     return sceneMap.get(appUi);
   }
 
@@ -67,5 +69,9 @@ public class SceneManager {
 
   public static GuessingRoomController getGuessController() {
     return guesssController;
+  }
+
+  public static AppUi getCurrentRoom() {
+    return currentRoom;
   }
 }
