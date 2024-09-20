@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -17,9 +18,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class YoungManController {
   @FXML private Label lblTime;
-  @FXML private Rectangle rectCrimeScene;
-  @FXML private Rectangle rectOldMan;
-  @FXML private Rectangle rectWoman;
+  @FXML private Circle circleCrimeScene;
+  @FXML private Circle circleOldMan;
+  @FXML private Circle circleWoman;
 
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
@@ -35,6 +36,10 @@ public class YoungManController {
     chat.setTxtInput(txtInput);
     chat.setBtnSend(btnSend);
     chat.setProfession("youngMan");
+
+    circleCrimeScene.setOpacity(0);
+    circleWoman.setOpacity(0);
+    circleOldMan.setOpacity(0);
   }
 
   public void setLblTime(String time) {
@@ -47,7 +52,7 @@ public class YoungManController {
   @FXML
   private void crimeScene(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
@@ -62,7 +67,7 @@ public class YoungManController {
   @FXML
   private void oldMan(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
     } catch (Exception e) {
@@ -77,7 +82,7 @@ public class YoungManController {
   @FXML
   private void woman(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
     } catch (Exception e) {
@@ -90,4 +95,14 @@ public class YoungManController {
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     chat.onSendMessage(event);
   } 
+
+  @FXML private void hoverOn(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(1);
+  }
+
+  @FXML private void hoverOff(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(0);
+  }
 }

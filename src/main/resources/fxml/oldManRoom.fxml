@@ -25,7 +25,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="653.0" layoutY="4.0" prefHeight="30.0" prefWidth="203.0" text="Click to change the room" textFill="#c6945f">
+      <Label layoutX="653.0" layoutY="4.0" prefHeight="30.0" prefWidth="216.0" text="Click to change the room" textFill="#c6945f">
          <font>
             <Font size="19.0" />
          </font></Label>

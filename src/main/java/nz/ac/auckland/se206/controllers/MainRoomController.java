@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import nz.ac.auckland.se206.SceneManager;
@@ -20,9 +21,9 @@ public class MainRoomController {
   @FXML private TextField txtaInput;
   @FXML private Button btnGuess;
   @FXML private Button btnSend;
-  @FXML private Rectangle rectOldMan;
-  @FXML private Rectangle rectYoungMan;
-  @FXML private Rectangle rectWoman;
+  @FXML private Circle circleOldMan;
+  @FXML private Circle circleYoungMan;
+  @FXML private Circle circleWoman;
   @FXML private Rectangle rectCrimeScene;
   @FXML private Rectangle rectPiano;
   @FXML private Rectangle rectCase;
@@ -76,6 +77,11 @@ public class MainRoomController {
       Thread backgroundThread = new Thread(countingTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
+
+      circleWoman.setOpacity(0);
+      circleYoungMan.setOpacity(0);
+      circleOldMan.setOpacity(0);
+
     }
   }
 
@@ -83,7 +89,7 @@ public class MainRoomController {
   @FXML
   private void oldMan(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
     } catch (Exception e) {
@@ -96,7 +102,7 @@ public class MainRoomController {
   @FXML
   private void youngMan(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
     } catch (Exception e) {
@@ -109,7 +115,7 @@ public class MainRoomController {
   @FXML
   private void woman(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
     } catch (Exception e) {
@@ -229,5 +235,15 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
+  }
+
+  @FXML private void hoverOn(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(1);
+  }
+
+  @FXML private void hoverOff(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(0);
   }
 }
