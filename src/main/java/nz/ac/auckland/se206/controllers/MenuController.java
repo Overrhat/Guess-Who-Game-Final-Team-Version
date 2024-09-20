@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.net.URISyntaxException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,20 +9,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.QuadCurve;
+import javafx.scene.shape.Rectangle;
+
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+
 public class MenuController {
+  
+  // Static fields
   public static MediaPlayer mediaPlayer;
-
-  @FXML private Rectangle rectStart;
-
   private static boolean isFirstTimeInit = true;
 
+  // Instance fields
+  @FXML private Rectangle rectStart;
   @FXML private Line topLine;
   @FXML private Line bottomLine;
   @FXML private QuadCurve leftLine;
@@ -52,6 +56,7 @@ public class MenuController {
   private void handleStartClick(MouseEvent event) {
     // this switches the scene to the main room
     try {
+      // Load fxmls.
       Rectangle rect = (Rectangle) event.getSource();
       Scene scene = rect.getScene();
       FXMLLoader main = new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml"));
@@ -60,6 +65,7 @@ public class MenuController {
       FXMLLoader youngMan =
           new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
 
+      // Connect the controllers.
       SceneManager.addUi(AppUi.WOMANROOM, woman.load());
       SceneManager.setWomanController(woman.getController());
 
@@ -76,6 +82,7 @@ public class MenuController {
       SceneManager.setMainController(main.getController());
       scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
+      // Print error loading room.
       System.out.println("Error loading mainRoom.fxml");
       System.exit(0);
     }
