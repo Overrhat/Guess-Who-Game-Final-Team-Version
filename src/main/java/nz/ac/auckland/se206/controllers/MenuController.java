@@ -9,6 +9,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.QuadCurve;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -19,6 +21,12 @@ public class MenuController {
   @FXML private Rectangle rectStart;
 
   private static boolean isFirstTimeInit = true;
+
+  @FXML private Line topLine;
+  @FXML private Line bottomLine;
+  @FXML private QuadCurve leftLine;
+  @FXML private QuadCurve rightLine;
+
 
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
@@ -102,4 +110,21 @@ public class MenuController {
       System.err.println("An error occurred while trying to play media: " + e.getMessage());
     }
   }
+
+  @FXML 
+  private void hoverOn(MouseEvent event) {
+    topLine.setVisible(true);
+    bottomLine.setVisible(true);
+    leftLine.setVisible(true);
+    rightLine.setVisible(true);
+  }
+
+  @FXML 
+  private void hoverOff(MouseEvent event) {
+    topLine.setVisible(false);
+    bottomLine.setVisible(false);
+    leftLine.setVisible(false);
+    rightLine.setVisible(false);
+  }
+  
 }

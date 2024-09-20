@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
@@ -16,9 +17,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class OldManController {
   @FXML private Label lblTime;
-  @FXML private Rectangle rectCrimeScene;
-  @FXML private Rectangle rectYoungMan;
-  @FXML private Rectangle rectWoman;
+  @FXML private Circle circleCrimeScene;
+  @FXML private Circle circleYoungMan;
+  @FXML private Circle circleWoman;
 
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
@@ -33,6 +34,10 @@ public class OldManController {
     chat.setTxtInput(txtInput);
     chat.setBtnSend(btnSend);
     chat.setProfession("oldMan");
+
+    circleCrimeScene.setOpacity(0);
+    circleYoungMan.setOpacity(0);
+    circleWoman.setOpacity(0);
   }
 
   public void setLblTime(String time) {
@@ -43,7 +48,7 @@ public class OldManController {
   @FXML
   private void crimeScene(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
@@ -56,7 +61,7 @@ public class OldManController {
   @FXML
   private void youngMan(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
     } catch (Exception e) {
@@ -69,13 +74,23 @@ public class OldManController {
   @FXML
   private void woman(MouseEvent event) {
     try {
-      Rectangle rect = (Rectangle) event.getSource();
+      Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
       scene.setRoot(SceneManager.getUiRoot(AppUi.WOMANROOM));
     } catch (Exception e) {
       System.out.println("Error loading womanRoom.fxml");
       System.exit(0);
     }
+  }
+
+  @FXML private void hoverOn(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(1);
+  }
+
+  @FXML private void hoverOff(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(0);
   }
 
   @FXML
