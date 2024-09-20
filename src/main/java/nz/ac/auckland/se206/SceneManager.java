@@ -2,6 +2,8 @@ package nz.ac.auckland.se206;
 
 import java.util.HashMap;
 import javafx.scene.Parent;
+import nz.ac.auckland.se206.controllers.GuessingRoomController;
+import nz.ac.auckland.se206.controllers.MainRoomController;
 import nz.ac.auckland.se206.controllers.OldManController;
 import nz.ac.auckland.se206.controllers.YoungManController;
 import nz.ac.auckland.se206.controllers.WomanController;
@@ -26,12 +28,16 @@ public class SceneManager {
   private static OldManController oldManController;
   private static YoungManController youngManController;
   private static WomanController womanController;
+  private static GuessingRoomController guesssController;
+  private static MainRoomController mainController;
+  private static AppUi currentRoom;
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
     sceneMap.put(appUi, uiRoot);
   }
 
   public static Parent getUiRoot(AppUi appUi) {
+    currentRoom = appUi;
     return sceneMap.get(appUi);
   }
 
@@ -58,4 +64,26 @@ public class SceneManager {
   public static void setWomanController(WomanController womanController) {
     SceneManager.womanController = womanController;
   }
+
+  public static void setGuessController(GuessingRoomController guessController) {
+    SceneManager.guesssController = guessController;
+  }
+
+  public static GuessingRoomController getGuessController() {
+    return guesssController;
+  }
+
+  public static AppUi getCurrentRoom() {
+    return currentRoom;
+  }
+
+  public static MainRoomController getMainController() {
+    return mainController;
+  }
+
+  public static void setMainController(MainRoomController mainController) {
+    SceneManager.mainController = mainController;
+  }
+
+  
 }
