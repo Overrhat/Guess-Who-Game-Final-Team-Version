@@ -43,6 +43,7 @@ public class GuessingRoomController {
   }
 
   private void enterReasoning(String guess) {
+    // this method handles the logic behind sending the reasoning
     this.guess = guess;
     chat.setGuess(guess);
     chat.setProfession("guess");
@@ -84,6 +85,7 @@ public class GuessingRoomController {
 
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    // this method handles sending messages to the chatgpt
     title.setVisible(false);
     selection.setVisible(false);
     rectOldMan.setDisable(true);
