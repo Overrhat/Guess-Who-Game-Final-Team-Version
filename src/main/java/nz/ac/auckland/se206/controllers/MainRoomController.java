@@ -110,7 +110,7 @@ public class MainRoomController {
               }
               // after the timer ends, if we are not in the guessing room move us there and give
               // another minute
-              if (!guessClicked) {
+              else if (!guessClicked) {
                 Platform.runLater(() -> SceneManager.getGuessController().setLblTime("1:00"));
                 MenuController.playMedia("/sounds/sound06.mp3");
                 SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
@@ -159,6 +159,12 @@ public class MainRoomController {
                 }
                 MenuController.playMedia("/sounds/sound16.mp3");
                 // PUT WHATEVER YOU WANT TO HAPPEN AFTER THE 60 SECONDS IN GUESSING IS UP HERE
+                resetBooleans();
+                SceneManager.getGuessController().setSceneMenu();
+                return null;
+              }
+              else {
+                MenuController.playMedia("/sounds/sound07.mp3");
                 resetBooleans();
                 SceneManager.getGuessController().setSceneMenu();
               }
