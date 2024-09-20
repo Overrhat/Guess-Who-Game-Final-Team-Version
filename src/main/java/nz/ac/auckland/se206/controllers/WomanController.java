@@ -29,12 +29,14 @@ public class WomanController {
   private ChatController chat;
 
   public void initialize() {
+    // this initializes the chat controller
     chat = new ChatController();
     chat.setTxtaChat(txtaChat);
     chat.setTxtInput(txtInput);
     chat.setBtnSend(btnSend);
     chat.setProfession("woman");
 
+    // this initializes the hover effects
     circleCrimeScene.setOpacity(0);
     circleYoungMan.setOpacity(0);
     circleOldMan.setOpacity(0);
@@ -44,43 +46,36 @@ public class WomanController {
     lblTime.setText(time);
   }
 
-  /** This switches the scene to the crime scene. */
-  @FXML
-  private void crimeScene(MouseEvent event) {
+  private void switchScene(MouseEvent event, AppUi root, String name) {
     try {
       Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
+      scene.setRoot(SceneManager.getUiRoot(root));
     } catch (Exception e) {
-      System.out.println("Error loading mainRoom.fxml");
+      System.out.println("Error loading " + name + ".fxml");
       System.exit(0);
     }
+  }
+
+  /** This switches the scene to the crime scene. */
+  @FXML
+  private void crimeScene(MouseEvent event) {
+    // this switches the scene to the crime scene
+    switchScene(event, AppUi.MAINROOM, "mainRoom");
   }
 
   /** This switches to the old man room. */
   @FXML
   private void oldMan(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.OLDMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading oldManRoom.fxml");
-      System.exit(0);
-    }
+    // this switches the scene to the old man
+    switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
   /** This switches to the young man room. */
   @FXML
   private void youngMan(MouseEvent event) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(AppUi.YOUNGMANROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading youngManRoom.fxml");
-      System.exit(0);
-    }
+    // this switches the scene to young man
+    switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
   @FXML
