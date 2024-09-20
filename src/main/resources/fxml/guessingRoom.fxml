@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -40,8 +41,24 @@
       <TextField fx:id="txtaInput" layoutX="659.0" layoutY="442.0" prefHeight="45.0" prefWidth="207.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent; -fx-text-fill: black;" />
       <Button fx:id="btnSend" layoutX="750.0" layoutY="527.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #FFF8DC;" text="Send" />
       <Button layoutX="696.0" layoutY="36.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #FFF8DC;" text="Back to menu" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="332.0" layoutY="236.0" stroke="TRANSPARENT" strokeType="INSIDE" width="175.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="277.0" layoutX="210.0" layoutY="81.0" stroke="TRANSPARENT" strokeType="INSIDE" width="187.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="321.0" layoutX="432.0" layoutY="249.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
+      <Rectangle fx:id="rectOldMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="332.0" layoutY="236.0" onMouseClicked="#oldMan" stroke="TRANSPARENT" strokeType="INSIDE" width="175.0" />
+      <Rectangle fx:id="rectYoungMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="277.0" layoutX="210.0" layoutY="81.0" onMouseClicked="#youngMan" stroke="TRANSPARENT" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="rectWoman" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="321.0" layoutX="432.0" layoutY="249.0" onMouseClicked="#woman" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="29.0" prefHeight="30.0" prefWidth="476.0" text="Click on who you think the suspect is!" textFill="RED">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="selection" alignment="CENTER" layoutX="199.0" layoutY="4.0" prefHeight="30.0" prefWidth="324.0" textFill="RED" wrapText="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
    </children>
 </Pane>
