@@ -54,26 +54,32 @@ public class GuessingRoomController {
 
   @FXML
   private void oldMan(MouseEvent event) {
-    rectOldMan.setDisable(true);
-    rectYoungMan.setDisable(false);
-    rectWoman.setDisable(false);
-    enterReasoning("Edgar Thompson");
+    if (!chat.isLoading()) {
+      rectOldMan.setDisable(true);
+      rectYoungMan.setDisable(false);
+      rectWoman.setDisable(false);
+      enterReasoning("Edgar Thompson");
+    }
   }
 
   @FXML
   private void youngMan(MouseEvent event) {
-    rectOldMan.setDisable(false);
-    rectYoungMan.setDisable(true);
-    rectWoman.setDisable(false);
-    enterReasoning("Alex Carter");
+    if (!chat.isLoading()) {
+      rectOldMan.setDisable(false);
+      rectYoungMan.setDisable(true);
+      rectWoman.setDisable(false);
+      enterReasoning("Alex Carter");
+    }
   }
 
   @FXML
   private void woman(MouseEvent event) {
+    if (!chat.isLoading()) {
     rectOldMan.setDisable(false);
     rectYoungMan.setDisable(false);
     rectWoman.setDisable(true);
     enterReasoning("Lena Stone");
+    }
   }
 
 
@@ -88,6 +94,16 @@ public class GuessingRoomController {
     rectYoungMan.setDisable(true);
     rectWoman.setDisable(true);
     chat.onSendMessage(event);
+  }
+
+  @FXML private void hoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0.2);
+  }
+
+  @FXML private void hoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
   }
 
 }

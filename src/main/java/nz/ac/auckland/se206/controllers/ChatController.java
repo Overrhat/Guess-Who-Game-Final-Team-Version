@@ -34,6 +34,8 @@ public class ChatController {
   private String profession;
   private String guess = "None so don't say anything yet.";
 
+  private boolean loading = false;
+
   /**
    * Initializes the chat view.
    *
@@ -125,6 +127,10 @@ public class ChatController {
     txtaChat.appendText(role + ": " + msg.getContent() + "\n\n");
   }
 
+  public boolean isLoading() {
+    return loading;
+  }
+
   /**
    * Runs the GPT model with a given chat message.
    *
@@ -136,7 +142,7 @@ public class ChatController {
     Task<ChatMessage> task = new Task<>() {
       @Override
       protected ChatMessage call() throws ApiProxyException {
-        // loading = true;
+        loading = true;
         btnSend.setDisable(true);
         chatCompletionRequest.addMessage(msg);
         ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
@@ -147,7 +153,7 @@ public class ChatController {
 
         @Override
         protected void succeeded() {
-          // loading = false;
+          loading = false;
           btnSend.setDisable(false);
           ChatMessage response = getValue();
           appendChatMessage(response);
