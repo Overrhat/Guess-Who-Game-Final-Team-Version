@@ -117,6 +117,7 @@ public class ChatController {
         case "guess":
           role = "Feedback";
         default:
+          // No fall-through inteded.
           break;
       }
     } else if (role.equals("user")) {
@@ -141,6 +142,7 @@ public class ChatController {
         new Task<>() {
           @Override
           protected ChatMessage call() throws ApiProxyException {
+            // Disable other requests while doing task
             loading = true;
             btnSend.setDisable(true);
             chatCompletionRequest.addMessage(msg);
@@ -152,6 +154,7 @@ public class ChatController {
 
           @Override
           protected void succeeded() {
+            // Append successful message
             loading = false;
             btnSend.setDisable(false);
             ChatMessage response = getValue();
@@ -179,8 +182,10 @@ public class ChatController {
   public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
+      // Do nothing if theres nothing to send.
       return;
     }
+    // Clear any previous messages.
     txtInput.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
