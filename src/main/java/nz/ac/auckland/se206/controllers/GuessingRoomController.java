@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.GameStateContext;
 
 public class GuessingRoomController {
   @FXML private Label lblTime;

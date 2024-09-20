@@ -9,8 +9,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.QuadCurve;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -20,7 +21,11 @@ public class MenuController {
   @FXML private Rectangle rectStart;
 
   private static boolean isFirstTimeInit = true;
-  private static GameStateContext context = new GameStateContext();
+  
+  @FXML private Line topLine;
+  @FXML private Line bottomLine;
+  @FXML private QuadCurve leftLine;
+  @FXML private QuadCurve rightLine;
 
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
@@ -88,12 +93,20 @@ public class MenuController {
     }
   }
 
-  /**
-   * Returns the game state context.
-   *
-   * @return the game state context
-   */
-  public static GameStateContext getContext() {
-    return context;
+  @FXML 
+  private void hoverOn(MouseEvent event) {
+    topLine.setVisible(true);
+    bottomLine.setVisible(true);
+    leftLine.setVisible(true);
+    rightLine.setVisible(true);
   }
+
+  @FXML 
+  private void hoverOff(MouseEvent event) {
+    topLine.setVisible(false);
+    bottomLine.setVisible(false);
+    leftLine.setVisible(false);
+    rightLine.setVisible(false);
+  }
+  
 }
