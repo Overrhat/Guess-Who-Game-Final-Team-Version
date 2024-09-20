@@ -10,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -87,8 +86,8 @@ public class WomanController {
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     MainRoomController.isWomanClicked = true;
     chat.onSendMessage(event);
-
   }
+
   /** This switches the scene to the guessing scene when guess button is clicked */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
@@ -111,15 +110,16 @@ public class WomanController {
       System.exit(0);
     }
   }
-  
-  @FXML private void hoverOn(MouseEvent event) {
+
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
-  @FXML private void hoverOff(MouseEvent event) {
+  @FXML
+  private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
- 
 }

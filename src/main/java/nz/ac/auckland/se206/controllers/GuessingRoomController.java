@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -11,8 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class GuessingRoomController {
   @FXML private Label lblTime;
@@ -22,13 +19,11 @@ public class GuessingRoomController {
 
   @FXML private Label title;
   @FXML private Label selection;
-  
+
   @FXML private Rectangle rectOldMan;
   @FXML private Rectangle rectYoungMan;
   @FXML private Rectangle rectWoman;
 
-  private String guess;
-  
   private ChatController chat;
 
   public void initialize() {
@@ -41,7 +36,6 @@ public class GuessingRoomController {
   }
 
   private void enterReasoning(String guess) {
-    this.guess = guess;
     chat.setGuess(guess);
     chat.setProfession("guess");
     btnSend.setDisable(false);
@@ -49,7 +43,6 @@ public class GuessingRoomController {
     title.setText("Please enter your reasoning for your selection in the chat box.");
     txtaChat.clear();
     txtaChat.setVisible(true);
-
   }
 
   @FXML
@@ -75,16 +68,12 @@ public class GuessingRoomController {
   @FXML
   private void woman(MouseEvent event) {
     if (!chat.isLoading()) {
-    rectOldMan.setDisable(false);
-    rectYoungMan.setDisable(false);
-    rectWoman.setDisable(true);
-    enterReasoning("Lena Stone");
+      rectOldMan.setDisable(false);
+      rectYoungMan.setDisable(false);
+      rectWoman.setDisable(true);
+      enterReasoning("Lena Stone");
     }
   }
-
-
-
-
 
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
@@ -96,14 +85,15 @@ public class GuessingRoomController {
     chat.onSendMessage(event);
   }
 
-  @FXML private void hoverOn(MouseEvent event) {
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0.2);
   }
 
-  @FXML private void hoverOff(MouseEvent event) {
+  @FXML
+  private void hoverOff(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0);
   }
-
 }
