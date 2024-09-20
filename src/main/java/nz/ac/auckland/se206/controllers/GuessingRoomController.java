@@ -23,13 +23,11 @@ public class GuessingRoomController {
 
   @FXML private Label title;
   @FXML private Label selection;
-  
+
   @FXML private Rectangle rectOldMan;
   @FXML private Rectangle rectYoungMan;
   @FXML private Rectangle rectWoman;
 
-  private String guess;
-  
   private ChatController chat;
   private boolean guessStatus = false;
 
@@ -44,7 +42,6 @@ public class GuessingRoomController {
 
   private void enterReasoning(String guess) {
     // this method handles the logic behind sending the reasoning
-    this.guess = guess;
     chat.setGuess(guess);
     chat.setProfession("guess");
     btnSend.setDisable(false);
@@ -52,36 +49,37 @@ public class GuessingRoomController {
     title.setText("Please enter your reasoning for your selection in the chat box.");
     txtaChat.clear();
     txtaChat.setVisible(true);
-
   }
 
   @FXML
   private void oldMan(MouseEvent event) {
-    rectOldMan.setDisable(true);
-    rectYoungMan.setDisable(false);
-    rectWoman.setDisable(false);
-    enterReasoning("Edgar Thompson");
+    if (!chat.isLoading()) {
+      rectOldMan.setDisable(true);
+      rectYoungMan.setDisable(false);
+      rectWoman.setDisable(false);
+      enterReasoning("Edgar Thompson");
+    }
   }
 
   @FXML
   private void youngMan(MouseEvent event) {
-    rectOldMan.setDisable(false);
-    rectYoungMan.setDisable(true);
-    rectWoman.setDisable(false);
-    enterReasoning("Alex Carter");
+    if (!chat.isLoading()) {
+      rectOldMan.setDisable(false);
+      rectYoungMan.setDisable(true);
+      rectWoman.setDisable(false);
+      enterReasoning("Alex Carter");
+    }
   }
 
   @FXML
   private void woman(MouseEvent event) {
-    rectOldMan.setDisable(false);
-    rectYoungMan.setDisable(false);
-    rectWoman.setDisable(true);
-    enterReasoning("Lena Stone");
+    if (!chat.isLoading()) {
+      rectOldMan.setDisable(false);
+      rectYoungMan.setDisable(false);
+      rectWoman.setDisable(true);
+      enterReasoning("Lena Stone");
+    }
   }
-
-
-
-
 
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
@@ -95,6 +93,18 @@ public class GuessingRoomController {
     guessStatus = true;
   }
 
+  @FXML
+  private void hoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0.2);
+  }
+
+  @FXML
+  private void hoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
+  }
+  
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
