@@ -25,12 +25,11 @@ public class MenuController {
   private static boolean isFirstTimeInit = true;
 
   // Instance fields
-  @FXML private Rectangle rectStart;
   @FXML private Line topLine;
   @FXML private Line bottomLine;
   @FXML private QuadCurve leftLine;
   @FXML private QuadCurve rightLine;
-
+  @FXML private Rectangle rectStart;
 
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
