@@ -111,6 +111,21 @@ public class WomanController {
       System.exit(0);
     }
   }
+
+
+  public void setSceneMenu() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+  }
+
+  /**
+   * This method sets the scene to the guessing room
+   */
+  public void setSceneGuess() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  }
+
   
   @FXML private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
@@ -122,4 +137,5 @@ public class WomanController {
     circle.setOpacity(0);
   }
  
+
 }

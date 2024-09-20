@@ -111,6 +111,20 @@ public class YoungManController {
       System.exit(0);
     }
   }
+
+
+  public void setSceneMenu() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+  }
+
+  /**
+   * This method sets the scene to the guessing room
+   */
+  public void setSceneGuess() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  }
   
   @FXML private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
@@ -120,5 +134,6 @@ public class YoungManController {
   @FXML private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
+
   }
 }

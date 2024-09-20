@@ -19,6 +19,7 @@ public class GuessingRoomController {
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
+  @FXML private Button btnMenu;
 
   @FXML private Label title;
   @FXML private Label selection;
@@ -30,6 +31,7 @@ public class GuessingRoomController {
   private String guess;
   
   private ChatController chat;
+  private boolean guessStatus = false;
 
   public void initialize() {
     chat = new ChatController();
@@ -88,6 +90,25 @@ public class GuessingRoomController {
     rectYoungMan.setDisable(true);
     rectWoman.setDisable(true);
     chat.onSendMessage(event);
+    guessStatus = true;
   }
 
+  public void setLblTime(String time) {
+    lblTime.setText(time);
+  }
+
+  public void setSceneMenu() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+  }
+
+  @FXML
+  private void backToMenu(MouseEvent event) {
+    if (!guessStatus) {
+      MenuController.playMedia("/sounds/sound18.mp3");
+      return;
+    }
+    setSceneMenu();
+    SceneManager.getMainController().resetBooleans();
+  }
 }

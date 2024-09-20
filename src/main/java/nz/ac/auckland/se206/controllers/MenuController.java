@@ -54,9 +54,26 @@ public class MenuController {
     try {
       Rectangle rect = (Rectangle) event.getSource();
       Scene scene = rect.getScene();
-      SceneManager.addUi(
-          AppUi.MAINROOM,
-          new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml")).load());
+      FXMLLoader main = new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml"));
+      FXMLLoader woman = new FXMLLoader(App.class.getResource("/fxml/" + "womanRoom" + ".fxml"));
+      FXMLLoader oldMan = new FXMLLoader(App.class.getResource("/fxml/" + "oldManRoom" + ".fxml"));
+      FXMLLoader youngMan =
+          new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
+
+      SceneManager.addUi(AppUi.WOMANROOM, woman.load());
+      SceneManager.setWomanController(woman.getController());
+
+      FXMLLoader guess = new FXMLLoader(App.class.getResource("/fxml/" + "guessingRoom" + ".fxml"));
+      SceneManager.addUi(AppUi.GUESSROOM, guess.load());
+      SceneManager.setGuessController(guess.getController());
+
+      SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
+      SceneManager.setOldManController(oldMan.getController());
+
+      SceneManager.addUi(AppUi.YOUNGMANROOM, youngMan.load());
+      SceneManager.setYoungManController(youngMan.getController());
+      SceneManager.addUi(AppUi.MAINROOM, main.load());
+      SceneManager.setMainController(main.getController());
       scene.setRoot(SceneManager.getUiRoot(AppUi.MAINROOM));
     } catch (Exception e) {
       System.out.println("Error loading mainRoom.fxml");
