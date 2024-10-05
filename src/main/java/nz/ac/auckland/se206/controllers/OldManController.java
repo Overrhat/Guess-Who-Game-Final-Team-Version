@@ -60,19 +60,19 @@ public class OldManController {
 
   /** This switches the scene to the crime scene. */
   @FXML
-  private void crimeScene(MouseEvent event) {
+  private void switchToCrimeScene(MouseEvent event) {
     switchScene(event, AppUi.MAINROOM, "mainRoom");
   }
 
   /** This switches to the young man room. */
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void switchToYoungMan(MouseEvent event) {
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
   /** This switches to the woman room. */
   @FXML
-  private void woman(MouseEvent event) {
+  private void switchToWoman(MouseEvent event) {
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
@@ -117,17 +117,13 @@ public class OldManController {
     }
   }
 
-  /**
-   * This method sets the scene to the menu
-   */
+  /** This method sets the scene to the menu */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /**
-   * This method sets the scene to the guessing room
-   */
+  /** This method sets the scene to the guessing room */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));

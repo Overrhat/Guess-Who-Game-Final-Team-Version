@@ -59,21 +59,21 @@ public class WomanController {
 
   /** This switches the scene to the crime scene. */
   @FXML
-  private void crimeScene(MouseEvent event) {
+  private void switchToCrimeScene(MouseEvent event) {
     // this switches the scene to the crime scene
     switchScene(event, AppUi.MAINROOM, "mainRoom");
   }
 
   /** This switches to the old man room. */
   @FXML
-  private void oldMan(MouseEvent event) {
+  private void switchToOldMan(MouseEvent event) {
     // this switches the scene to the old man
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
   /** This switches to the young man room. */
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void switchToYoungMan(MouseEvent event) {
     // this switches the scene to young man
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }

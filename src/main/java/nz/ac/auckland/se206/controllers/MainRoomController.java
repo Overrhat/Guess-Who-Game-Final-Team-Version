@@ -187,21 +187,21 @@ public class MainRoomController {
 
   /** This switches the scene to the old man */
   @FXML
-  private void oldMan(MouseEvent event) {
+  private void switchToOldMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
   /** This switches the scene to the young man */
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void switchToYoungMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
   /** This switches the scene to the woman */
   @FXML
-  private void woman(MouseEvent event) {
+  private void switchToWoman(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }

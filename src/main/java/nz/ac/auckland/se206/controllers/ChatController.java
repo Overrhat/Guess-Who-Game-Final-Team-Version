@@ -116,6 +116,7 @@ public class ChatController {
           break;
         case "guess":
           role = "Feedback";
+        // Fall-through intended.
         default:
           // No fall-through inteded.
           break;

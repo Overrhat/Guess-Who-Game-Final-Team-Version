@@ -52,7 +52,7 @@ public class GuessingRoomController {
   }
 
   @FXML
-  private void oldMan(MouseEvent event) {
+  private void selectOldMan(MouseEvent event) {
     if (!chat.isLoading()) {
       rectOldMan.setDisable(true);
       rectYoungMan.setDisable(false);
@@ -62,7 +62,7 @@ public class GuessingRoomController {
   }
 
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void selectYoungMan(MouseEvent event) {
     if (!chat.isLoading()) {
       rectOldMan.setDisable(false);
       rectYoungMan.setDisable(true);
@@ -72,7 +72,7 @@ public class GuessingRoomController {
   }
 
   @FXML
-  private void woman(MouseEvent event) {
+  private void selectWoman(MouseEvent event) {
     if (!chat.isLoading()) {
       rectOldMan.setDisable(false);
       rectYoungMan.setDisable(false);
@@ -104,7 +104,7 @@ public class GuessingRoomController {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0);
   }
-  
+
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
