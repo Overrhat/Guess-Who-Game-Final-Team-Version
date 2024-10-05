@@ -46,6 +46,7 @@ public class WomanController {
   }
 
   private void switchScene(MouseEvent event, AppUi root, String name) {
+    // this switches the scene to the specified root
     try {
       Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
@@ -105,22 +106,20 @@ public class WomanController {
       System.exit(0);
     }
   }
-  
+
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /**
-   * This method sets the scene to the guessing room
-   */
+  /** This method sets the scene to the guessing room */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
 
-  
-  @FXML private void hoverOn(MouseEvent event) {
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }

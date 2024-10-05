@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.net.URISyntaxException;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,24 +11,22 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.QuadCurve;
 import javafx.scene.shape.Rectangle;
-
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-
 public class MenuController {
-  
+
   // Static fields
   public static MediaPlayer mediaPlayer;
   private static boolean isFirstTimeInit = true;
 
   // Instance fields
-  @FXML private Line topLine;
   @FXML private Line bottomLine;
   @FXML private QuadCurve leftLine;
-  @FXML private QuadCurve rightLine;
   @FXML private Rectangle rectStart;
+  @FXML private QuadCurve rightLine;
+  @FXML private Line topLine;
 
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
@@ -117,7 +114,7 @@ public class MenuController {
     }
   }
 
-  @FXML 
+  @FXML
   private void hoverOn(MouseEvent event) {
     topLine.setVisible(true);
     bottomLine.setVisible(true);
@@ -125,12 +122,11 @@ public class MenuController {
     rightLine.setVisible(true);
   }
 
-  @FXML 
+  @FXML
   private void hoverOff(MouseEvent event) {
     topLine.setVisible(false);
     bottomLine.setVisible(false);
     leftLine.setVisible(false);
     rightLine.setVisible(false);
   }
-  
 }

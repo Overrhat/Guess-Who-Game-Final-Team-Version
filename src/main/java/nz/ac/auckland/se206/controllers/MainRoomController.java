@@ -374,6 +374,7 @@ public class MainRoomController {
   }
 
   private void switchScene(MouseEvent event, AppUi root, String name) {
+    // Switch to scene to the inputed scene
     try {
       Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
