@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -183,8 +185,6 @@ public class MainRoomController {
       circleYoungMan.setOpacity(0);
       circleOldMan.setOpacity(0);
     }
-
-    
   }
 
   /** This switches the scene to the old man */
@@ -292,6 +292,65 @@ public class MainRoomController {
   /** Handles the click event for the send button. */
   @FXML
   private void handleSendButtonClick(MouseEvent event) {
+    messageHandler();
+  }
+
+  public void resetBooleans() {
+    // reset all the booleans to initial state
+    isFirstTimeInit = true;
+    footprintNum = 0;
+    isCaseClicked = false;
+    isPianoClicked = false;
+    isClueFound = false;
+    isOldManClicked = false;
+    isYoungManClicked = false;
+    isWomanClicked = false;
+    guessClicked = false;
+  }
+
+  @FXML
+  private void hoverOn(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(1);
+  }
+
+  @FXML
+  private void hoverOff(MouseEvent event) {
+    Circle circle = (Circle) event.getSource();
+    circle.setOpacity(0);
+  }
+
+  @FXML
+  private void clueHoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0.2);
+  }
+
+  @FXML
+  private void clueHoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
+  }
+
+  @FXML
+  private void handleEnterKeyPress(KeyEvent event) {
+    if (event.getCode() == KeyCode.ENTER) {
+      messageHandler();
+    }
+  }
+
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    try {
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
+  }
+
+  private void messageHandler() {
     String userInput = txtaInput.getText().trim();
     if (!isCaseClicked && !isPianoClicked) {
       txtaChat.clear();
@@ -336,53 +395,5 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
-  }
-
-  public void resetBooleans() {
-    // reset all the booleans to initial state
-    isFirstTimeInit = true;
-    footprintNum = 0;
-    isCaseClicked = false;
-    isPianoClicked = false;
-    isClueFound = false;
-    isOldManClicked = false;
-    isYoungManClicked = false;
-    isWomanClicked = false;
-    guessClicked = false;
-  }
-
-  @FXML
-  private void hoverOn(MouseEvent event) {
-    Circle circle = (Circle) event.getSource();
-    circle.setOpacity(1);
-  }
-
-  @FXML
-  private void hoverOff(MouseEvent event) {
-    Circle circle = (Circle) event.getSource();
-    circle.setOpacity(0);
-  }
-
-  @FXML
-  private void clueHoverOn(MouseEvent event) {
-    Rectangle rect = (Rectangle) event.getSource();
-    rect.setOpacity(0.2);
-  }
-
-  @FXML
-  private void clueHoverOff(MouseEvent event) {
-    Rectangle rect = (Rectangle) event.getSource();
-    rect.setOpacity(0);
-  }
-
-  private void switchScene(MouseEvent event, AppUi root, String name) {
-    try {
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(root));
-    } catch (Exception e) {
-      System.out.println("Error loading " + name + ".fxml");
-      System.exit(0);
-    }
   }
 }
