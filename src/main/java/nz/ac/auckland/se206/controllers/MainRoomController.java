@@ -183,6 +183,8 @@ public class MainRoomController {
       circleYoungMan.setOpacity(0);
       circleOldMan.setOpacity(0);
     }
+
+    
   }
 
   /** This switches the scene to the old man */
