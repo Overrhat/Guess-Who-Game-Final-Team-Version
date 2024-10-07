@@ -211,12 +211,20 @@ public class MainRoomController {
   }
 
   private void handleGuessTimeUp() {
-    Platform.runLater(
+    if (!SceneManager.getGuessController().isHasSelectedSuspect()) {
+      Platform.runLater(
         () -> {
           MenuController.playMedia("/sounds/sound16.mp3");
           resetBooleans();
           SceneManager.getGuessController().setSceneMenu();
         });
+    } else {
+      try {
+        SceneManager.getGuessController().onSendMessage(null);
+      } catch (Exception e) {
+        System.out.println("Failed to send message");
+      }
+    }
   }
 
   /** This switches the scene to the old man */

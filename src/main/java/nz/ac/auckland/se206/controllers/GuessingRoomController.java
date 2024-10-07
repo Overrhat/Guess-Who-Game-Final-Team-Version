@@ -30,6 +30,7 @@ public class GuessingRoomController {
 
   private ChatController chat;
   private boolean guessStatus = false;
+  private boolean hasSelectedSuspect = false;
 
   public void initialize() {
     chat = new ChatController();
@@ -58,6 +59,7 @@ public class GuessingRoomController {
       rectYoungMan.setDisable(false);
       rectWoman.setDisable(false);
       enterReasoning("Edgar Thompson");
+      hasSelectedSuspect = true;
     }
   }
 
@@ -68,6 +70,7 @@ public class GuessingRoomController {
       rectYoungMan.setDisable(true);
       rectWoman.setDisable(false);
       enterReasoning("Alex Carter");
+      hasSelectedSuspect = true;
     }
   }
 
@@ -78,11 +81,12 @@ public class GuessingRoomController {
       rectYoungMan.setDisable(false);
       rectWoman.setDisable(true);
       enterReasoning("Lena Stone");
+      hasSelectedSuspect = true;
     }
   }
 
   @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     MainRoomController.isGuessTimerActive = false;
 
     // this method handles sending messages to the chatgpt
@@ -114,6 +118,10 @@ public class GuessingRoomController {
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+  }
+
+  public boolean isHasSelectedSuspect() {
+    return hasSelectedSuspect;
   }
 
   @FXML
