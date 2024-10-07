@@ -119,6 +119,7 @@ public class MainRoomController {
     if (!(isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked)) {
       handleAutoLose();
     } else if (!guessClicked) {
+      MenuController.playMedia("/sounds/sound06.mp3");
       transitionToGuessStage();
     }
   }
@@ -147,13 +148,12 @@ public class MainRoomController {
         });
   }
 
-  private void transitionToGuessStage() {
+  public void transitionToGuessStage() {
     isMainTimerActive = false; // Stop main timer updates
 
     // Stop updating the main timer here (by setting a flag or stopping the task)
     Platform.runLater(
         () -> {
-          MenuController.playMedia("/sounds/sound06.mp3");
           updateAllControllersTime("1:00"); // Set the guessing time (1 minute)
           SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
           switch (currentRoom) {
@@ -245,6 +245,7 @@ public class MainRoomController {
   private void handleGuessButtonClick(MouseEvent event) {
     if (isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked) {
       guessClicked = true;
+      MenuController.playMedia("/sounds/sound19.mp3");
       transitionToGuessStage();
     } else {
       MenuController.playMedia("/sounds/sound17.mp3");

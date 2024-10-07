@@ -42,16 +42,18 @@ public class WomanController {
     circleYoungMan.setOpacity(0);
     circleOldMan.setOpacity(0);
 
-    txtInput.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-      if (event.getCode() == KeyCode.ENTER) {
-          try {
-            onSendMessage(new ActionEvent()); // Trigger send message
-          } catch (ApiProxyException | IOException e) {
-            e.printStackTrace();
+    txtInput.addEventFilter(
+        KeyEvent.KEY_PRESSED,
+        event -> {
+          if (event.getCode() == KeyCode.ENTER) {
+            try {
+              onSendMessage(new ActionEvent()); // Trigger send message
+            } catch (ApiProxyException | IOException e) {
+              e.printStackTrace();
+            }
+            event.consume(); // Consume the event so it doesn't propagate further
           }
-        event.consume(); // Consume the event so it doesn't propagate further
-      }
-    });
+        });
   }
 
   public void setLblTime(String time) {
@@ -99,41 +101,35 @@ public class WomanController {
   /** This switches the scene to the guessing scene when guess button is clicked */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
-    // Checking the requirements to switch to the guessing scene
+    // Checking if all necessary conditions are met (clue found, chats with all key characters)
     if (!(MainRoomController.isClueFound
         && MainRoomController.isOldManClicked
         && MainRoomController.isYoungManClicked
         && MainRoomController.isWomanClicked)) {
+      // Play a sound indicating the player cannot proceed to the guessing stage yet
       MenuController.playMedia("/sounds/sound17.mp3");
       return;
     }
 
-    try {
-      // Get the current scene
-      Scene scene = btnGuess.getScene();
-      // Switch to the GUESSROOM scene
-      scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
-    } catch (Exception e) {
-      System.out.println("Error loading guessingRoom.fxml");
-      System.exit(0);
-    }
+    // Use the MainRoomController's transitionToGuessStage method to handle the transition
+    MainRoomController.guessClicked = true;
+    MenuController.playMedia("/sounds/sound19.mp3");
+    SceneManager.getMainController().transitionToGuessStage();
   }
-  
+
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /**
-   * This method sets the scene to the guessing room
-   */
+  /** This method sets the scene to the guessing room */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
 
-  
-  @FXML private void hoverOn(MouseEvent event) {
+  @FXML
+  private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
