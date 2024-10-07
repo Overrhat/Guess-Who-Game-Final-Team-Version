@@ -23,6 +23,7 @@ public class MainRoomController {
   public static boolean isYoungManClicked = false; // whether the user has chated with the young man
   public static boolean isWomanClicked = false; // whether the user has chated with the woman
   public static boolean guessClicked = false; // where the user has press the guess button or not
+  public static boolean isGuessTimerActive = true; // Default to true
   private static boolean isFirstTimeInit = true;
 
   @FXML private Label lblTime;
@@ -69,6 +70,9 @@ public class MainRoomController {
             for (int i = 4; i >= 0; i--) {
               int minute = i;
               for (int j = 59; j >= 0; j--) {
+                if (!isMainTimerActive) {
+                  break; // Break the inner loop if the main timer is no longer active
+                }
                 try {
                   Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -77,9 +81,14 @@ public class MainRoomController {
                 int second = j;
                 updateTimerDisplay(minute, second);
               }
+              if (!isMainTimerActive) {
+                break; // Break the outer loop if the main timer is no longer active
+              }
             }
-            // After 5 minutes, check game conditions
-            handleTimeUp();
+            if (isMainTimerActive) {
+              // After 5 minutes, check game conditions only if the timer wasn't stopped
+              handleTimeUp();
+            }
             return null;
           }
         };
@@ -167,11 +176,15 @@ public class MainRoomController {
   }
 
   private void startGuessTimer() {
+    isGuessTimerActive = true; // Activate the guess timer
     Task<Void> guessTimerTask =
         new Task<Void>() {
           @Override
           protected Void call() {
             for (int i = 59; i >= 0; i--) {
+              if (!isGuessTimerActive) {
+                break; // Stop the timer if the answer is sent
+              }
               try {
                 Thread.sleep(1000);
               } catch (InterruptedException e) {
@@ -185,7 +198,9 @@ public class MainRoomController {
                     updateAllControllersTime(time);
                   });
             }
-            handleGuessTimeUp();
+            if (isGuessTimerActive) {
+              handleGuessTimeUp(); // Only call this if the timer runs out
+            }
             return null;
           }
         };
@@ -312,6 +327,8 @@ public class MainRoomController {
     isYoungManClicked = false;
     isWomanClicked = false;
     guessClicked = false;
+    isMainTimerActive = true;
+    isGuessTimerActive = true;
   }
 
   @FXML

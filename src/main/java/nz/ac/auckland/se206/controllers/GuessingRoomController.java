@@ -83,6 +83,8 @@ public class GuessingRoomController {
 
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    MainRoomController.isGuessTimerActive = false;
+
     // this method handles sending messages to the chatgpt
     title.setVisible(false);
     selection.setVisible(false);
@@ -104,7 +106,7 @@ public class GuessingRoomController {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0);
   }
-  
+
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
