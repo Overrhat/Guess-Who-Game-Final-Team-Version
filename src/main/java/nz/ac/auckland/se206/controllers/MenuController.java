@@ -114,6 +114,11 @@ public class MenuController {
     }
   }
 
+  /**
+   * This method handles the hover effects turning on
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     topLine.setVisible(true);
@@ -122,6 +127,11 @@ public class MenuController {
     rightLine.setVisible(true);
   }
 
+  /**
+   * This method handles the hover effects turning off
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     topLine.setVisible(false);
