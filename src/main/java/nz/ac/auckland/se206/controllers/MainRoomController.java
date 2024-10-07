@@ -185,20 +185,33 @@ public class MainRoomController {
     }
   }
 
-  /** This switches the scene to the old man */
+  /**
+   * This switches the scene to the old man
+   *
+   * @param event the mouse event that is triggered by clicking on the old man
+   */
   @FXML
   private void switchToOldMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
-  /** This switches the scene to the young man */
+  /**
+   * This switches the scene to the young man
+   *
+   * @param event the mouse event that is triggered by clicking on the young man
+   */
   @FXML
   private void switchToYoungMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
+  /**
+   * This switches the scene to the woman
+   *
+   * @param event the mouse event that is triggered by clicking on the woman
+   */
   /** This switches the scene to the woman */
   @FXML
   private void switchToWoman(MouseEvent event) {
@@ -206,7 +219,11 @@ public class MainRoomController {
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
-  /** This switches the scene to the guessing scene when guess button is clicked */
+  /**
+   * This switches the scene to the guessing scene when guess button is clicked
+   *
+   * @param event the mouse event that is triggered by clicking on the guess button
+   */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     // Checking the requirements to switch to the guessing scene
@@ -228,7 +245,11 @@ public class MainRoomController {
     }
   }
 
-  /** Handles the click event on the footprint rectangle. */
+  /**
+   * Handles the click event on the footprint rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the footprint
+   */
   @FXML
   private void handleFootprintClick(MouseEvent event) {
     // the user has found the clue
@@ -253,7 +274,11 @@ public class MainRoomController {
     txtaInput.clear();
   }
 
-  /** Handles the click event on the case rectangle. */
+  /**
+   * Handles the click event on the case rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the case
+   */
   @FXML
   private void handleCaseClick(MouseEvent event) {
     // the user has found the clue
@@ -270,7 +295,11 @@ public class MainRoomController {
     isPianoClicked = false;
   }
 
-  /** Handles the click event on the piano rectangle. */
+  /**
+   * Handles the click event on the piano rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the piano
+   */
   @FXML
   private void handlePianoClick(MouseEvent event) {
     // the user has found the clue
@@ -287,7 +316,11 @@ public class MainRoomController {
     isCaseClicked = false;
   }
 
-  /** Handles the click event for the send button. */
+  /**
+   * Handles the click event for the send button.
+   *
+   * @param event the mouse event that is triggered by clicking on the send button
+   */
   @FXML
   private void handleSendButtonClick(MouseEvent event) {
     String userInput = txtaInput.getText().trim();
@@ -336,6 +369,7 @@ public class MainRoomController {
     txtaInput.clear();
   }
 
+  /** This method resets all of the games booleans */
   public void resetBooleans() {
     // reset all the booleans to initial state
     isFirstTimeInit = true;
@@ -349,30 +383,57 @@ public class MainRoomController {
     guessClicked = false;
   }
 
+  /**
+   * This method handles the hover effects turning on
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
+  /**
+   * This method handles the hover effects turning off
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
+  /**
+   * This method handles the hover effects turning on for the clues
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void clueHoverOn(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0.2);
   }
 
+  /**
+   * This method handles the hover effects turning off for the clues
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void clueHoverOff(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0);
   }
 
+  /**
+   * This method switches the scene to whatever is clicked
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
   private void switchScene(MouseEvent event, AppUi root, String name) {
     // Switch to scene to the inputed scene
     try {

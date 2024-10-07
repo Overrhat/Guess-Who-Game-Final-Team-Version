@@ -161,7 +161,7 @@ public class GuessingRoomController {
   /**
    * This method returns the player back to the menu
    *
-   * @param event the mouse event that is triggered by clicking on the young man
+   * @param event the mouse event that is triggered by clicking on the menu
    */
   @FXML
   private void backToMenu(MouseEvent event) {
