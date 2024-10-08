@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -41,6 +43,19 @@ public class OldManController {
     circleCrimeScene.setOpacity(0);
     circleYoungMan.setOpacity(0);
     circleWoman.setOpacity(0);
+
+    txtInput.addEventFilter(
+        KeyEvent.KEY_PRESSED,
+        event -> {
+          if (event.getCode() == KeyCode.ENTER) {
+            try {
+              onSendMessage(new ActionEvent()); // Trigger send message
+            } catch (ApiProxyException | IOException e) {
+              e.printStackTrace();
+            }
+            event.consume(); // Consume the event so it doesn't propagate further
+          }
+        });
   }
 
   /**
@@ -113,7 +128,7 @@ public class OldManController {
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
-    MainRoomController.isOldManClicked = true;
+    MainRoomController.setOldManClicked(true);;
     chat.sendMessage(event);
   }
 
@@ -124,34 +139,34 @@ public class OldManController {
    */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
-    // Checking the requirements to switch to the guessing scene
-    if (!(MainRoomController.isClueFound
-        && MainRoomController.isOldManClicked
-        && MainRoomController.isYoungManClicked
-        && MainRoomController.isWomanClicked)) {
+    // Checking if all necessary conditions are met (clue found, chats with all key characters)
+    if (!(MainRoomController.isClueFound()
+        && MainRoomController.isOldManClicked()
+        && MainRoomController.isYoungManClicked()
+        && MainRoomController.isWomanClicked())) {
+      // Play a sound indicating the player cannot proceed to the guessing stage yet
       MenuController.playMedia("/sounds/sound17.mp3");
       return;
     }
 
-    try {
-      // Switch to the GUESSROOM scene
-      setSceneAny(AppUi.GUESSROOM);
-    } catch (Exception e) {
-      System.out.println("Error loading guessingRoom.fxml");
-      System.exit(0);
-    }
+    // Use the MainRoomController's transitionToGuessStage method to handle the transition
+    MainRoomController.setGuessClicked(true);
+    MenuController.playMedia("/sounds/sound19.mp3");
+    SceneManager.getMainController().transitionToGuessStage();
   }
 
-  /**
-   * This method sets the scene to any scene.
-   *
-   * @param uiRoot the scene to set it to
-   */
-  public void setSceneAny(AppUi uiRoot) {
+  /** This method sets the scene to the menu */
+  public void setSceneMenu() {
     Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(uiRoot));
+    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
+  /** This method sets the scene to the guessing room */
+  public void setSceneGuess() {
+    Scene scene = lblTime.getScene();
+    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  }
+  
   /**
    * This method switches the scene to whatever is clicked.
    *
