@@ -22,12 +22,13 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class MainRoomController {
   // static fields
-  public static boolean isClueFound = false; // whether the clue has been found
-  public static boolean isOldManClicked = false; // whether the user has chated with the old man
-  public static boolean isYoungManClicked = false; // whether the user has chated with the young man
-  public static boolean isWomanClicked = false; // whether the user has chated with the woman
-  public static boolean guessClicked = false; // where the user has press the guess button or not
-  public static boolean isGuessTimerActive = true; // Default to true
+  private static boolean isClueFound = false; // whether the clue has been found
+  private static boolean isOldManClicked = false; // whether the user has chated with the old man
+  private static boolean isYoungManClicked =
+      false; // whether the user has chated with the young man
+  private static boolean isWomanClicked = false; // whether the user has chated with the woman
+  private static boolean guessClicked = false; // where the user has press the guess button or not
+  private static boolean isGuessTimerActive = true; // Default to true
   private static boolean isFirstTimeInit = true;
 
   @FXML private Label lblTime;
@@ -217,11 +218,11 @@ public class MainRoomController {
   private void handleGuessTimeUp() {
     if (!SceneManager.getGuessController().isHasSelectedSuspect()) {
       Platform.runLater(
-        () -> {
-          MenuController.playMedia("/sounds/sound16.mp3");
-          resetBooleans();
-          SceneManager.getGuessController().setSceneMenu();
-        });
+          () -> {
+            MenuController.playMedia("/sounds/sound16.mp3");
+            resetBooleans();
+            SceneManager.getGuessController().setSceneMenu();
+          });
     } else {
       try {
         SceneManager.getGuessController().onSendMessage(null);
@@ -492,5 +493,53 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
+  }
+
+  public static boolean isClueFound() {
+    return isClueFound;
+  }
+
+  public static void setClueFound(boolean isClueFound) {
+    MainRoomController.isClueFound = isClueFound;
+  }
+
+  public static boolean isOldManClicked() {
+    return isOldManClicked;
+  }
+
+  public static void setOldManClicked(boolean isOldManClicked) {
+    MainRoomController.isOldManClicked = isOldManClicked;
+  }
+
+  public static boolean isYoungManClicked() {
+    return isYoungManClicked;
+  }
+
+  public static void setYoungManClicked(boolean isYoungManClicked) {
+    MainRoomController.isYoungManClicked = isYoungManClicked;
+  }
+
+  public static boolean isWomanClicked() {
+    return isWomanClicked;
+  }
+
+  public static void setWomanClicked(boolean isWomanClicked) {
+    MainRoomController.isWomanClicked = isWomanClicked;
+  }
+
+  public static boolean isGuessClicked() {
+    return guessClicked;
+  }
+
+  public static void setGuessClicked(boolean guessClicked) {
+    MainRoomController.guessClicked = guessClicked;
+  }
+
+  public static boolean isGuessTimerActive() {
+    return isGuessTimerActive;
+  }
+
+  public static void setGuessTimerActive(boolean isGuessTimerActive) {
+    MainRoomController.isGuessTimerActive = isGuessTimerActive;
   }
 }

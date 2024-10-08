@@ -109,7 +109,7 @@ public class WomanController {
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
-    MainRoomController.isWomanClicked = true;
+    MainRoomController.setWomanClicked(true);
     chat.sendMessage(event);
   }
 
@@ -121,17 +121,17 @@ public class WomanController {
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     // Checking if all necessary conditions are met (clue found, chats with all key characters)
-    if (!(MainRoomController.isClueFound
-        && MainRoomController.isOldManClicked
-        && MainRoomController.isYoungManClicked
-        && MainRoomController.isWomanClicked)) {
+    if (!(MainRoomController.isClueFound()
+        && MainRoomController.isOldManClicked()
+        && MainRoomController.isYoungManClicked()
+        && MainRoomController.isWomanClicked())) {
       // Play a sound indicating the player cannot proceed to the guessing stage yet
       MenuController.playMedia("/sounds/sound17.mp3");
       return;
     }
 
     // Use the MainRoomController's transitionToGuessStage method to handle the transition
-    MainRoomController.guessClicked = true;
+    MainRoomController.setGuessClicked(true);
     MenuController.playMedia("/sounds/sound19.mp3");
     SceneManager.getMainController().transitionToGuessStage();
   }
