@@ -14,6 +14,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the woman. Handles all the user interaction with the woman scene. */
 public class WomanController {
   @FXML private Label lblTime;
   @FXML private Circle circleCrimeScene;
@@ -27,7 +28,7 @@ public class WomanController {
 
   private ChatController chat;
 
-  /** This method sets up the chatbot for the woman */
+  /** This method sets up the chatbot for the woman. */
   public void initialize() {
     // this initializes the chat controller
     chat = new ChatController();
@@ -43,7 +44,7 @@ public class WomanController {
   }
 
   /**
-   * This is the setter method for the woman timer
+   * This is the setter method for the woman timer.
    *
    * @param time the value to set the time
    */
@@ -52,7 +53,7 @@ public class WomanController {
   }
 
   /**
-   * This method switches the scene to whatever is clicked
+   * This method switches the scene to whatever is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    * @param root the UI root of the scene to be switched to
@@ -117,7 +118,7 @@ public class WomanController {
   }
 
   /**
-   * This switches the scene to the guessing scene when guess button is clicked
+   * This switches the scene to the guessing scene when guess button is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    */
@@ -141,20 +142,20 @@ public class WomanController {
     }
   }
 
-  /** This method sets the scene to the menu */
+  /** This method sets the scene to the menu. */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /** This method sets the scene to the guessing room */
+  /** This method sets the scene to the guessing room. */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
 
   /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -165,7 +166,7 @@ public class WomanController {
   }
 
   /**
-   * This method handles the hover effects turning off
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */

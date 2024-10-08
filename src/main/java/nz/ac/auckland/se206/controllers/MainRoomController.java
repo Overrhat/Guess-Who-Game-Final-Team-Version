@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the main room. Handles all the timer stuff and user interaction for the main room. */
 public class MainRoomController {
   // static fields
   public static boolean isClueFound = false; // whether the clue has been found
@@ -40,7 +41,7 @@ public class MainRoomController {
   private boolean isCaseClicked = false; // whether the case has been clicked
   private boolean isPianoClicked = false; // whether the piano has been clicked
 
-  /** starts the timer on the main room once we switch to the main room */
+  /** starts the timer on the main room once we switch to the main room. */
   @FXML
   public void initialize() {
     if (isFirstTimeInit) {
@@ -186,7 +187,7 @@ public class MainRoomController {
   }
 
   /**
-   * This switches the scene to the old man
+   * This switches the scene to the old man.
    *
    * @param event the mouse event that is triggered by clicking on the old man
    */
@@ -197,7 +198,7 @@ public class MainRoomController {
   }
 
   /**
-   * This switches the scene to the young man
+   * This switches the scene to the young man.
    *
    * @param event the mouse event that is triggered by clicking on the young man
    */
@@ -208,11 +209,10 @@ public class MainRoomController {
   }
 
   /**
-   * This switches the scene to the woman
+   * This switches the scene to the woman.
    *
    * @param event the mouse event that is triggered by clicking on the woman
    */
-  /** This switches the scene to the woman */
   @FXML
   private void switchToWoman(MouseEvent event) {
     // Use the switchScene method to switch
@@ -220,7 +220,7 @@ public class MainRoomController {
   }
 
   /**
-   * This switches the scene to the guessing scene when guess button is clicked
+   * This switches the scene to the guessing scene when guess button is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the guess button
    */
@@ -369,7 +369,7 @@ public class MainRoomController {
     txtaInput.clear();
   }
 
-  /** This method resets all of the games booleans */
+  /** This method resets all of the games booleans. */
   public void resetBooleans() {
     // reset all the booleans to initial state
     isFirstTimeInit = true;
@@ -384,7 +384,7 @@ public class MainRoomController {
   }
 
   /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -395,7 +395,7 @@ public class MainRoomController {
   }
 
   /**
-   * This method handles the hover effects turning off
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -406,7 +406,7 @@ public class MainRoomController {
   }
 
   /**
-   * This method handles the hover effects turning on for the clues
+   * This method handles the hover effects turning on for the clues.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -417,7 +417,7 @@ public class MainRoomController {
   }
 
   /**
-   * This method handles the hover effects turning off for the clues
+   * This method handles the hover effects turning off for the clues.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -428,7 +428,7 @@ public class MainRoomController {
   }
 
   /**
-   * This method switches the scene to whatever is clicked
+   * This method switches the scene to whatever is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    * @param root the UI root of the scene to be switched to

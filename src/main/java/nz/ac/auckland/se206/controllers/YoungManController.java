@@ -14,6 +14,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the young man. Handles all the user interaction with the young man scene. */
 public class YoungManController {
   @FXML private Label lblTime;
   @FXML private Circle circleCrimeScene;
@@ -27,7 +28,7 @@ public class YoungManController {
 
   private ChatController chat;
 
-  /** This method sets up the chatbot for the young man */
+  /** This method sets up the chatbot for the young man. */
   public void initialize() {
     // Initialize the controller
     chat = new ChatController();
@@ -42,7 +43,7 @@ public class YoungManController {
   }
 
   /**
-   * This is the setter method for the young man timer
+   * This is the setter method for the young man timer.
    *
    * @param time the value to set the time
    */
@@ -98,7 +99,7 @@ public class YoungManController {
   }
 
   /**
-   * This switches the scene to the guessing scene when guess button is clicked
+   * This switches the scene to the guessing scene when guess button is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    */
@@ -122,20 +123,20 @@ public class YoungManController {
     }
   }
 
-  /** This method sets the scene to the menu */
+  /** This method sets the scene to the menu. */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /** This method sets the scene to the guessing room */
+  /** This method sets the scene to the guessing room. */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
 
   /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -145,8 +146,8 @@ public class YoungManController {
     circle.setOpacity(1);
   }
 
-   /**
-   * This method handles the hover effects turning off
+  /**
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -157,7 +158,7 @@ public class YoungManController {
   }
 
   /**
-   * This method switches the scene to whatever is clicked
+   * This method switches the scene to whatever is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    * @param root the UI root of the scene to be switched to
