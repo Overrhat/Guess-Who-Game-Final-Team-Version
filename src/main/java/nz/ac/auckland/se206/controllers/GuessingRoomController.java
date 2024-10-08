@@ -14,6 +14,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the guessing room. Handles user interactions with scene. */
 public class GuessingRoomController {
   @FXML private Label lblTime;
   @FXML private TextArea txtaChat;
@@ -31,7 +32,7 @@ public class GuessingRoomController {
   private ChatController chat;
   private boolean guessStatus = false;
 
-  /** This method initializes the chat AI */
+  /** This method initializes the chat AI. */
   public void initialize() {
     chat = new ChatController();
     chat.setTxtaChat(txtaChat);
@@ -42,7 +43,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method prompts the user to send their reasoning of accusing a suspect
+   * This method prompts the user to send their reasoning of accusing a suspect.
    *
    * @param guess this is the name of the suspect
    */
@@ -58,7 +59,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method selects the old man to be the suspect we are accusing
+   * This method selects the old man to be the suspect we are accusing.
    *
    * @param event the mouse event that is triggered by clicking on the old man
    */
@@ -73,7 +74,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method selects the young man to be the suspect we are accusing
+   * This method selects the young man to be the suspect we are accusing.
    *
    * @param event the mouse event that is triggered by clicking on the young man
    */
@@ -88,7 +89,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method selects the woman to be the suspect we are accusing
+   * This method selects the woman to be the suspect we are accusing.
    *
    * @param event the mouse event that is triggered by clicking on the woman
    */
@@ -103,7 +104,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method handles sending messages to the AI
+   * This method handles sending messages to the AI.
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
@@ -122,7 +123,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -133,7 +134,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method handles the hover effects turning off
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -144,7 +145,7 @@ public class GuessingRoomController {
   }
 
   /**
-   * This is a setter method for the LblTime
+   * This is a setter method for the LblTime.
    *
    * @param time the time to be set
    */
@@ -152,14 +153,14 @@ public class GuessingRoomController {
     lblTime.setText(time);
   }
 
-  /** This method sets the scene to be the menu */
+  /** This method sets the scene to be the menu. */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
   /**
-   * This method returns the player back to the menu
+   * This method returns the player back to the menu.
    *
    * @param event the mouse event that is triggered by clicking on the menu
    */

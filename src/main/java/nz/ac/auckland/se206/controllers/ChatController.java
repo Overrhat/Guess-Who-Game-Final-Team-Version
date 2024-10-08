@@ -194,6 +194,11 @@ public class ChatController {
     runGpt(msg);
   }
 
+  /**
+   * This method is a public version of the FXML function so other classes can use it.
+   *
+   * @param event
+   */
   public void sendMessage(ActionEvent event) {
     try {
       onSendMessage(event);
@@ -201,6 +206,7 @@ public class ChatController {
       System.out.println("Failed sending message");
     }
   }
+
   /**
    * Navigates back to the previous view.
    *

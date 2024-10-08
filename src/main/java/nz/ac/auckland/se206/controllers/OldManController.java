@@ -14,6 +14,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the old man. Handles all the user interactions in the old man scene. */
 public class OldManController {
   @FXML private Label lblTime;
   @FXML private Circle circleCrimeScene;
@@ -27,7 +28,7 @@ public class OldManController {
 
   private ChatController chat;
 
-  /** This method sets up the chatbot for the old man */
+  /** This method sets up the chatbot for the old man. */
   public void initialize() {
     // Initialize the chat.
     chat = new ChatController();
@@ -43,32 +44,12 @@ public class OldManController {
   }
 
   /**
-   * This is the setter method for the old man timer
+   * This is the setter method for the old man timer.
    *
    * @param time the value to set the time
    */
   public void setLblTime(String time) {
     lblTime.setText(time);
-  }
-
-  /**
-   * This method switches the scene to whatever is clicked
-   *
-   * @param event the mouse event that is triggered by clicking on the button
-   * @param root the UI root of the scene to be switched to
-   * @param name the name of the fxml file for the respective scene
-   */
-  private void switchScene(MouseEvent event, AppUi root, String name) {
-    try {
-      // Find source of click.
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(root));
-    } catch (Exception e) {
-      // Print error.
-      System.out.println("Error loading " + name + ".fxml");
-      System.exit(0);
-    }
   }
 
   /**
@@ -102,7 +83,7 @@ public class OldManController {
   }
 
   /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -113,7 +94,7 @@ public class OldManController {
   }
 
   /**
-   * This method handles the hover effects turning off
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -137,7 +118,7 @@ public class OldManController {
   }
 
   /**
-   * This switches the scene to the guessing scene when guess button is clicked
+   * This switches the scene to the guessing scene when guess button is clicked.
    *
    * @param event the mouse event that is triggered by clicking on the button
    */
@@ -154,22 +135,40 @@ public class OldManController {
 
     try {
       // Switch to the GUESSROOM scene
-      setSceneGuess();
+      setSceneAny(AppUi.GUESSROOM);
     } catch (Exception e) {
       System.out.println("Error loading guessingRoom.fxml");
       System.exit(0);
     }
   }
 
-  /** This method sets the scene to the menu */
-  public void setSceneMenu() {
+  /**
+   * This method sets the scene to any scene.
+   *
+   * @param uiRoot the scene to set it to
+   */
+  public void setSceneAny(AppUi uiRoot) {
     Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+    scene.setRoot(SceneManager.getUiRoot(uiRoot));
   }
 
-  /** This method sets the scene to the guessing room */
-  public void setSceneGuess() {
-    Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  /**
+   * This method switches the scene to whatever is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    try {
+      // Find source of click.
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      // Print error.
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
   }
 }

@@ -15,11 +15,43 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the main menu. This class also contains the playMedia method. */
 public class MenuController {
 
   // Static fields
   public static MediaPlayer mediaPlayer;
   private static boolean isFirstTimeInit = true;
+
+  // Static methods
+  /**
+   * Plays media from the specified file path. If a media file is already playing, it stops the
+   * current playback before starting the new one.
+   *
+   * @param filePath The path to the media file to be played. This should be a valid resource path.
+   * @throws IllegalArgumentException if the file path is null or the media file cannot be found.
+   * @throws MediaException if an error occurs while trying to play the media.
+   *     <p>Note: This method uses JavaFX's {@link Media} and {@link MediaPlayer} classes to play
+   *     media files. It also handles potential exceptions such as {@link URISyntaxException} and
+   *     {@link NullPointerException}.
+   */
+  public static void playMedia(String filePath) {
+    try {
+      // If sound is playing, turn off the sound
+      if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+        mediaPlayer.stop();
+      }
+
+      Media sound = new Media(App.class.getResource(filePath).toURI().toString());
+      mediaPlayer = new MediaPlayer(sound);
+      mediaPlayer.play();
+    } catch (URISyntaxException e) {
+      System.err.println("Invalid URI syntax: " + e.getMessage());
+    } catch (NullPointerException e) {
+      System.err.println("Resource not found: " + filePath);
+    } catch (Exception e) {
+      System.err.println("An error occurred while trying to play media: " + e.getMessage());
+    }
+  }
 
   // Instance fields
   @FXML private Line bottomLine;
@@ -28,6 +60,7 @@ public class MenuController {
   @FXML private QuadCurve rightLine;
   @FXML private Line topLine;
 
+  // Instance methods
   /**
    * Initializes the menu. If it's the first time initialization, it will provide instructions via
    * text-to-speech.
@@ -85,37 +118,7 @@ public class MenuController {
   }
 
   /**
-   * Plays media from the specified file path. If a media file is already playing, it stops the
-   * current playback before starting the new one.
-   *
-   * @param filePath The path to the media file to be played. This should be a valid resource path.
-   * @throws IllegalArgumentException if the file path is null or the media file cannot be found.
-   * @throws MediaException if an error occurs while trying to play the media.
-   *     <p>Note: This method uses JavaFX's {@link Media} and {@link MediaPlayer} classes to play
-   *     media files. It also handles potential exceptions such as {@link URISyntaxException} and
-   *     {@link NullPointerException}.
-   */
-  public static void playMedia(String filePath) {
-    try {
-      // If sound is playing, turn off the sound
-      if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-        mediaPlayer.stop();
-      }
-
-      Media sound = new Media(App.class.getResource(filePath).toURI().toString());
-      mediaPlayer = new MediaPlayer(sound);
-      mediaPlayer.play();
-    } catch (URISyntaxException e) {
-      System.err.println("Invalid URI syntax: " + e.getMessage());
-    } catch (NullPointerException e) {
-      System.err.println("Resource not found: " + filePath);
-    } catch (Exception e) {
-      System.err.println("An error occurred while trying to play media: " + e.getMessage());
-    }
-  }
-
-  /**
-   * This method handles the hover effects turning on
+   * This method handles the hover effects turning on.
    *
    * @param event the mouse event that is triggered by hovering over
    */
@@ -128,7 +131,7 @@ public class MenuController {
   }
 
   /**
-   * This method handles the hover effects turning off
+   * This method handles the hover effects turning off.
    *
    * @param event the mouse event that is triggered by hovering over
    */
