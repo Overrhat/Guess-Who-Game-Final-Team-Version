@@ -197,7 +197,7 @@ public class ChatController {
   /**
    * This method is a public version of the FXML function so other classes can use it.
    *
-   * @param event
+   * @param event the action event triggered by the send button
    */
   public void sendMessage(ActionEvent event) {
     try {
