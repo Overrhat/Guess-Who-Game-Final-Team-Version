@@ -14,7 +14,10 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** Controller class for the main room. Handles all the timer stuff and user interaction for the main room. */
+/**
+ * Controller class for the main room. Handles all the timer stuff and user interaction for the main
+ * room.
+ */
 public class MainRoomController {
   // static fields
   public static boolean isClueFound = false; // whether the clue has been found
@@ -97,13 +100,13 @@ public class MainRoomController {
                 SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
                 switch (currentRoom) {
                   case OLDMANROOM:
-                    SceneManager.getOldManController().setSceneMenu();
+                    SceneManager.getOldManController().setSceneAny(SceneManager.AppUi.MENU);
                     break;
                   case YOUNGMANROOM:
-                    SceneManager.getYoungManController().setSceneMenu();
+                    SceneManager.getYoungManController().setSceneAny(SceneManager.AppUi.MENU);
                     break;
                   case WOMANROOM:
-                    SceneManager.getWomanController().setSceneMenu();
+                    SceneManager.getWomanController().setSceneAny(SceneManager.AppUi.MENU);
                     break;
                   default:
                     Scene scene = lblTime.getScene();
@@ -120,13 +123,13 @@ public class MainRoomController {
                 SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
                 switch (currentRoom) {
                   case OLDMANROOM:
-                    SceneManager.getOldManController().setSceneGuess();
+                    SceneManager.getOldManController().setSceneAny(AppUi.GUESSROOM);
                     break;
                   case YOUNGMANROOM:
-                    SceneManager.getYoungManController().setSceneGuess();
+                    SceneManager.getYoungManController().setSceneAny(AppUi.GUESSROOM);
                     break;
                   case WOMANROOM:
-                    SceneManager.getWomanController().setSceneGuess();
+                    SceneManager.getWomanController().setSceneAny(AppUi.GUESSROOM);
                     break;
                   default:
                     Scene scene = lblTime.getScene();

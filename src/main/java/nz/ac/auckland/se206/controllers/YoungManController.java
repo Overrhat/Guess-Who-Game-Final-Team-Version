@@ -14,7 +14,9 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** Controller class for the young man. Handles all the user interaction with the young man scene. */
+/**
+ * Controller class for the young man. Handles all the user interaction with the young man scene.
+ */
 public class YoungManController {
   @FXML private Label lblTime;
   @FXML private Circle circleCrimeScene;
@@ -116,23 +118,21 @@ public class YoungManController {
 
     try {
       // Switch to the GUESSROOM scene
-      setSceneGuess();
+      setSceneAny(AppUi.GUESSROOM);
     } catch (Exception e) {
       System.out.println("Error loading guessingRoom.fxml");
       System.exit(0);
     }
   }
 
-  /** This method sets the scene to the menu. */
-  public void setSceneMenu() {
+  /**
+   * This method sets the scene to any scene.
+   *
+   * @param uiRoot the scene to set it to
+   */
+  public void setSceneAny(AppUi uiRoot) {
     Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
-  }
-
-  /** This method sets the scene to the guessing room. */
-  public void setSceneGuess() {
-    Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+    scene.setRoot(SceneManager.getUiRoot(uiRoot));
   }
 
   /**

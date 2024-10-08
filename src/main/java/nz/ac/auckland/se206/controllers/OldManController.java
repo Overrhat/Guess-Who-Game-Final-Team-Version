@@ -53,26 +53,6 @@ public class OldManController {
   }
 
   /**
-   * This method switches the scene to whatever is clicked.
-   *
-   * @param event the mouse event that is triggered by clicking on the button
-   * @param root the UI root of the scene to be switched to
-   * @param name the name of the fxml file for the respective scene
-   */
-  private void switchScene(MouseEvent event, AppUi root, String name) {
-    try {
-      // Find source of click.
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(root));
-    } catch (Exception e) {
-      // Print error.
-      System.out.println("Error loading " + name + ".fxml");
-      System.exit(0);
-    }
-  }
-
-  /**
    * This switches the scene to the crime scene.
    *
    * @param event the mouse event that is triggered by clicking on the button
@@ -155,22 +135,40 @@ public class OldManController {
 
     try {
       // Switch to the GUESSROOM scene
-      setSceneGuess();
+      setSceneAny(AppUi.GUESSROOM);
     } catch (Exception e) {
       System.out.println("Error loading guessingRoom.fxml");
       System.exit(0);
     }
   }
 
-  /** This method sets the scene to the menu. */
-  public void setSceneMenu() {
+  /**
+   * This method sets the scene to any scene.
+   *
+   * @param uiRoot the scene to set it to
+   */
+  public void setSceneAny(AppUi uiRoot) {
     Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
+    scene.setRoot(SceneManager.getUiRoot(uiRoot));
   }
 
-  /** This method sets the scene to the guessing room. */
-  public void setSceneGuess() {
-    Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  /**
+   * This method switches the scene to whatever is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    try {
+      // Find source of click.
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      // Print error.
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
   }
 }
