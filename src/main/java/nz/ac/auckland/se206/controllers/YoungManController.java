@@ -94,7 +94,7 @@ public class YoungManController {
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     // Send the message to the chat with youngman prompt
     MainRoomController.isYoungManClicked = true;
-    chat.onSendMessage(event);
+    chat.sendMessage(event);
   }
 
   /**

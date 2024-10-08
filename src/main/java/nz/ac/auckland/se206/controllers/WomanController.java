@@ -113,7 +113,7 @@ public class WomanController {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     MainRoomController.isWomanClicked = true;
-    chat.onSendMessage(event);
+    chat.sendMessage(event);
   }
 
   /**

@@ -133,7 +133,7 @@ public class OldManController {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     MainRoomController.isOldManClicked = true;
-    chat.onSendMessage(event);
+    chat.sendMessage(event);
   }
 
   /**

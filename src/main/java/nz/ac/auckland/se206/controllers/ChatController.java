@@ -181,7 +181,7 @@ public class ChatController {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       // Do nothing if theres nothing to send.
@@ -194,6 +194,13 @@ public class ChatController {
     runGpt(msg);
   }
 
+  public void sendMessage(ActionEvent event) {
+    try {
+      onSendMessage(event);
+    } catch (Exception e) {
+      System.out.println("Failed sending message");
+    }
+  }
   /**
    * Navigates back to the previous view.
    *

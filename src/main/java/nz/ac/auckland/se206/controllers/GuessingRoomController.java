@@ -117,7 +117,7 @@ public class GuessingRoomController {
     rectOldMan.setDisable(true);
     rectYoungMan.setDisable(true);
     rectWoman.setDisable(true);
-    chat.onSendMessage(event);
+    chat.sendMessage(event);
     guessStatus = true;
   }
 
