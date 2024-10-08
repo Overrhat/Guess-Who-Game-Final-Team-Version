@@ -16,6 +16,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for the old man. Handles all the user interactions in the old man scene. */
 public class OldManController {
   @FXML private Label lblTime;
   @FXML private Circle circleCrimeScene;
@@ -29,6 +30,7 @@ public class OldManController {
 
   private ChatController chat;
 
+  /** This method sets up the chatbot for the old man. */
   public void initialize() {
     // Initialize the chat.
     chat = new ChatController();
@@ -56,60 +58,85 @@ public class OldManController {
         });
   }
 
+  /**
+   * This is the setter method for the old man timer.
+   *
+   * @param time the value to set the time
+   */
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
 
-  private void switchScene(MouseEvent event, AppUi root, String name) {
-    try {
-      // Find source of click.
-      Circle rect = (Circle) event.getSource();
-      Scene scene = rect.getScene();
-      scene.setRoot(SceneManager.getUiRoot(root));
-    } catch (Exception e) {
-      // Print error.
-      System.out.println("Error loading " + name + ".fxml");
-      System.exit(0);
-    }
-  }
-
-  /** This switches the scene to the crime scene. */
+  /**
+   * This switches the scene to the crime scene.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
-  private void crimeScene(MouseEvent event) {
+  private void switchToCrimeScene(MouseEvent event) {
     switchScene(event, AppUi.MAINROOM, "mainRoom");
   }
 
-  /** This switches to the young man room. */
+  /**
+   * This switches the scene to the young man.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void switchToYoungMan(MouseEvent event) {
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
-  /** This switches to the woman room. */
+  /**
+   * This switches the scene to the woman.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
-  private void woman(MouseEvent event) {
+  private void switchToWoman(MouseEvent event) {
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
+  /**
+   * This method handles the hover effects turning on.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
+  /**
+   * This method handles the hover effects turning off.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
+  /**
+   * Sends a message to the GPT model.
+   *
+   * @param event the action event triggered by the send button
+   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws IOException if there is an I/O error
+   */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     MainRoomController.isOldManClicked = true;
-    chat.onSendMessage(event);
+    chat.sendMessage(event);
   }
 
-  /** This switches the scene to the guessing scene when guess button is clicked */
+  /**
+   * This switches the scene to the guessing scene when guess button is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     // Checking if all necessary conditions are met (clue found, chats with all key characters)
@@ -138,5 +165,25 @@ public class OldManController {
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+  }
+  
+  /**
+   * This method switches the scene to whatever is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
+  private void switchScene(MouseEvent event, AppUi root, String name) {
+    try {
+      // Find source of click.
+      Circle rect = (Circle) event.getSource();
+      Scene scene = rect.getScene();
+      scene.setRoot(SceneManager.getUiRoot(root));
+    } catch (Exception e) {
+      // Print error.
+      System.out.println("Error loading " + name + ".fxml");
+      System.exit(0);
+    }
   }
 }
