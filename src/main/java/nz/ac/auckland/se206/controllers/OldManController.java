@@ -153,10 +153,8 @@ public class OldManController {
     }
 
     try {
-      // Get the current scene
-      Scene scene = btnGuess.getScene();
       // Switch to the GUESSROOM scene
-      scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+      setSceneGuess();
     } catch (Exception e) {
       System.out.println("Error loading guessingRoom.fxml");
       System.exit(0);
