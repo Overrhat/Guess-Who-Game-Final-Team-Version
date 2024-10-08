@@ -27,6 +27,7 @@ public class YoungManController {
 
   private ChatController chat;
 
+  /** This method sets up the chatbot for the young man */
   public void initialize() {
     // Initialize the controller
     chat = new ChatController();
@@ -40,31 +41,55 @@ public class YoungManController {
     circleOldMan.setOpacity(0);
   }
 
+  /**
+   * This is the setter method for the young man timer
+   *
+   * @param time the value to set the time
+   */
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
 
-  /** This switches the scene to the crime scene. */
+  /**
+   * This switches the scene to the crime scene.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
   private void switchToCrimeScene(MouseEvent event) {
     // Switch to crime scene by using the switchScene method
     switchScene(event, AppUi.MAINROOM, "crimeScene");
   }
 
-  /** This switches to the old man room. */
+  /**
+   * This switches the scene to the old man.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
   private void switchToOldMan(MouseEvent event) {
     // Switch to oldman room by using the switchScene method
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
-  /** This switches to the woman room. */
+  /**
+   * This switches the scene to the woman.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
   private void switchToWoman(MouseEvent event) {
     // Switch to woman room by using the switchScene method
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
+  /**
+   * Sends a message to the GPT model.
+   *
+   * @param event the action event triggered by the send button
+   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws IOException if there is an I/O error
+   */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     // Send the message to the chat with youngman prompt
@@ -72,7 +97,11 @@ public class YoungManController {
     chat.onSendMessage(event);
   }
 
-  /** This switches the scene to the guessing scene when guess button is clicked */
+  /**
+   * This switches the scene to the guessing scene when guess button is clicked
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     // Checking the requirements to switch to the guessing scene
@@ -95,6 +124,7 @@ public class YoungManController {
     }
   }
 
+  /** This method sets the scene to the menu */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
@@ -106,18 +136,35 @@ public class YoungManController {
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
 
+  /**
+   * This method handles the hover effects turning on
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
+   /**
+   * This method handles the hover effects turning off
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
+  /**
+   * This method switches the scene to whatever is clicked
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
   private void switchScene(MouseEvent event, AppUi root, String name) {
     // Switch to scene to the inputed scene
     try {
