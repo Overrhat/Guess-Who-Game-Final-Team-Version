@@ -57,7 +57,7 @@
             </GaussianBlur>
          </effect>
       </Circle>
-      <Circle fx:id="circleYoungMan" fill="#1f93ff00" layoutX="715.0" layoutY="79.0" onMouseClicked="#youngMan" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
+      <Circle fx:id="circleYoungMan" fill="#1f93ff00" layoutX="715.0" layoutY="79.0" onMouseClicked="#switchToYoungMan" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
          <effect>
             <GaussianBlur>
                <input>
@@ -69,7 +69,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Circle>
-      <Circle fx:id="circleWoman" fill="#1f93ff00" layoutX="779.0" layoutY="79.0" onMouseClicked="#woman" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
+      <Circle fx:id="circleWoman" fill="#1f93ff00" layoutX="779.0" layoutY="79.0" onMouseClicked="#switchToWoman" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
          <effect>
             <GaussianBlur>
                <input>
@@ -81,7 +81,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Circle>
-      <Circle fx:id="circleCrimeScene" fill="#1f93ff00" layoutX="850.0" layoutY="81.0" onMouseClicked="#crimeScene" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
+      <Circle fx:id="circleCrimeScene" fill="#1f93ff00" layoutX="850.0" layoutY="81.0" onMouseClicked="#switchToCrimeScene" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
          <effect>
             <GaussianBlur>
                <input>
