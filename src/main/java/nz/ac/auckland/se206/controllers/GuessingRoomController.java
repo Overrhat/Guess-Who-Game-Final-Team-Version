@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -39,6 +41,20 @@ public class GuessingRoomController {
     chat.setBtnSend(btnSend);
     btnSend.setDisable(true);
     txtaChat.setVisible(false);
+
+    // Adding event filter for Enter key
+    txtInput.addEventFilter(
+        KeyEvent.KEY_PRESSED,
+        event -> {
+          if (event.getCode() == KeyCode.ENTER) {
+            try {
+              onSendMessage(new ActionEvent()); // Trigger send message
+            } catch (ApiProxyException | IOException e) {
+              e.printStackTrace();
+            }
+            event.consume(); // Consume the event so it doesn't propagate further
+          }
+        });
   }
 
   private void enterReasoning(String guess) {
