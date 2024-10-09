@@ -16,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+
 /**
  * Controller class for the main room. Handles all the timer stuff and user interaction for the main
  * room.
@@ -103,6 +104,10 @@ public class MainRoomController {
     backgroundThread.start();
   }
 
+  /*
+   * This method is called when the timer is updated.
+   * It will update the time for the main stage and all the controllers.
+   */
   private void updateTimerDisplay(int minute, int second) {
     if (!isMainTimerActive) return; // Don't update if main timer is stopped
     String time = minute + ":" + (second < 10 ? "0" + second : second);
@@ -113,6 +118,10 @@ public class MainRoomController {
         });
   }
 
+  /*
+   * This method is called when the time is up for the main stage.
+   * It will update the time for all the controllers.
+   */
   private void updateAllControllersTime(String time) {
     SceneManager.getOldManController().setLblTime(time);
     SceneManager.getYoungManController().setLblTime(time);
@@ -120,6 +129,11 @@ public class MainRoomController {
     SceneManager.getGuessController().setLblTime(time);
   }
 
+  /*
+   * This method is called when the time is up for the main stage.
+   * It will check if the user has chatted with all the characters and found the clue.
+   * If not then it will switch the scene back to the menu.
+   */
   private void handleTimeUp() {
     if (!(isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked)) {
       handleAutoLose();
@@ -129,6 +143,11 @@ public class MainRoomController {
     }
   }
 
+  /*
+   * This method is called when the time is up for the main stage and the user
+   * did not chat with all the characters or find any of the clue.
+   * It will switch the scene back to the menu.
+   */
   private void handleAutoLose() {
     Platform.runLater(
         () -> {
@@ -153,6 +172,9 @@ public class MainRoomController {
         });
   }
 
+  /*
+   * This method is called when the time is up for the main stage. It will switch the scene to the guessing stage.
+   */
   public void transitionToGuessStage() {
     isMainTimerActive = false; // Stop main timer updates
 
@@ -180,6 +202,10 @@ public class MainRoomController {
         });
   }
 
+  /*
+   * This method is called when the timer of the guessing stage is started.
+   * It will start a new thread that will update the time for the guessing stage.
+   */
   private void startGuessTimer() {
     isGuessTimerActive = true; // Activate the guess timer
     Task<Void> guessTimerTask =
@@ -215,6 +241,10 @@ public class MainRoomController {
     guessThread.start();
   }
 
+  /*
+   * This method is called when the time is up for the guessing stage. It will check if the user has typed in a guess or not.
+   * If it has then it will send the message to the server. If not then it will switch the scene to the menu.
+   */
   private void handleGuessTimeUp() {
     if (!SceneManager.getGuessController().isHasSelectedSuspect()) {
       Platform.runLater(
@@ -232,6 +262,7 @@ public class MainRoomController {
     }
   }
 
+
   /**
    * This switches the scene to the old man.
    *
@@ -242,6 +273,7 @@ public class MainRoomController {
     // Use the switchScene method to switch
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
+
 
   /**
    * This switches the scene to the young man.
@@ -320,11 +352,11 @@ public class MainRoomController {
     // the user has found the clue
     isClueFound = true;
 
-    MenuController.playMedia("/sounds/sound13.mp3");
+    MenuController.playMedia("/sounds/sound20.mp3");
 
     // Put the text on the text area
     txtaChat.clear();
-    txtaChat.appendText("Type: Yes or No to open the case\n\n");
+    txtaChat.appendText("Type the 4-digit birthday (dd/mm) of the owner to opend the case.\n\n");
 
     // Set the case clicked to true
     isCaseClicked = true;
@@ -422,6 +454,7 @@ public class MainRoomController {
     rect.setOpacity(0);
   }
 
+  /** This handles the enter key press. */
   @FXML
   private void handleEnterKeyPress(KeyEvent event) {
     if (event.getCode() == KeyCode.ENTER) {
@@ -448,6 +481,7 @@ public class MainRoomController {
     }
   }
 
+  /** This handles the message inputed by the user. */
   private void messageHandler() {
     String userInput = txtaInput.getText().trim();
     if (!isCaseClicked && !isPianoClicked) {
@@ -473,21 +507,19 @@ public class MainRoomController {
         txtaChat.appendText("Invalid input! Please type C or E\n\n");
       }
     } else if (isCaseClicked) {
-      if (userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("Y")) {
+      if (userInput.equalsIgnoreCase("0511") || userInput.equalsIgnoreCase("05/11")) {
         txtaChat.clear();
-        txtaChat.appendText("Opened the case.\n\n");
+        txtaChat.appendText("System: Correct Pasword! Opened the case.\n\n");
+        txtaChat.appendText("Dr. Watson: Oh! I see blonde hair inside the case.\n\n");
         MenuController.playMedia("/sounds/sound14.mp3");
 
         // set case and piano clicked to false
         isCaseClicked = false;
         isPianoClicked = false;
 
-      } else if (userInput.equalsIgnoreCase("No") || userInput.equalsIgnoreCase("N")) {
-        txtaChat.clear();
-        txtaChat.appendText("Didn't open the case.\n\n");
       } else {
         txtaChat.clear();
-        txtaChat.appendText("Invalid input!\n\n");
+        txtaChat.appendText("Incorrect Pasword! Couldn't open the case.\n\n");
       }
     }
 
