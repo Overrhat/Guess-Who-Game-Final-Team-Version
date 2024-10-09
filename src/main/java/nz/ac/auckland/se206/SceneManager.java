@@ -1,23 +1,21 @@
 package nz.ac.auckland.se206;
 
 import java.util.HashMap;
-
 import javafx.scene.Parent;
-
 import nz.ac.auckland.se206.controllers.GuessingRoomController;
 import nz.ac.auckland.se206.controllers.MainRoomController;
 import nz.ac.auckland.se206.controllers.OldManController;
-import nz.ac.auckland.se206.controllers.YoungManController;
 import nz.ac.auckland.se206.controllers.WomanController;
-
+import nz.ac.auckland.se206.controllers.YoungManController;
 
 /**
  * Manages the scenes of the application so when we want to switch from the main room to the chat
  * and back to the main room it makes sure we switch back to the same instance of the main room so
- * it will remember stuff like timer and clues
+ * it will remember stuff like timer and clues.
  */
 public class SceneManager {
 
+  /** All the possible scenes for the game. */
   public enum AppUi {
     MENU,
     MAINROOM,
@@ -87,6 +85,4 @@ public class SceneManager {
   public static void setMainController(MainRoomController mainController) {
     SceneManager.mainController = mainController;
   }
-
-  
 }

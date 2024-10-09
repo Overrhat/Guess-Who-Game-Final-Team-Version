@@ -116,6 +116,7 @@ public class ChatController {
           break;
         case "guess":
           role = "Feedback";
+        // Fall-through intended.
         default:
           // No fall-through inteded.
           break;
@@ -179,7 +180,8 @@ public class ChatController {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */
-  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  @FXML
+  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       // Do nothing if theres nothing to send.
@@ -190,6 +192,19 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
+  }
+
+  /**
+   * This method is a public version of the FXML function so other classes can use it.
+   *
+   * @param event
+   */
+  public void sendMessage(ActionEvent event) {
+    try {
+      onSendMessage(event);
+    } catch (Exception e) {
+      System.out.println("Failed sending message");
+    }
   }
 
   /**
