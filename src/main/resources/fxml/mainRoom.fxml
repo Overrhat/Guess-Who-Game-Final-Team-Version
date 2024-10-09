@@ -52,7 +52,7 @@
       <Rectangle fx:id="rectPiano" arcHeight="5.0" arcWidth="5.0" fill="#0b2439" height="188.0" layoutX="1.0" layoutY="241.0" onMouseClicked="#handlePianoClick" onMouseEntered="#clueHoverOn" onMouseExited="#clueHoverOff" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="198.0" />
       <Rectangle fx:id="rectCase" arcHeight="5.0" arcWidth="5.0" fill="#06233c" height="328.0" layoutX="210.0" layoutY="136.0" onMouseClicked="#handleCaseClick" onMouseEntered="#clueHoverOn" onMouseExited="#clueHoverOff" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="201.0" />
       <Rectangle fx:id="rectFootprint" arcHeight="5.0" arcWidth="5.0" fill="#041828" height="71.0" layoutX="265.0" layoutY="491.0" onMouseClicked="#handleFootprintClick" onMouseEntered="#clueHoverOn" onMouseExited="#clueHoverOff" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
-      <Circle fx:id="circleOldMan" fill="#1f93ff00" layoutX="645.0" layoutY="79.0" onMouseClicked="#oldMan" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
+      <Circle fx:id="circleOldMan" fill="#1f93ff00" layoutX="645.0" layoutY="79.0" onMouseClicked="#switchToOldMan" onMouseEntered="#hoverOn" onMouseExited="#hoverOff" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0">
          <effect>
             <GaussianBlur>
                <input>

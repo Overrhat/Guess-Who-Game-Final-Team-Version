@@ -47,9 +47,9 @@
             <Font size="18.0" />
          </font></Button>
       <Button fx:id="btnMenu" layoutX="730.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #FFF8DC;" text="Back to menu" />
-      <Rectangle fx:id="rectOldMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="309.0" layoutX="10.0" layoutY="76.0" onMouseClicked="#oldMan" stroke="TRANSPARENT" strokeType="INSIDE" width="175.0" />
-      <Rectangle fx:id="rectYoungMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="292.0" layoutX="210.0" layoutY="81.0" onMouseClicked="#youngMan" stroke="TRANSPARENT" strokeType="INSIDE" width="187.0" />
-      <Rectangle fx:id="rectWoman" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="298.0" layoutX="430.0" layoutY="95.0" onMouseClicked="#woman" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
+      <Rectangle fx:id="rectOldMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="309.0" layoutX="10.0" layoutY="76.0" onMouseClicked="#selectOldMan" stroke="TRANSPARENT" strokeType="INSIDE" width="175.0" />
+      <Rectangle fx:id="rectYoungMan" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="292.0" layoutX="210.0" layoutY="81.0" onMouseClicked="#selectYoungMan" stroke="TRANSPARENT" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="rectWoman" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="298.0" layoutX="430.0" layoutY="95.0" onMouseClicked="#selectWoman" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
       <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="29.0" prefHeight="30.0" prefWidth="476.0" text="Click on who you think the suspect is!" textFill="RED">
          <font>
             <Font size="17.0" />
