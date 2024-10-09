@@ -16,15 +16,20 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** This class is the controller for the main room. */
+
+/**
+ * Controller class for the main room. Handles all the timer stuff and user interaction for the main
+ * room.
+ */
 public class MainRoomController {
   // static fields
-  public static boolean isClueFound = false; // whether the clue has been found
-  public static boolean isOldManClicked = false; // whether the user has chated with the old man
-  public static boolean isYoungManClicked = false; // whether the user has chated with the young man
-  public static boolean isWomanClicked = false; // whether the user has chated with the woman
-  public static boolean guessClicked = false; // where the user has press the guess button or not
-  public static boolean isGuessTimerActive = true; // Default to true
+  private static boolean isClueFound = false; // whether the clue has been found
+  private static boolean isOldManClicked = false; // whether the user has chated with the old man
+  private static boolean isYoungManClicked =
+      false; // whether the user has chated with the young man
+  private static boolean isWomanClicked = false; // whether the user has chated with the woman
+  private static boolean guessClicked = false; // where the user has press the guess button or not
+  private static boolean isGuessTimerActive = true; // Default to true
   private static boolean isFirstTimeInit = true;
 
   @FXML private Label lblTime;
@@ -257,28 +262,46 @@ public class MainRoomController {
     }
   }
 
-  /** This switches the scene to the old man. */
+
+  /**
+   * This switches the scene to the old man.
+   *
+   * @param event the mouse event that is triggered by clicking on the old man
+   */
   @FXML
-  private void oldMan(MouseEvent event) {
+  private void switchToOldMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
 
-  /** This switches the scene to the young man. */
+
+  /**
+   * This switches the scene to the young man.
+   *
+   * @param event the mouse event that is triggered by clicking on the young man
+   */
   @FXML
-  private void youngMan(MouseEvent event) {
+  private void switchToYoungMan(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
   }
 
-  /** This switches the scene to the woman. */
+  /**
+   * This switches the scene to the woman.
+   *
+   * @param event the mouse event that is triggered by clicking on the woman
+   */
   @FXML
-  private void woman(MouseEvent event) {
+  private void switchToWoman(MouseEvent event) {
     // Use the switchScene method to switch
     switchScene(event, AppUi.WOMANROOM, "womanRoom");
   }
 
-  /** This switches the scene to the guessing scene when guess button is clicked. */
+  /**
+   * This switches the scene to the guessing scene when guess button is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the guess button
+   */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
     if (isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked) {
@@ -290,7 +313,11 @@ public class MainRoomController {
     }
   }
 
-  /** Handles the click event on the footprint rectangle. */
+  /**
+   * Handles the click event on the footprint rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the footprint
+   */
   @FXML
   private void handleFootprintClick(MouseEvent event) {
     // the user has found the clue
@@ -315,7 +342,11 @@ public class MainRoomController {
     txtaInput.clear();
   }
 
-  /** Handles the click event on the case rectangle. */
+  /**
+   * Handles the click event on the case rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the case
+   */
   @FXML
   private void handleCaseClick(MouseEvent event) {
     // the user has found the clue
@@ -332,7 +363,11 @@ public class MainRoomController {
     isPianoClicked = false;
   }
 
-  /** Handles the click event on the piano rectangle. */
+  /**
+   * Handles the click event on the piano rectangle.
+   *
+   * @param event the mouse event that is triggered by clicking on the piano
+   */
   @FXML
   private void handlePianoClick(MouseEvent event) {
     // the user has found the clue
@@ -349,13 +384,17 @@ public class MainRoomController {
     isCaseClicked = false;
   }
 
-  /** Handles the click event for the send button. */
+  /**
+   * Handles the click event for the send button.
+   *
+   * @param event the mouse event that is triggered by clicking on the send button
+   */
   @FXML
   private void handleSendButtonClick(MouseEvent event) {
     messageHandler();
   }
 
-  /** This resets all the booleans to initial state. */
+  /** This method resets all of the games booleans. */
   public void resetBooleans() {
     // reset all the booleans to initial state
     isFirstTimeInit = true;
@@ -371,28 +410,44 @@ public class MainRoomController {
     isGuessTimerActive = true;
   }
 
-  /** This handles the hover on event. */
+  /**
+   * This method handles the hover effects turning on.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
-  /** This handles the hover off event. */
+  /**
+   * This method handles the hover effects turning off.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
-  /** This handles the hover on event. */
+  /**
+   * This method handles the hover effects turning on for the clues.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void clueHoverOn(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
     rect.setOpacity(0.2);
   }
 
-  /** This handles the hover off event. */
+  /**
+   * This method handles the hover effects turning off for the clues.
+   *
+   * @param event the mouse event that is triggered by hovering over
+   */
   @FXML
   private void clueHoverOff(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
@@ -407,8 +462,15 @@ public class MainRoomController {
     }
   }
 
-  /** This switches the scene to the inputed scene. */
+  /**
+   * This method switches the scene to whatever is clicked.
+   *
+   * @param event the mouse event that is triggered by clicking on the button
+   * @param root the UI root of the scene to be switched to
+   * @param name the name of the fxml file for the respective scene
+   */
   private void switchScene(MouseEvent event, AppUi root, String name) {
+    // Switch to scene to the inputed scene
     try {
       Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
@@ -463,5 +525,53 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
+  }
+
+  public static boolean isClueFound() {
+    return isClueFound;
+  }
+
+  public static void setClueFound(boolean isClueFound) {
+    MainRoomController.isClueFound = isClueFound;
+  }
+
+  public static boolean isOldManClicked() {
+    return isOldManClicked;
+  }
+
+  public static void setOldManClicked(boolean isOldManClicked) {
+    MainRoomController.isOldManClicked = isOldManClicked;
+  }
+
+  public static boolean isYoungManClicked() {
+    return isYoungManClicked;
+  }
+
+  public static void setYoungManClicked(boolean isYoungManClicked) {
+    MainRoomController.isYoungManClicked = isYoungManClicked;
+  }
+
+  public static boolean isWomanClicked() {
+    return isWomanClicked;
+  }
+
+  public static void setWomanClicked(boolean isWomanClicked) {
+    MainRoomController.isWomanClicked = isWomanClicked;
+  }
+
+  public static boolean isGuessClicked() {
+    return guessClicked;
+  }
+
+  public static void setGuessClicked(boolean guessClicked) {
+    MainRoomController.guessClicked = guessClicked;
+  }
+
+  public static boolean isGuessTimerActive() {
+    return isGuessTimerActive;
+  }
+
+  public static void setGuessTimerActive(boolean isGuessTimerActive) {
+    MainRoomController.isGuessTimerActive = isGuessTimerActive;
   }
 }
