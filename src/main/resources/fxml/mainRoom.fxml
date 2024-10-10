@@ -100,5 +100,35 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Circle>
+      <ImageView fx:id="blurredBackground" disable="true" fitHeight="608.0" fitWidth="916.0" layoutX="-16.0" layoutY="-4.0" visible="false">
+         <image>
+            <Image url="@../images/mainRoomBlurred.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pianoKeys" fitHeight="208.0" fitWidth="552.0" layoutX="177.0" layoutY="218.0" mouseTransparent="true" opacity="0.55" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/pianoKeys.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="soundButtonImage" fitHeight="62.0" fitWidth="64.0" layoutX="500.0" layoutY="451.0" visible="false">
+         <image>
+            <Image url="@../images/soundButton.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="matchText" alignment="TOP_CENTER" layoutX="181.0" layoutY="78.0" prefHeight="66.0" prefWidth="539.0" text="Match the note played!" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentSelectionText" alignment="TOP_CENTER" layoutX="252.0" layoutY="144.0" prefHeight="57.0" prefWidth="402.0" text="Current selection: None" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="againText" alignment="TOP_CENTER" layoutX="287.0" layoutY="463.0" prefHeight="30.0" prefWidth="213.0" text="Play note again" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

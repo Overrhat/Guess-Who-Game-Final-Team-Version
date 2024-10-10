@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,12 @@ public class MainRoomController {
   @FXML private Rectangle rectPiano;
   @FXML private Rectangle rectCase;
   @FXML private Rectangle rectFootprint;
+  @FXML private ImageView blurredBackground;
+  @FXML private ImageView pianoKeys;
+  @FXML private ImageView soundButtonImage;
+  @FXML private Label matchText;
+  @FXML private Label currentSelectionText;
+  @FXML private Label againText;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -278,11 +285,15 @@ public class MainRoomController {
     // the user has found the clue
     isClueFound = true;
 
-    MenuController.playMedia("/sounds/sound11.mp3");
+    // MenuController.playMedia("/sounds/sound11.mp3");
 
-    // Put the text on the text area
-    txtaChat.clear();
-    txtaChat.appendText("Type: C or E to guess the note\n\n");
+    blurredBackground.setVisible(true);
+    blurredBackground.setDisable(false);
+    pianoKeys.setVisible(true);
+    soundButtonImage.setVisible(true);
+    matchText.setVisible(true);
+    currentSelectionText.setVisible(true);
+    againText.setVisible(true);
 
     // Set the piano clicked to true
     isPianoClicked = true;
