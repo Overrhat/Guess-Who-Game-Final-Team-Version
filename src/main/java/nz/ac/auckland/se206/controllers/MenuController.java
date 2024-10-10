@@ -1,15 +1,14 @@
 package nz.ac.auckland.se206.controllers;
 
-
 import java.net.URISyntaxException;
 import javafx.animation.FadeTransition;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Pane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
@@ -96,7 +95,7 @@ public class MenuController {
     // Create a black overlay rectangle to cover the entire scene.
     Rectangle blackOverlay = new Rectangle(scene.getWidth(), scene.getHeight());
     blackOverlay.setFill(Color.BLACK);
-    blackOverlay.setOpacity(0.0);  // Start invisible
+    blackOverlay.setOpacity(0.0); // Start invisible
 
     // Add the black overlay to the scene's root temporarily.
     ((Pane) scene.getRoot()).getChildren().add(blackOverlay);
@@ -106,81 +105,88 @@ public class MenuController {
     fadeToBlack.setFromValue(0.0);
     fadeToBlack.setToValue(1.0);
 
-    fadeToBlack.setOnFinished(fadeOutEvent -> {
-      // After fade to black, start loading the new scenes in the background.
-      Task<Void> loadTask = new Task<Void>() {
-        @Override
-        protected Void call() throws Exception {
-          try {
-            // Load FXMLs.
-            FXMLLoader main = new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml"));
-            FXMLLoader woman = new FXMLLoader(App.class.getResource("/fxml/" + "womanRoom" + ".fxml"));
-            FXMLLoader oldMan = new FXMLLoader(App.class.getResource("/fxml/" + "oldManRoom" + ".fxml"));
-            FXMLLoader youngMan = new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
-            FXMLLoader guess = new FXMLLoader(App.class.getResource("/fxml/" + "guessingRoom" + ".fxml"));
+    fadeToBlack.setOnFinished(
+        fadeOutEvent -> {
+          // After fade to black, start loading the new scenes in the background.
+          Task<Void> loadTask =
+              new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                  try {
+                    // Load FXMLs.
+                    FXMLLoader main =
+                        new FXMLLoader(App.class.getResource("/fxml/" + "mainRoom" + ".fxml"));
+                    FXMLLoader woman =
+                        new FXMLLoader(App.class.getResource("/fxml/" + "womanRoom" + ".fxml"));
+                    FXMLLoader oldMan =
+                        new FXMLLoader(App.class.getResource("/fxml/" + "oldManRoom" + ".fxml"));
+                    FXMLLoader youngMan =
+                        new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
+                    FXMLLoader guess =
+                        new FXMLLoader(App.class.getResource("/fxml/" + "guessingRoom" + ".fxml"));
 
-            // Load scenes and set controllers on SceneManager.
-            SceneManager.addUi(AppUi.WOMANROOM, woman.load());
-            SceneManager.setWomanController(woman.getController());
+                    // Load scenes and set controllers on SceneManager.
+                    SceneManager.addUi(AppUi.WOMANROOM, woman.load());
+                    SceneManager.setWomanController(woman.getController());
 
-            SceneManager.addUi(AppUi.GUESSROOM, guess.load());
-            SceneManager.setGuessController(guess.getController());
+                    SceneManager.addUi(AppUi.GUESSROOM, guess.load());
+                    SceneManager.setGuessController(guess.getController());
 
-            SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
-            SceneManager.setOldManController(oldMan.getController());
+                    SceneManager.addUi(AppUi.OLDMANROOM, oldMan.load());
+                    SceneManager.setOldManController(oldMan.getController());
 
-            SceneManager.addUi(AppUi.YOUNGMANROOM, youngMan.load());
-            SceneManager.setYoungManController(youngMan.getController());
+                    SceneManager.addUi(AppUi.YOUNGMANROOM, youngMan.load());
+                    SceneManager.setYoungManController(youngMan.getController());
 
-            SceneManager.addUi(AppUi.MAINROOM, main.load());
-            SceneManager.setMainController(main.getController());
+                    SceneManager.addUi(AppUi.MAINROOM, main.load());
+                    SceneManager.setMainController(main.getController());
 
-          } catch (Exception e) {
-              System.out.println("Error loading FXML files: " + e.getMessage());
-              e.printStackTrace();
-              throw e;
-          }
-        return null;
-        }
-      };
+                  } catch (Exception e) {
+                    System.out.println("Error loading FXML files: " + e.getMessage());
+                    e.printStackTrace();
+                    throw e;
+                  }
+                  return null;
+                }
+              };
 
-        loadTask.setOnSucceeded(loadEvent -> {
-            // Set the new scene root after loading is complete.
-            Parent newRoot = SceneManager.getUiRoot(AppUi.MAINROOM);
-            scene.setRoot(newRoot);
+          loadTask.setOnSucceeded(
+              loadEvent -> {
+                // Set the new scene root after loading is complete.
+                Parent newRoot = SceneManager.getUiRoot(AppUi.MAINROOM);
+                scene.setRoot(newRoot);
 
-            // Re-add the black overlay to the new root.
-            ((Pane) newRoot).getChildren().add(blackOverlay);
+                // Re-add the black overlay to the new root.
+                ((Pane) newRoot).getChildren().add(blackOverlay);
 
-            // Create a fade-out transition for the black overlay.
-            FadeTransition fadeFromBlack = new FadeTransition(Duration.millis(500), blackOverlay);
-            fadeFromBlack.setFromValue(1.0);
-            fadeFromBlack.setToValue(0.0);
+                // Create a fade-out transition for the black overlay.
+                FadeTransition fadeFromBlack =
+                    new FadeTransition(Duration.millis(500), blackOverlay);
+                fadeFromBlack.setFromValue(1.0);
+                fadeFromBlack.setToValue(0.0);
 
-            // Remove the black overlay after fading out.
-            fadeFromBlack.setOnFinished(event1 -> ((Pane) newRoot).getChildren().remove(blackOverlay));
+                // Remove the black overlay after fading out.
+                fadeFromBlack.setOnFinished(
+                    event1 -> ((Pane) newRoot).getChildren().remove(blackOverlay));
 
-            fadeFromBlack.play();
+                fadeFromBlack.play();
+              });
+
+          loadTask.setOnFailed(
+              loadEvent -> {
+                System.out.println("Error loading FXML in background task.");
+                System.exit(0);
+              });
+
+          // Run the Task in a new Thread.
+          Thread loadThread = new Thread(loadTask);
+          loadThread.setDaemon(true);
+          loadThread.start();
         });
-
-        loadTask.setOnFailed(loadEvent -> {
-            System.out.println("Error loading FXML in background task.");
-            System.exit(0);
-        });
-
-        // Run the Task in a new Thread.
-        Thread loadThread = new Thread(loadTask);
-        loadThread.setDaemon(true);
-        loadThread.start();
-    });
 
     // Start the fade-to-black transition immediately.
     fadeToBlack.play();
-}
-
-
-
-
+  }
 
   /**
    * This method handles the hover effects turning on.

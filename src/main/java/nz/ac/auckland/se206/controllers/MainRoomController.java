@@ -223,13 +223,13 @@ public class MainRoomController {
           SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
           switch (currentRoom) {
             case OLDMANROOM:
-              SceneManager.getOldManController().setSceneMenu();
+              SceneManager.getOldManController().setSceneAny(AppUi.MENU);
               break;
             case YOUNGMANROOM:
-              SceneManager.getYoungManController().setSceneMenu();
+              SceneManager.getYoungManController().setSceneAny(AppUi.MENU);
               break;
             case WOMANROOM:
-              SceneManager.getWomanController().setSceneMenu();
+              SceneManager.getWomanController().setSceneAny(AppUi.MENU);
               break;
             default:
               Scene scene = lblTime.getScene();
@@ -257,13 +257,13 @@ public class MainRoomController {
           SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
           switch (currentRoom) {
             case OLDMANROOM:
-              SceneManager.getOldManController().setSceneGuess();
+              SceneManager.getOldManController().setSceneAny(AppUi.GUESSROOM);
               break;
             case YOUNGMANROOM:
-              SceneManager.getYoungManController().setSceneGuess();
+              SceneManager.getYoungManController().setSceneAny(AppUi.GUESSROOM);
               break;
             case WOMANROOM:
-              SceneManager.getWomanController().setSceneGuess();
+              SceneManager.getWomanController().setSceneAny(AppUi.GUESSROOM);
               break;
             default:
               Scene scene = lblTime.getScene();
@@ -333,7 +333,7 @@ public class MainRoomController {
           });
     } else {
       try {
-        SceneManager.getGuessController().onSendMessage(null);
+        SceneManager.getGuessController().sendMessagePublic(null);
       } catch (Exception e) {
         System.out.println("Failed to send message");
       }
@@ -451,8 +451,6 @@ public class MainRoomController {
     // the user has found the clue
     isClueFound = true;
 
-    // MenuController.playMedia("/sounds/sound11.mp3");
-
     // Initialize the piano state
     blurredBackground.setVisible(true);
     blurredBackground.setDisable(false);
@@ -501,7 +499,7 @@ public class MainRoomController {
   /**
    * Handles the click event when a note is played on the piano.
    *
-   * @param event
+   * @param event the mouse event triggered by clicking on the note
    */
   @FXML
   private void playNote(MouseEvent event) {
