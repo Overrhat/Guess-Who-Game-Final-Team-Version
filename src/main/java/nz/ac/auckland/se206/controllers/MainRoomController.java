@@ -156,6 +156,7 @@ public class MainRoomController {
     // Switch to the menu scene when the time is up
     Platform.runLater(
         () -> {
+          // generate a sound that the user has lost
           MenuController.playMedia("/sounds/sound15.mp3");
           resetBooleans();
           SceneManager.AppUi currentRoom = SceneManager.getCurrentRoom();
@@ -171,6 +172,7 @@ public class MainRoomController {
               break;
             default:
               Scene scene = lblTime.getScene();
+              // Switch to the menu scene
               scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
               break;
           }

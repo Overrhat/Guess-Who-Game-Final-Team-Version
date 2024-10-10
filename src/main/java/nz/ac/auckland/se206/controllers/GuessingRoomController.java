@@ -140,6 +140,12 @@ public class GuessingRoomController {
    */
   @FXML
   public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    if (!hasSelectedSuspect) {
+      MenuController.playMedia("/sounds/sound24.mp3");
+      return;
+    }
+
+    // stop the timer
     MainRoomController.isGuessTimerActive = false;
 
     // this method handles sending messages to the chatgpt
