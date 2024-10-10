@@ -46,20 +46,30 @@ public class MainRoomController {
   @FXML private Label againText;
   @FXML private ImageView backButtonImage;
   @FXML private Rectangle backButton;
-  @FXML private Rectangle c3;
-  @FXML private Rectangle d3;
-  @FXML private Rectangle e3;
-  @FXML private Rectangle f3;
-  @FXML private Rectangle g3;
-  @FXML private Rectangle a3;
-  @FXML private Rectangle b3;
-  @FXML private Rectangle c4;
-  @FXML private Rectangle d4;
-  @FXML private Rectangle e4;
-  @FXML private Rectangle f4;
-  @FXML private Rectangle g4;
-  @FXML private Rectangle a4;
-  @FXML private Rectangle b4;
+  @FXML private Rectangle C3;
+  @FXML private Rectangle Db3;
+  @FXML private Rectangle D3;
+  @FXML private Rectangle Eb3;
+  @FXML private Rectangle E3;
+  @FXML private Rectangle F3;
+  @FXML private Rectangle Gb3;
+  @FXML private Rectangle G3;
+  @FXML private Rectangle Ab3;
+  @FXML private Rectangle A3;
+  @FXML private Rectangle Bb3;
+  @FXML private Rectangle B3;
+  @FXML private Rectangle C4;
+  @FXML private Rectangle Db4;
+  @FXML private Rectangle D4;
+  @FXML private Rectangle Eb4;
+  @FXML private Rectangle E4;
+  @FXML private Rectangle F4;
+  @FXML private Rectangle Gb4;
+  @FXML private Rectangle G4;
+  @FXML private Rectangle Ab4;
+  @FXML private Rectangle A4;
+  @FXML private Rectangle Bb4;
+  @FXML private Rectangle B4;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -207,6 +217,31 @@ public class MainRoomController {
       circleWoman.setOpacity(0);
       circleYoungMan.setOpacity(0);
       circleOldMan.setOpacity(0);
+
+      C3.setDisable(true);
+      Db3.setDisable(true);
+      D3.setDisable(true);
+      Eb3.setDisable(true);
+      E3.setDisable(true);
+      F3.setDisable(true);
+      Gb3.setDisable(true);
+      G3.setDisable(true);
+      Ab3.setDisable(true);
+      A3.setDisable(true);
+      Bb3.setDisable(true);
+      B3.setDisable(true);
+      C4.setDisable(true);
+      Db4.setDisable(true);
+      D4.setDisable(true);
+      Eb4.setDisable(true);
+      E4.setDisable(true);
+      F4.setDisable(true);
+      Gb4.setDisable(true);
+      G4.setDisable(true);
+      Ab4.setDisable(true);
+      A4.setDisable(true);
+      Bb4.setDisable(true);
+      B4.setDisable(true);
     }
   }
 
@@ -313,6 +348,32 @@ public class MainRoomController {
     backButton.setDisable(false);
     backButtonImage.setVisible(true);
 
+    C3.setDisable(false);
+    Db3.setDisable(false);
+    D3.setDisable(false);
+    Eb3.setDisable(false);
+    E3.setDisable(false);
+    F3.setDisable(false);
+    Gb3.setDisable(false);
+    G3.setDisable(false);
+    Ab3.setDisable(false);
+    A3.setDisable(false);
+    Bb3.setDisable(false);
+    B3.setDisable(false);
+    C4.setDisable(false);
+    Db4.setDisable(false);
+    D4.setDisable(false);
+    Eb4.setDisable(false);
+    E4.setDisable(false);
+    F4.setDisable(false);
+    Gb4.setDisable(false);
+    G4.setDisable(false);
+    Ab4.setDisable(false);
+    A4.setDisable(false);
+    Bb4.setDisable(false);
+    B4.setDisable(false);
+    
+
     // Set the piano clicked to true
     isPianoClicked = true;
     isCaseClicked = false;
@@ -350,6 +411,31 @@ public class MainRoomController {
     againText.setVisible(false);
     backButton.setDisable(true);
     backButtonImage.setVisible(false);
+
+    C3.setDisable(true);
+    Db3.setDisable(true);
+    D3.setDisable(true);
+    Eb3.setDisable(true);
+    E3.setDisable(true);
+    F3.setDisable(true);
+    Gb3.setDisable(true);
+    G3.setDisable(true);
+    Ab3.setDisable(true);
+    A3.setDisable(true);
+    Bb3.setDisable(true);
+    B3.setDisable(true);
+    C4.setDisable(true);
+    Db4.setDisable(true);
+    D4.setDisable(true);
+    Eb4.setDisable(true);
+    E4.setDisable(true);
+    F4.setDisable(true);
+    Gb4.setDisable(true);
+    G4.setDisable(true);
+    Ab4.setDisable(true);
+    A4.setDisable(true);
+    Bb4.setDisable(true);
+    B4.setDisable(true);
   }
 
   /** Handles the click event for the send button. */
