@@ -177,6 +177,7 @@ public class MainRoomController {
    */
   public void transitionToGuessStage() {
     isMainTimerActive = false; // Stop main timer updates
+    SceneManager.getGuessController().enablePopup(true); // Enable popup if auto transition
 
     // Stop updating the main timer here (by setting a flag or stopping the task)
     Platform.runLater(
@@ -228,6 +229,9 @@ public class MainRoomController {
                     lblTime.setText(time);
                     updateAllControllersTime(time);
                   });
+              if (second == 57) {
+                SceneManager.getGuessController().enablePopup(false); // disable popup after 2 seconds
+              }
             }
             if (isGuessTimerActive) {
               handleGuessTimeUp(); // Only call this if the timer runs out
