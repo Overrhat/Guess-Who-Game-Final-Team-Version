@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +16,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-
 
 /**
  * Controller class for the main room. Handles all the timer stuff and user interaction for the main
@@ -44,6 +44,7 @@ public class MainRoomController {
   @FXML private Rectangle rectPiano;
   @FXML private Rectangle rectCase;
   @FXML private Rectangle rectFootprint;
+  @FXML private ImageView imgDust;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -262,7 +263,6 @@ public class MainRoomController {
     }
   }
 
-
   /**
    * This switches the scene to the old man.
    *
@@ -273,7 +273,6 @@ public class MainRoomController {
     // Use the switchScene method to switch
     switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
   }
-
 
   /**
    * This switches the scene to the young man.
@@ -320,17 +319,18 @@ public class MainRoomController {
    */
   @FXML
   private void handleFootprintClick(MouseEvent event) {
-    // the user has found the clue
-    isClueFound = true;
-
     if (footprintNum == 0) {
       txtaChat.clear();
-      MenuController.playMedia("/sounds/sound09.mp3");
+      MenuController.playMedia("/sounds/sound21.mp3");
       footprintNum++;
-    } else if (footprintNum == 6) {
-      MenuController.playMedia("/sounds/sound10.mp3");
+    } else if (footprintNum < 5) {
+      MenuController.playMedia("/sounds/sound21.mp3");
+      imgDust.setOpacity(imgDust.getOpacity() - 0.25); // Reduce opacity by 0.25 each click
+      footprintNum++;
     } else {
-      footprintNum++;
+      MenuController.playMedia("/sounds/sound22.mp3");
+      // the user has found the clue
+      isClueFound = true;
     }
 
     // set case and piano clicked to false
@@ -356,7 +356,7 @@ public class MainRoomController {
 
     // Put the text on the text area
     txtaChat.clear();
-    txtaChat.appendText("Type the 4-digit birthday (dd/mm) of the owner to opend the case.\n\n");
+    txtaChat.appendText("Type the 4-digit birthday (mm/dd) of the owner to opend the case.\n\n");
 
     // Set the case clicked to true
     isCaseClicked = true;
@@ -507,7 +507,7 @@ public class MainRoomController {
         txtaChat.appendText("Invalid input! Please type C or E\n\n");
       }
     } else if (isCaseClicked) {
-      if (userInput.equalsIgnoreCase("0511") || userInput.equalsIgnoreCase("05/11")) {
+      if (userInput.equalsIgnoreCase("1105") || userInput.equalsIgnoreCase("11/05")) {
         txtaChat.clear();
         txtaChat.appendText("System: Correct Pasword! Opened the case.\n\n");
         txtaChat.appendText("Dr. Watson: Oh! I see blonde hair inside the case.\n\n");
