@@ -720,6 +720,7 @@ public class MainRoomController {
     recE3.setDisable(true);
     recF3.setDisable(true);
     recGb3.setDisable(true);
+    // Harry is the goat
     recG3.setDisable(true);
     recAb3.setDisable(true);
     recA3.setDisable(true);
@@ -730,6 +731,7 @@ public class MainRoomController {
     recD4.setDisable(true);
     recEb4.setDisable(true);
     recE4.setDisable(true);
+    // Harry is so smart
     recF4.setDisable(true);
     recGb4.setDisable(true);
     recG4.setDisable(true);
