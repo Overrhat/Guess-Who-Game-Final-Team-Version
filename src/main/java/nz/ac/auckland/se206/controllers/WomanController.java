@@ -1,9 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.event.ActionEvent;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-
 
 public class WomanController extends BaseCharacterController {
   public void initialize() {

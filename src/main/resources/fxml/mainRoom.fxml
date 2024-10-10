@@ -146,7 +146,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="C3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="178.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recC3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="178.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -172,7 +172,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="D3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="218.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recD3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="218.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -198,7 +198,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="E3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="258.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recE3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="258.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -224,7 +224,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="F3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="300.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recF3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="300.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -250,7 +250,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="G3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="339.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recG3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="339.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -276,7 +276,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="A3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="374.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recA3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="374.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -302,7 +302,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="B3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="414.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recB3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="414.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -328,7 +328,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="C4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="450.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recC4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="450.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -354,7 +354,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="D4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="490.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recD4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="490.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -380,7 +380,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="E4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="530.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recE4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="530.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -406,7 +406,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="F4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="570.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recF4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="570.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -432,7 +432,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="G4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="610.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recG4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="610.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -458,7 +458,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="A4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="650.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recA4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="650.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -484,7 +484,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="B4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="690.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+      <Rectangle fx:id="recB4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="690.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -510,7 +510,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Db3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="203.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recDb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="203.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -536,7 +536,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Eb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="253.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recEb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="253.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -562,7 +562,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Gb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="320.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recGb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="320.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -588,7 +588,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Ab3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="362.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recAb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="362.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -614,7 +614,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Bb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="411.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recBb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="411.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -640,7 +640,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Db4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="478.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recDb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="478.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -666,7 +666,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Eb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="520.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recEb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="520.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -692,7 +692,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Gb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="588.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recGb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="588.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -718,7 +718,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="Ab4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="638.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recAb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="638.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -749,7 +749,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Rectangle fx:id="Bb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="683.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+      <Rectangle fx:id="recBb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="683.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
