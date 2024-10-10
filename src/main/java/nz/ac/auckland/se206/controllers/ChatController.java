@@ -122,7 +122,7 @@ public class ChatController {
           break;
       }
     } else if (role.equals("user")) {
-      role = "You";
+      role = "Dr. Watson (You)";
     }
     txtaChat.appendText(role + ": " + msg.getContent() + "\n\n");
   }
