@@ -10,6 +10,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -105,5 +108,677 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Circle>
+      <ImageView fx:id="blurredBackground" disable="true" fitHeight="608.0" fitWidth="916.0" layoutX="-16.0" layoutY="-4.0" visible="false">
+         <image>
+            <Image url="@../images/mainRoomBlurred.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pianoKeys" fitHeight="208.0" fitWidth="552.0" layoutX="177.0" layoutY="218.0" mouseTransparent="true" opacity="0.55" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/pianoKeys.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="soundButtonImage" fitHeight="62.0" fitWidth="64.0" layoutX="500.0" layoutY="451.0" onMouseClicked="#playCorrectNote" onMouseEntered="#soundHoverOn" onMouseExited="#soundHoverOff" opacity="0.5" visible="false">
+         <image>
+            <Image url="@../images/soundButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="matchText" alignment="TOP_CENTER" layoutX="181.0" layoutY="78.0" prefHeight="66.0" prefWidth="539.0" text="Match the note played!" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="backButtonImage" fitHeight="200.0" fitWidth="200.0" layoutX="-23.0" layoutY="427.0" visible="false">
+         <image>
+            <Image url="@../images/backButton.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="currentSelectionText" alignment="TOP_CENTER" layoutX="252.0" layoutY="144.0" prefHeight="57.0" prefWidth="402.0" text="Current selection: None" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="againText" alignment="TOP_CENTER" layoutX="287.0" layoutY="463.0" prefHeight="30.0" prefWidth="213.0" text="Play note again" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="backButton" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="103.0" layoutX="4.0" layoutY="491.0" onMouseClicked="#handleBackButtonClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="C3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="178.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="D3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="218.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="E3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="258.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="F3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="300.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="G3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="339.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="A3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="374.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="B3" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="414.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="C4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="450.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="D4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="490.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="E4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="530.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="F4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="570.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="G4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="610.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="A4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="650.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="B4" arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="690.0" layoutY="334.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Db3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="203.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Eb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="253.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Gb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="320.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Ab3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="362.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Bb3" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="411.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Db4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="478.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Eb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="520.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Gb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="588.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="Ab4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="638.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Label fx:id="lblTime" layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="5:00" textFill="RED">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="Bb4" arcHeight="5.0" arcWidth="5.0" height="116.0" layoutX="683.0" layoutY="218.0" onMouseClicked="#playNote" onMouseEntered="#pianoHoverOn" onMouseExited="#pianoHoverOff" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="24.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6308724832214765">
+                     <color>
+                        <Color opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
    </children>
 </Pane>

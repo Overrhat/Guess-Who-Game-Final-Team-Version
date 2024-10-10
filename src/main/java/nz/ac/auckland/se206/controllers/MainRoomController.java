@@ -43,7 +43,39 @@ public class MainRoomController {
   @FXML private Rectangle rectPiano;
   @FXML private Rectangle rectCase;
   @FXML private Rectangle rectFootprint;
+  @FXML private ImageView blurredBackground;
+  @FXML private ImageView pianoKeys;
+  @FXML private ImageView soundButtonImage;
+  @FXML private Label matchText;
+  @FXML private Label currentSelectionText;
+  @FXML private Label againText;
+  @FXML private ImageView backButtonImage;
   @FXML private ImageView imgDust;
+  @FXML private Rectangle backButton;
+  @FXML private Rectangle C3;
+  @FXML private Rectangle Db3;
+  @FXML private Rectangle D3;
+  @FXML private Rectangle Eb3;
+  @FXML private Rectangle E3;
+  @FXML private Rectangle F3;
+  @FXML private Rectangle Gb3;
+  @FXML private Rectangle G3;
+  @FXML private Rectangle Ab3;
+  @FXML private Rectangle A3;
+  @FXML private Rectangle Bb3;
+  @FXML private Rectangle B3;
+  @FXML private Rectangle C4;
+  @FXML private Rectangle Db4;
+  @FXML private Rectangle D4;
+  @FXML private Rectangle Eb4;
+  @FXML private Rectangle E4;
+  @FXML private Rectangle F4;
+  @FXML private Rectangle Gb4;
+  @FXML private Rectangle G4;
+  @FXML private Rectangle Ab4;
+  @FXML private Rectangle A4;
+  @FXML private Rectangle Bb4;
+  @FXML private Rectangle B4;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -98,6 +130,36 @@ public class MainRoomController {
             return null;
           }
         };
+
+
+      circleWoman.setOpacity(0);
+      circleYoungMan.setOpacity(0);
+      circleOldMan.setOpacity(0);
+
+      C3.setDisable(true);
+      Db3.setDisable(true);
+      D3.setDisable(true);
+      Eb3.setDisable(true);
+      E3.setDisable(true);
+      F3.setDisable(true);
+      Gb3.setDisable(true);
+      G3.setDisable(true);
+      Ab3.setDisable(true);
+      A3.setDisable(true);
+      Bb3.setDisable(true);
+      B3.setDisable(true);
+      C4.setDisable(true);
+      Db4.setDisable(true);
+      D4.setDisable(true);
+      Eb4.setDisable(true);
+      E4.setDisable(true);
+      F4.setDisable(true);
+      Gb4.setDisable(true);
+      G4.setDisable(true);
+      Ab4.setDisable(true);
+      A4.setDisable(true);
+      Bb4.setDisable(true);
+      B4.setDisable(true);
 
     Thread backgroundThread = new Thread(countingTask);
     backgroundThread.setDaemon(true);
@@ -380,25 +442,139 @@ public class MainRoomController {
     isPianoClicked = false;
   }
 
+
   /**
    * Handles the click event on the piano rectangle.
    *
    * @param event the mouse event that is triggered by clicking on the piano
    */
+
   @FXML
   private void handlePianoClick(MouseEvent event) {
     // the user has found the clue
     isClueFound = true;
 
-    MenuController.playMedia("/sounds/sound11.mp3");
+    // MenuController.playMedia("/sounds/sound11.mp3");
 
-    // Put the text on the text area
-    txtaChat.clear();
-    txtaChat.appendText("Type: C or E to guess the note\n\n");
+    blurredBackground.setVisible(true);
+    blurredBackground.setDisable(false);
+    pianoKeys.setVisible(true);
+    soundButtonImage.setVisible(true);
+    matchText.setVisible(true);
+    currentSelectionText.setVisible(true);
+    againText.setVisible(true);
+    backButton.setDisable(false);
+    backButtonImage.setVisible(true);
 
+    C3.setDisable(false);
+    Db3.setDisable(false);
+    D3.setDisable(false);
+    Eb3.setDisable(false);
+    E3.setDisable(false);
+    F3.setDisable(false);
+    Gb3.setDisable(false);
+    G3.setDisable(false);
+    Ab3.setDisable(false);
+    A3.setDisable(false);
+    Bb3.setDisable(false);
+    B3.setDisable(false);
+    C4.setDisable(false);
+    Db4.setDisable(false);
+    D4.setDisable(false);
+    Eb4.setDisable(false);
+    E4.setDisable(false);
+    F4.setDisable(false);
+    Gb4.setDisable(false);
+    G4.setDisable(false);
+    Ab4.setDisable(false);
+    A4.setDisable(false);
+    Bb4.setDisable(false);
+    B4.setDisable(false);
+    
+    MenuController.playMedia("/sounds/notes/E4.mp3");
+    
     // Set the piano clicked to true
     isPianoClicked = true;
     isCaseClicked = false;
+  }
+
+  @FXML 
+  private void playNote(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    String note = rect.getId();
+    MenuController.playMedia("/sounds/notes/" + note +".mp3");
+    currentSelectionText.setText("Current selection: " + note);
+    if (note.equals("E4")) {
+      handleBackButtonClick(event);
+      MenuController.playMedia("/sounds/sound14.mp3");
+    }
+  }
+
+  @FXML
+  private void playCorrectNote(MouseEvent event) {
+    MenuController.playMedia("/sounds/notes/E4.mp3");
+  }
+
+  @FXML
+  private void soundHoverOn(MouseEvent event) {
+    soundButtonImage.setOpacity(1);
+  }
+  
+  @FXML
+  private void soundHoverOff(MouseEvent event) {
+    soundButtonImage.setOpacity(0.5);
+  }
+
+  @FXML 
+  private void pianoHoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(1);
+  }
+
+  @FXML 
+  private void pianoHoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
+  }
+
+
+  @FXML 
+  private void handleBackButtonClick(MouseEvent event) {
+
+    blurredBackground.setVisible(false);
+    blurredBackground.setDisable(true);
+    pianoKeys.setVisible(false);
+    soundButtonImage.setVisible(false);
+    matchText.setVisible(false);
+    currentSelectionText.setVisible(false);
+    againText.setVisible(false);
+    backButton.setDisable(true);
+    backButtonImage.setVisible(false);
+
+    C3.setDisable(true);
+    Db3.setDisable(true);
+    D3.setDisable(true);
+    Eb3.setDisable(true);
+    E3.setDisable(true);
+    F3.setDisable(true);
+    Gb3.setDisable(true);
+    G3.setDisable(true);
+    Ab3.setDisable(true);
+    A3.setDisable(true);
+    Bb3.setDisable(true);
+    B3.setDisable(true);
+    C4.setDisable(true);
+    Db4.setDisable(true);
+    D4.setDisable(true);
+    Eb4.setDisable(true);
+    E4.setDisable(true);
+    F4.setDisable(true);
+    Gb4.setDisable(true);
+    G4.setDisable(true);
+    Ab4.setDisable(true);
+    A4.setDisable(true);
+    Bb4.setDisable(true);
+    B4.setDisable(true);
   }
 
   /**
@@ -406,6 +582,7 @@ public class MainRoomController {
    *
    * @param event the mouse event that is triggered by clicking on the send button
    */
+
   @FXML
   private void handleSendButtonClick(MouseEvent event) {
     messageHandler();
