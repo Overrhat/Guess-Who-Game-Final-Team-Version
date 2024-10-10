@@ -30,7 +30,6 @@ public class MenuController {
    * @param filePath The path to the media file to be played. This should be a valid resource path.
    * @throws IllegalArgumentException if the file path is null or the media file cannot be found.
    * @throws MediaException if an error occurs while trying to play the media.
-   *
    *     <p>Note: This method uses JavaFX's {@link Media} and {@link MediaPlayer} classes to play
    *     media files. It also handles potential exceptions such as {@link URISyntaxException} and
    *     {@link NullPointerException}.
