@@ -50,9 +50,15 @@ public abstract class BaseCharacterController {
 
     // Set opacity to 0.
     circleCrimeScene.setOpacity(0);
-    if (circleOldMan != null) circleOldMan.setOpacity(0);
-    if (circleYoungMan != null) circleYoungMan.setOpacity(0);
-    if (circleWoman != null) circleWoman.setOpacity(0);
+    if (circleOldMan != null) {
+      circleOldMan.setOpacity(0);
+    }
+    if (circleYoungMan != null) {
+      circleYoungMan.setOpacity(0);
+    }
+    if (circleWoman != null) {
+      circleWoman.setOpacity(0);
+    }
 
     txtInput.addEventFilter(
         KeyEvent.KEY_PRESSED,
