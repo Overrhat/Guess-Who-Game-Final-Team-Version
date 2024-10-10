@@ -16,7 +16,12 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * An abstract base controller class for character-related functionality. This class manages UI
+ * elements for different character scenes, including sending messages and scene transitions.
+ */
 public abstract class BaseCharacterController {
+
   @FXML protected Label lblTime;
   @FXML protected Circle circleCrimeScene;
   @FXML protected Circle circleYoungMan;
@@ -30,6 +35,12 @@ public abstract class BaseCharacterController {
 
   protected ChatController chat;
 
+  /**
+   * Initializes the controller with the specified profession. This method sets up the chat
+   * functionality and manages the visibility of circles based on the profession.
+   *
+   * @param profession the profession to initialize the chat controller with
+   */
   public void initialize(String profession) {
     chat = new ChatController();
     chat.setTxtaChat(txtaChat);
@@ -37,6 +48,7 @@ public abstract class BaseCharacterController {
     chat.setBtnSend(btnSend);
     chat.setProfession(profession);
 
+    // Set opacity to 0.
     circleCrimeScene.setOpacity(0);
     if (circleOldMan != null) circleOldMan.setOpacity(0);
     if (circleYoungMan != null) circleYoungMan.setOpacity(0);
@@ -56,29 +68,58 @@ public abstract class BaseCharacterController {
         });
   }
 
+  /**
+   * Updates the label to display the specified time.
+   *
+   * @param time the time to display
+   */
   public void setLblTime(String time) {
     lblTime.setText(time);
   }
 
+  /**
+   * Handles mouse hover event to show the circle.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void hoverOn(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(1);
   }
 
+  /**
+   * Handles mouse exit event to hide the circle.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void hoverOff(MouseEvent event) {
     Circle circle = (Circle) event.getSource();
     circle.setOpacity(0);
   }
 
+  /**
+   * Sends a chat message when invoked.
+   *
+   * @param event the action event triggered by the send button or Enter key
+   * @throws ApiProxyException if an API error occurs
+   * @throws IOException if an I/O error occurs
+   */
   @FXML
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     chat.sendMessage(event);
   }
 
+  /**
+   * Handles the click event for the guess button. If all clues have been found, it transitions to
+   * the guess stage.
+   *
+   * @param event the mouse event triggered by the guess button
+   */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
+    // Check if they have done the clues.
     if (!(MainRoomController.isClueFound
         && MainRoomController.isOldManClicked
         && MainRoomController.isYoungManClicked
@@ -92,12 +133,25 @@ public abstract class BaseCharacterController {
     SceneManager.getMainController().transitionToGuessStage();
   }
 
+  /**
+   * Sets the scene to a specified UI root.
+   *
+   * @param rootUi the application UI to set as root
+   */
   public void setSceneAny(AppUi rootUi) {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(rootUi));
   }
 
+  /**
+   * Switches the scene based on the clicked circle.
+   *
+   * @param event the mouse event triggered by the circle click
+   * @param root the application UI to switch to
+   * @param name the name of the FXML file being loaded (for error handling)
+   */
   private void switchScene(MouseEvent event, AppUi root, String name) {
+    // Get the scene button they clicked on.
     try {
       Circle rect = (Circle) event.getSource();
       Scene scene = rect.getScene();
@@ -108,11 +162,17 @@ public abstract class BaseCharacterController {
     }
   }
 
+  /**
+   * Handles scene switching based on the clicked circle's ID.
+   *
+   * @param event the mouse event triggered by the circle click
+   */
   @FXML
   protected void handleSwitchScene(MouseEvent event) {
     Circle clickedCircle = (Circle) event.getSource();
     String circleId = clickedCircle.getId();
 
+    // Do the switch scene.
     switch (circleId) {
       case "circleCrimeScene":
         switchScene(event, AppUi.MAINROOM, "mainRoom");
