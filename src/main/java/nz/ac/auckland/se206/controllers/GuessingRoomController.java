@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +27,10 @@ public class GuessingRoomController {
 
   @FXML private Label title;
   @FXML private Label selection;
+
+  @FXML private ImageView imagePopupBackground;
+  @FXML private Label lblPopup1;
+  @FXML private Label lblPopup2;
 
   @FXML private Rectangle rectOldMan;
   @FXML private Rectangle rectYoungMan;
@@ -198,5 +203,16 @@ public class GuessingRoomController {
     }
     setSceneMenu();
     SceneManager.getMainController().resetBooleans();
+  }
+
+  /**
+   * This method enables / disables the popup depending on status.
+   *
+   * @param status a boolean to enable/disable the popup
+   */
+  public void enablePopup(boolean status) {
+    imagePopupBackground.setVisible(status);
+    lblPopup1.setVisible(status);
+    lblPopup2.setVisible(status);
   }
 }

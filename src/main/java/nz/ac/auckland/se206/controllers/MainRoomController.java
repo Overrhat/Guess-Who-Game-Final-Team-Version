@@ -139,6 +139,7 @@ public class MainRoomController {
       handleAutoLose();
     } else if (!guessClicked) {
       MenuController.playMedia("/sounds/sound06.mp3");
+      SceneManager.getGuessController().enablePopup(true); // Enable popup if auto transition
       transitionToGuessStage();
     }
   }
@@ -228,6 +229,9 @@ public class MainRoomController {
                     lblTime.setText(time);
                     updateAllControllersTime(time);
                   });
+              if (second == 57) {
+                SceneManager.getGuessController().enablePopup(false); // disable popup after 2 seconds
+              }
             }
             if (isGuessTimerActive) {
               handleGuessTimeUp(); // Only call this if the timer runs out
