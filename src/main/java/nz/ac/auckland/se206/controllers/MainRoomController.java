@@ -499,7 +499,7 @@ public class MainRoomController {
   /**
    * Handles the click event when a note is played on the piano.
    *
-   * @param event the mouse event triggered by clicking on the note
+   * @param event the mouse event that is triggered by clicking on the piano keys
    */
   @FXML
   private void playNote(MouseEvent event) {
