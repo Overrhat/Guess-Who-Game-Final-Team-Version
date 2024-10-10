@@ -29,11 +29,6 @@
             <Image url="@../images/dust.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblTime" layoutX="46.0" layoutY="18.0" prefHeight="30.0" prefWidth="79.0" text="5:00" textFill="RED">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Label>
       <Label layoutX="643.0" layoutY="4.0" prefHeight="30.0" prefWidth="213.0" text="Click to change the room" textFill="#c6945f">
          <font>
             <Font size="19.0" />
