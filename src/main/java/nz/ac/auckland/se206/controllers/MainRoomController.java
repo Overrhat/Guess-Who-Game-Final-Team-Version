@@ -135,30 +135,8 @@ public class MainRoomController {
     circleYoungMan.setOpacity(0);
     circleOldMan.setOpacity(0);
 
-    recC3.setDisable(true);
-    recDb3.setDisable(true);
-    recD3.setDisable(true);
-    recEb3.setDisable(true);
-    recE3.setDisable(true);
-    recF3.setDisable(true);
-    recGb3.setDisable(true);
-    recG3.setDisable(true);
-    recAb3.setDisable(true);
-    recA3.setDisable(true);
-    recBb3.setDisable(true);
-    recB3.setDisable(true);
-    recC4.setDisable(true);
-    recDb4.setDisable(true);
-    recD4.setDisable(true);
-    recEb4.setDisable(true);
-    recE4.setDisable(true);
-    recF4.setDisable(true);
-    recGb4.setDisable(true);
-    recG4.setDisable(true);
-    recAb4.setDisable(true);
-    recA4.setDisable(true);
-    recBb4.setDisable(true);
-    recB4.setDisable(true);
+    // Disable all the piano keys
+    setAllKeysDisabled();
 
     Thread backgroundThread = new Thread(countingTask);
     backgroundThread.setDaemon(true);
@@ -586,30 +564,7 @@ public class MainRoomController {
     backButtonImage.setVisible(false);
 
     // Disable all the piano keys
-    recC3.setDisable(true);
-    recDb3.setDisable(true);
-    recD3.setDisable(true);
-    recEb3.setDisable(true);
-    recE3.setDisable(true);
-    recF3.setDisable(true);
-    recGb3.setDisable(true);
-    recG3.setDisable(true);
-    recAb3.setDisable(true);
-    recA3.setDisable(true);
-    recBb3.setDisable(true);
-    recB3.setDisable(true);
-    recC4.setDisable(true);
-    recDb4.setDisable(true);
-    recD4.setDisable(true);
-    recEb4.setDisable(true);
-    recE4.setDisable(true);
-    recF4.setDisable(true);
-    recGb4.setDisable(true);
-    recG4.setDisable(true);
-    recAb4.setDisable(true);
-    recA4.setDisable(true);
-    recBb4.setDisable(true);
-    recB4.setDisable(true);
+    setAllKeysDisabled();
   }
 
   /**
@@ -753,5 +708,34 @@ public class MainRoomController {
 
     // clear the text field
     txtaInput.clear();
+  }
+
+  /** This method disables all the piano keys. */
+  private void setAllKeysDisabled() {
+    // Disable all the piano keys
+    recC3.setDisable(true);
+    recDb3.setDisable(true);
+    recD3.setDisable(true);
+    recEb3.setDisable(true);
+    recE3.setDisable(true);
+    recF3.setDisable(true);
+    recGb3.setDisable(true);
+    recG3.setDisable(true);
+    recAb3.setDisable(true);
+    recA3.setDisable(true);
+    recBb3.setDisable(true);
+    recB3.setDisable(true);
+    recC4.setDisable(true);
+    recDb4.setDisable(true);
+    recD4.setDisable(true);
+    recEb4.setDisable(true);
+    recE4.setDisable(true);
+    recF4.setDisable(true);
+    recGb4.setDisable(true);
+    recG4.setDisable(true);
+    recAb4.setDisable(true);
+    recA4.setDisable(true);
+    recBb4.setDisable(true);
+    recB4.setDisable(true);
   }
 }
