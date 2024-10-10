@@ -46,6 +46,20 @@ public class MainRoomController {
   @FXML private Label againText;
   @FXML private ImageView backButtonImage;
   @FXML private Rectangle backButton;
+  @FXML private Rectangle c3;
+  @FXML private Rectangle d3;
+  @FXML private Rectangle e3;
+  @FXML private Rectangle f3;
+  @FXML private Rectangle g3;
+  @FXML private Rectangle a3;
+  @FXML private Rectangle b3;
+  @FXML private Rectangle c4;
+  @FXML private Rectangle d4;
+  @FXML private Rectangle e4;
+  @FXML private Rectangle f4;
+  @FXML private Rectangle g4;
+  @FXML private Rectangle a4;
+  @FXML private Rectangle b4;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -303,6 +317,26 @@ public class MainRoomController {
     isPianoClicked = true;
     isCaseClicked = false;
   }
+
+  @FXML 
+  private void playNote(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    System.out.println(rect.getId());
+    MenuController.playMedia("/sounds/notes/" + rect.getId() +".mp3");
+  }
+
+  @FXML 
+  private void pianoHoverOn(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(1);
+  }
+
+  @FXML 
+  private void pianoHoverOff(MouseEvent event) {
+    Rectangle rect = (Rectangle) event.getSource();
+    rect.setOpacity(0);
+  }
+
 
   @FXML 
   private void handleBackButtonClick(MouseEvent event) {
