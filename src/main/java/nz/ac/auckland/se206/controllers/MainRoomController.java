@@ -44,6 +44,8 @@ public class MainRoomController {
   @FXML private Label matchText;
   @FXML private Label currentSelectionText;
   @FXML private Label againText;
+  @FXML private ImageView backButtonImage;
+  @FXML private Rectangle backButton;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -294,10 +296,26 @@ public class MainRoomController {
     matchText.setVisible(true);
     currentSelectionText.setVisible(true);
     againText.setVisible(true);
+    backButton.setDisable(false);
+    backButtonImage.setVisible(true);
 
     // Set the piano clicked to true
     isPianoClicked = true;
     isCaseClicked = false;
+  }
+
+  @FXML 
+  private void handleBackButtonClick(MouseEvent event) {
+    System.out.println("worked");
+    blurredBackground.setVisible(false);
+    blurredBackground.setDisable(true);
+    pianoKeys.setVisible(false);
+    soundButtonImage.setVisible(false);
+    matchText.setVisible(false);
+    currentSelectionText.setVisible(false);
+    againText.setVisible(false);
+    backButton.setDisable(true);
+    backButtonImage.setVisible(false);
   }
 
   /** Handles the click event for the send button. */
