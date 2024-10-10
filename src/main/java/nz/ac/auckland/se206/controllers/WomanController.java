@@ -141,7 +141,7 @@ public class WomanController {
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /** This method sets the scene to the guessing room */
+  /** This method sets the scene to the guessing room. */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));

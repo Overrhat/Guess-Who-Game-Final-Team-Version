@@ -104,12 +104,15 @@ public class MainRoomController {
     backgroundThread.start();
   }
 
-  /*
-   * This method is called when the timer is updated.
-   * It will update the time for the main stage and all the controllers.
+  /**
+   * This method is called when the timer is updated. It will update the time for the main stage and
+   * all the controllers.
    */
   private void updateTimerDisplay(int minute, int second) {
-    if (!isMainTimerActive) return; // Don't update if main timer is stopped
+    // Update the time for the main stage
+    if (!isMainTimerActive) {
+      return; // Don't update if main timer is stopped
+    }
     String time = minute + ":" + (second < 10 ? "0" + second : second);
     Platform.runLater(
         () -> {
@@ -118,21 +121,22 @@ public class MainRoomController {
         });
   }
 
-  /*
-   * This method is called when the time is up for the main stage.
-   * It will update the time for all the controllers.
+  /**
+   * This method is called when the time is up for the main stage. It will update the time for all
+   * the controllers.
    */
   private void updateAllControllersTime(String time) {
+    // Update the time for all the controllers
     SceneManager.getOldManController().setLblTime(time);
     SceneManager.getYoungManController().setLblTime(time);
     SceneManager.getWomanController().setLblTime(time);
     SceneManager.getGuessController().setLblTime(time);
   }
 
-  /*
-   * This method is called when the time is up for the main stage.
-   * It will check if the user has chatted with all the characters and found the clue.
-   * If not then it will switch the scene back to the menu.
+  /**
+   * This method is called when the time is up for the main stage. It will check if the user has
+   * chatted with all the characters and found the clue. If not then it will switch the scene back
+   * to the menu.
    */
   private void handleTimeUp() {
     if (!(isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked)) {
@@ -144,12 +148,12 @@ public class MainRoomController {
     }
   }
 
-  /*
-   * This method is called when the time is up for the main stage and the user
-   * did not chat with all the characters or find any of the clue.
-   * It will switch the scene back to the menu.
+  /**
+   * This method is called when the time is up for the main stage and the user did not chat with all
+   * the characters or find any of the clue. It will switch the scene back to the menu.
    */
   private void handleAutoLose() {
+    // Switch to the menu scene when the time is up
     Platform.runLater(
         () -> {
           MenuController.playMedia("/sounds/sound15.mp3");
@@ -173,8 +177,12 @@ public class MainRoomController {
         });
   }
 
-  /*
-   * This method is called when the time is up for the main stage. It will switch the scene to the guessing stage.
+  /**
+   * Transitions the application from the main stage to the guessing stage.
+   *
+   * <p>This method is called when the main stage timer expires. It stops the main timer, updates
+   * the time display to "1:00" for the guessing stage, switches the scene based on the current
+   * room, and starts the guessing timer.
    */
   public void transitionToGuessStage() {
     isMainTimerActive = false; // Stop main timer updates
@@ -203,9 +211,9 @@ public class MainRoomController {
         });
   }
 
-  /*
-   * This method is called when the timer of the guessing stage is started.
-   * It will start a new thread that will update the time for the guessing stage.
+  /**
+   * This method is called when the timer of the guessing stage is started. It will start a new
+   * thread that will update the time for the guessing stage.
    */
   private void startGuessTimer() {
     isGuessTimerActive = true; // Activate the guess timer
@@ -230,7 +238,8 @@ public class MainRoomController {
                     updateAllControllersTime(time);
                   });
               if (second == 57) {
-                SceneManager.getGuessController().enablePopup(false); // disable popup after 2 seconds
+                SceneManager.getGuessController()
+                    .enablePopup(false); // disable popup after 2 seconds
               }
             }
             if (isGuessTimerActive) {
@@ -245,11 +254,13 @@ public class MainRoomController {
     guessThread.start();
   }
 
-  /*
-   * This method is called when the time is up for the guessing stage. It will check if the user has typed in a guess or not.
-   * If it has then it will send the message to the server. If not then it will switch the scene to the menu.
+  /**
+   * This method is called when the time is up for the guessing stage. It will check if the user has
+   * typed in a guess or not. If it has then it will send the message to the server. If not then it
+   * will switch the scene to the menu.
    */
   private void handleGuessTimeUp() {
+    // Check if the user has typed in a guess
     if (!SceneManager.getGuessController().isHasSelectedSuspect()) {
       Platform.runLater(
           () -> {
@@ -306,6 +317,7 @@ public class MainRoomController {
    */
   @FXML
   private void handleGuessButtonClick(MouseEvent event) {
+    // Check if all the clues have been found and all the characters have been chatted with
     if (isClueFound && isOldManClicked && isYoungManClicked && isWomanClicked) {
       guessClicked = true;
       MenuController.playMedia("/sounds/sound19.mp3");

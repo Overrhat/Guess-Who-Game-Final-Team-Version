@@ -155,18 +155,18 @@ public class OldManController {
     SceneManager.getMainController().transitionToGuessStage();
   }
 
-  /** This method sets the scene to the menu */
+  /** This method sets the scene to the menu. */
   public void setSceneMenu() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
-  /** This method sets the scene to the guessing room */
+  /** This method sets the scene to the guessing room. */
   public void setSceneGuess() {
     Scene scene = lblTime.getScene();
     scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
   }
-  
+
   /**
    * This method switches the scene to whatever is clicked.
    *

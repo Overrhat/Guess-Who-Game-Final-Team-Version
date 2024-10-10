@@ -87,6 +87,7 @@ public class GuessingRoomController {
    */
   @FXML
   private void selectOldMan(MouseEvent event) {
+    // This handles when the user selects the old man
     if (!chat.isLoading()) {
       rectOldMan.setDisable(true);
       rectYoungMan.setDisable(false);
@@ -103,6 +104,7 @@ public class GuessingRoomController {
    */
   @FXML
   private void selectYoungMan(MouseEvent event) {
+    // This handles when the user selects the young man
     if (!chat.isLoading()) {
       rectOldMan.setDisable(false);
       rectYoungMan.setDisable(true);
@@ -119,6 +121,7 @@ public class GuessingRoomController {
    */
   @FXML
   private void selectWoman(MouseEvent event) {
+    // This handles when the user selects the woman
     if (!chat.isLoading()) {
       rectOldMan.setDisable(false);
       rectYoungMan.setDisable(false);
@@ -186,12 +189,18 @@ public class GuessingRoomController {
     scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
   }
 
+  /**
+   * This is a getter method for the hasSelectedSuspect boolean.
+   *
+   * @return the boolean hasSelectedSuspect
+   */
   public boolean isHasSelectedSuspect() {
     return hasSelectedSuspect;
   }
 
   /**
-   * This method returns the player back to the menu.
+   * This method returns the player back to the menu. If the player has not guessed, a sound will be
+   * played.
    *
    * @param event the mouse event that is triggered by clicking on the menu
    */
