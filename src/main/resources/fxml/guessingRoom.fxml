@@ -66,17 +66,17 @@
             <DropShadow />
          </effect>
       </Label>
-      <ImageView fx:id="imagePopupBackground" fitHeight="419.0" fitWidth="317.0" layoutX="145.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagePopupBackground" fitHeight="419.0" fitWidth="317.0" layoutX="145.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/textBackground.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblPopup1" alignment="CENTER" layoutX="222.0" layoutY="115.0" prefHeight="71.0" prefWidth="164.0" text="TIMES UP!">
+      <Label fx:id="lblPopup1" alignment="CENTER" layoutX="222.0" layoutY="115.0" prefHeight="71.0" prefWidth="164.0" text="TIMES UP!" textFill="RED" visible="false">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="lblPopup2" alignment="CENTER" layoutX="206.0" layoutY="181.0" prefHeight="217.0" prefWidth="197.0" text="YOU HAVE 60 SECONDS TO MAKE A GUESS" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="lblPopup2" alignment="CENTER" layoutX="206.0" layoutY="181.0" prefHeight="217.0" prefWidth="197.0" text="YOU HAVE 60 SECONDS TO MAKE A GUESS" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

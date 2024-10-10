@@ -139,6 +139,7 @@ public class MainRoomController {
       handleAutoLose();
     } else if (!guessClicked) {
       MenuController.playMedia("/sounds/sound06.mp3");
+      SceneManager.getGuessController().enablePopup(true); // Enable popup if auto transition
       transitionToGuessStage();
     }
   }
@@ -177,7 +178,6 @@ public class MainRoomController {
    */
   public void transitionToGuessStage() {
     isMainTimerActive = false; // Stop main timer updates
-    SceneManager.getGuessController().enablePopup(true); // Enable popup if auto transition
 
     // Stop updating the main timer here (by setting a flag or stopping the task)
     Platform.runLater(
