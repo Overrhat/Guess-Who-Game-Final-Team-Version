@@ -330,6 +330,10 @@ public class MainRoomController {
     isPianoClicked = false;
   }
 
+  private void disablePiano() {
+    
+  }
+
   /** Handles the click event on the piano rectangle. */
   @FXML
   private void handlePianoClick(MouseEvent event) {
@@ -373,7 +377,8 @@ public class MainRoomController {
     Bb4.setDisable(false);
     B4.setDisable(false);
     
-
+    MenuController.playMedia("/sounds/notes/E4.mp3");
+    
     // Set the piano clicked to true
     isPianoClicked = true;
     isCaseClicked = false;
@@ -382,8 +387,28 @@ public class MainRoomController {
   @FXML 
   private void playNote(MouseEvent event) {
     Rectangle rect = (Rectangle) event.getSource();
-    System.out.println(rect.getId());
-    MenuController.playMedia("/sounds/notes/" + rect.getId() +".mp3");
+    String note = rect.getId();
+    MenuController.playMedia("/sounds/notes/" + note +".mp3");
+    currentSelectionText.setText("Current selection: " + note);
+    if (note.equals("E4")) {
+      handleBackButtonClick(event);
+      MenuController.playMedia("/sounds/sound14.mp3");
+    }
+  }
+
+  @FXML
+  private void playCorrectNote(MouseEvent event) {
+    MenuController.playMedia("/sounds/notes/E4.mp3");
+  }
+
+  @FXML
+  private void soundHoverOn(MouseEvent event) {
+    soundButtonImage.setOpacity(1);
+  }
+  
+  @FXML
+  private void soundHoverOff(MouseEvent event) {
+    soundButtonImage.setOpacity(0.5);
   }
 
   @FXML 
@@ -401,7 +426,7 @@ public class MainRoomController {
 
   @FXML 
   private void handleBackButtonClick(MouseEvent event) {
-    System.out.println("worked");
+
     blurredBackground.setVisible(false);
     blurredBackground.setDisable(true);
     pianoKeys.setVisible(false);

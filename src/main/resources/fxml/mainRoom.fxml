@@ -113,10 +113,13 @@
             <Image url="@../images/pianoKeys.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="soundButtonImage" fitHeight="62.0" fitWidth="64.0" layoutX="500.0" layoutY="451.0" visible="false">
+      <ImageView fx:id="soundButtonImage" fitHeight="62.0" fitWidth="64.0" layoutX="500.0" layoutY="451.0" onMouseClicked="#playCorrectNote" onMouseEntered="#soundHoverOn" onMouseExited="#soundHoverOff" opacity="0.5" visible="false">
          <image>
             <Image url="@../images/soundButton.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Label fx:id="matchText" alignment="TOP_CENTER" layoutX="181.0" layoutY="78.0" prefHeight="66.0" prefWidth="539.0" text="Match the note played!" textAlignment="CENTER" textFill="WHITE" visible="false">
          <font>
