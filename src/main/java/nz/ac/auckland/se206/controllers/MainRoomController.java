@@ -451,8 +451,6 @@ public class MainRoomController {
     // the user has found the clue
     isClueFound = true;
 
-    // MenuController.playMedia("/sounds/sound11.mp3");
-
     // Initialize the piano state
     blurredBackground.setVisible(true);
     blurredBackground.setDisable(false);
@@ -501,7 +499,7 @@ public class MainRoomController {
   /**
    * Handles the click event when a note is played on the piano.
    *
-   * @param event
+   * @param event the mouse event that is triggered by clicking on the piano keys
    */
   @FXML
   private void playNote(MouseEvent event) {
