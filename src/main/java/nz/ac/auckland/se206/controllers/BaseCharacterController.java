@@ -42,6 +42,7 @@ public abstract class BaseCharacterController {
    * @param profession the profession to initialize the chat controller with
    */
   public void initialize(String profession) {
+    // This sets up the chat bot
     chat = new ChatController();
     chat.setTxtaChat(txtaChat);
     chat.setTxtInput(txtInput);
@@ -60,6 +61,7 @@ public abstract class BaseCharacterController {
       circleWoman.setOpacity(0);
     }
 
+    // This enables us to press enter to send a message
     txtInput.addEventFilter(
         KeyEvent.KEY_PRESSED,
         event -> {
