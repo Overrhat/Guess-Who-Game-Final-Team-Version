@@ -205,10 +205,10 @@ public class GuessingRoomController {
   }
 
   /**
-   * This method returns the player back to the menu. If the player has not guessed, a sound will be
-   * played.
+   * Returns the player to the menu screen. If the player has not made a guess, a sound will be
+   * played instead of returning to menu screen.
    *
-   * @param event the mouse event that is triggered by clicking on the menu
+   * @param event The mouse event triggered by clicking on the menu.
    */
   @FXML
   private void backToMenu(MouseEvent event) {
