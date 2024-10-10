@@ -68,39 +68,6 @@ public class WomanController {
   }
 
   /**
-   * This switches the scene to the crime scene.
-   *
-   * @param event the mouse event that is triggered by clicking on the button
-   */
-  @FXML
-  private void switchToCrimeScene(MouseEvent event) {
-    // this switches the scene to the crime scene
-    switchScene(event, AppUi.MAINROOM, "mainRoom");
-  }
-
-  /**
-   * This switches the scene to the old man.
-   *
-   * @param event the mouse event that is triggered by clicking on the button
-   */
-  @FXML
-  private void switchToOldMan(MouseEvent event) {
-    // this switches the scene to the old man
-    switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
-  }
-
-  /**
-   * This switches the scene to the young man.
-   *
-   * @param event the mouse event that is triggered by clicking on the button
-   */
-  @FXML
-  private void switchToYoungMan(MouseEvent event) {
-    // this switches the scene to young man
-    switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
-  }
-
-  /**
    * Sends a message to the GPT model.
    *
    * @param event the action event triggered by the send button
@@ -136,15 +103,14 @@ public class WomanController {
     SceneManager.getMainController().transitionToGuessStage();
   }
 
-  public void setSceneMenu() {
+  /**
+   * This method sets the scene to any scene.
+   *
+   * @param rootUi the scene to set it to
+   */
+  public void setSceneAny(AppUi rootUi) {
     Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.MENU));
-  }
-
-  /** This method sets the scene to the guessing room. */
-  public void setSceneGuess() {
-    Scene scene = lblTime.getScene();
-    scene.setRoot(SceneManager.getUiRoot(AppUi.GUESSROOM));
+    scene.setRoot(SceneManager.getUiRoot(rootUi));
   }
 
   /**
@@ -185,6 +151,32 @@ public class WomanController {
     } catch (Exception e) {
       System.out.println("Error loading " + name + ".fxml");
       System.exit(0);
+    }
+  }
+
+  /**
+   * This method handles switching the scene depending on what button was pressed.
+   *
+   * @param event the mouse event triggered by clicking on the switch scene button
+   */
+  @FXML
+  private void handleSwitchScene(MouseEvent event) {
+    Circle clickedCircle = (Circle) event.getSource();
+    String circleId = clickedCircle.getId();
+
+    switch (circleId) {
+      case "circleCrimeScene":
+        switchScene(event, AppUi.MAINROOM, "mainRoom");
+        break;
+      case "circleOldMan":
+        switchScene(event, AppUi.OLDMANROOM, "oldManRoom");
+        break;
+      case "circleYoungMan":
+        switchScene(event, AppUi.YOUNGMANROOM, "youngManRoom");
+        break;
+      case "circleWoman":
+        switchScene(event, AppUi.WOMANROOM, "womanRoom");
+        break;
     }
   }
 }
