@@ -85,8 +85,9 @@ public class App extends Application {
 
     FXMLLoader woman = new FXMLLoader(App.class.getResource("/fxml/" + "womanRoom" + ".fxml"));
     FXMLLoader oldMan = new FXMLLoader(App.class.getResource("/fxml/" + "oldManRoom" + ".fxml"));
-    FXMLLoader youngMan = new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
-    
+    FXMLLoader youngMan =
+        new FXMLLoader(App.class.getResource("/fxml/" + "youngManRoom" + ".fxml"));
+
     SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
 
     SceneManager.addUi(AppUi.WOMANROOM, woman.load());
