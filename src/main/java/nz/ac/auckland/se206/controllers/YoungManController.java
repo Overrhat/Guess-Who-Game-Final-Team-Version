@@ -163,6 +163,7 @@ public class YoungManController {
    */
   @FXML
   private void handleSwitchScene(MouseEvent event) {
+    // Switch to the scene depending on the button clicked
     Circle clickedCircle = (Circle) event.getSource();
     String circleId = clickedCircle.getId();
 
