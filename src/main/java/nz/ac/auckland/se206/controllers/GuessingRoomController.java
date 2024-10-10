@@ -132,7 +132,7 @@ public class GuessingRoomController {
    */
   @FXML
   public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
-    MainRoomController.setGuessTimerActive(false);
+    MainRoomController.isGuessTimerActive = false;
 
     // this method handles sending messages to the chatgpt
     title.setVisible(false);
