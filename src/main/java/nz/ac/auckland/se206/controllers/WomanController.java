@@ -161,6 +161,7 @@ public class WomanController {
    */
   @FXML
   private void handleSwitchScene(MouseEvent event) {
+    // this handles the switching of the scene depending on the button pressed
     Circle clickedCircle = (Circle) event.getSource();
     String circleId = clickedCircle.getId();
 

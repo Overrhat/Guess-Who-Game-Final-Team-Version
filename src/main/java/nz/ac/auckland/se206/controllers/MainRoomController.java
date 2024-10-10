@@ -52,30 +52,30 @@ public class MainRoomController {
   @FXML private ImageView backButtonImage;
   @FXML private ImageView imgDust;
   @FXML private Rectangle backButton;
-  @FXML private Rectangle C3;
-  @FXML private Rectangle Db3;
-  @FXML private Rectangle D3;
-  @FXML private Rectangle Eb3;
-  @FXML private Rectangle E3;
-  @FXML private Rectangle F3;
-  @FXML private Rectangle Gb3;
-  @FXML private Rectangle G3;
-  @FXML private Rectangle Ab3;
-  @FXML private Rectangle A3;
-  @FXML private Rectangle Bb3;
-  @FXML private Rectangle B3;
-  @FXML private Rectangle C4;
-  @FXML private Rectangle Db4;
-  @FXML private Rectangle D4;
-  @FXML private Rectangle Eb4;
-  @FXML private Rectangle E4;
-  @FXML private Rectangle F4;
-  @FXML private Rectangle Gb4;
-  @FXML private Rectangle G4;
-  @FXML private Rectangle Ab4;
-  @FXML private Rectangle A4;
-  @FXML private Rectangle Bb4;
-  @FXML private Rectangle B4;
+  @FXML private Rectangle recC3;
+  @FXML private Rectangle recDb3;
+  @FXML private Rectangle recD3;
+  @FXML private Rectangle recEb3;
+  @FXML private Rectangle recE3;
+  @FXML private Rectangle recF3;
+  @FXML private Rectangle recGb3;
+  @FXML private Rectangle recG3;
+  @FXML private Rectangle recAb3;
+  @FXML private Rectangle recA3;
+  @FXML private Rectangle recBb3;
+  @FXML private Rectangle recB3;
+  @FXML private Rectangle recC4;
+  @FXML private Rectangle recDb4;
+  @FXML private Rectangle recD4;
+  @FXML private Rectangle recEb4;
+  @FXML private Rectangle recE4;
+  @FXML private Rectangle recF4;
+  @FXML private Rectangle recGb4;
+  @FXML private Rectangle recG4;
+  @FXML private Rectangle recAb4;
+  @FXML private Rectangle recA4;
+  @FXML private Rectangle recBb4;
+  @FXML private Rectangle recB4;
 
   private int footprintNum = 0; // number of times the footprint has been clicked
   private boolean isCaseClicked = false; // whether the case has been clicked
@@ -135,30 +135,30 @@ public class MainRoomController {
     circleYoungMan.setOpacity(0);
     circleOldMan.setOpacity(0);
 
-    C3.setDisable(true);
-    Db3.setDisable(true);
-    D3.setDisable(true);
-    Eb3.setDisable(true);
-    E3.setDisable(true);
-    F3.setDisable(true);
-    Gb3.setDisable(true);
-    G3.setDisable(true);
-    Ab3.setDisable(true);
-    A3.setDisable(true);
-    Bb3.setDisable(true);
-    B3.setDisable(true);
-    C4.setDisable(true);
-    Db4.setDisable(true);
-    D4.setDisable(true);
-    Eb4.setDisable(true);
-    E4.setDisable(true);
-    F4.setDisable(true);
-    Gb4.setDisable(true);
-    G4.setDisable(true);
-    Ab4.setDisable(true);
-    A4.setDisable(true);
-    Bb4.setDisable(true);
-    B4.setDisable(true);
+    recC3.setDisable(true);
+    recDb3.setDisable(true);
+    recD3.setDisable(true);
+    recEb3.setDisable(true);
+    recE3.setDisable(true);
+    recF3.setDisable(true);
+    recGb3.setDisable(true);
+    recG3.setDisable(true);
+    recAb3.setDisable(true);
+    recA3.setDisable(true);
+    recBb3.setDisable(true);
+    recB3.setDisable(true);
+    recC4.setDisable(true);
+    recDb4.setDisable(true);
+    recD4.setDisable(true);
+    recEb4.setDisable(true);
+    recE4.setDisable(true);
+    recF4.setDisable(true);
+    recGb4.setDisable(true);
+    recG4.setDisable(true);
+    recAb4.setDisable(true);
+    recA4.setDisable(true);
+    recBb4.setDisable(true);
+    recB4.setDisable(true);
 
     Thread backgroundThread = new Thread(countingTask);
     backgroundThread.setDaemon(true);
@@ -463,30 +463,30 @@ public class MainRoomController {
     backButtonImage.setVisible(true);
 
     // Enable all the piano keys
-    C3.setDisable(false);
-    Db3.setDisable(false);
-    D3.setDisable(false);
-    Eb3.setDisable(false);
-    E3.setDisable(false);
-    F3.setDisable(false);
-    Gb3.setDisable(false);
-    G3.setDisable(false);
-    Ab3.setDisable(false);
-    A3.setDisable(false);
-    Bb3.setDisable(false);
-    B3.setDisable(false);
-    C4.setDisable(false);
-    Db4.setDisable(false);
-    D4.setDisable(false);
-    Eb4.setDisable(false);
-    E4.setDisable(false);
-    F4.setDisable(false);
-    Gb4.setDisable(false);
-    G4.setDisable(false);
-    Ab4.setDisable(false);
-    A4.setDisable(false);
-    Bb4.setDisable(false);
-    B4.setDisable(false);
+    recC3.setDisable(false);
+    recDb3.setDisable(false);
+    recD3.setDisable(false);
+    recEb3.setDisable(false);
+    recE3.setDisable(false);
+    recF3.setDisable(false);
+    recGb3.setDisable(false);
+    recG3.setDisable(false);
+    recAb3.setDisable(false);
+    recA3.setDisable(false);
+    recBb3.setDisable(false);
+    recB3.setDisable(false);
+    recC4.setDisable(false);
+    recDb4.setDisable(false);
+    recD4.setDisable(false);
+    recEb4.setDisable(false);
+    recE4.setDisable(false);
+    recF4.setDisable(false);
+    recGb4.setDisable(false);
+    recG4.setDisable(false);
+    recAb4.setDisable(false);
+    recA4.setDisable(false);
+    recBb4.setDisable(false);
+    recB4.setDisable(false);
 
     // Play the note E4
     MenuController.playMedia("/sounds/notes/E4.mp3");
@@ -506,9 +506,9 @@ public class MainRoomController {
     // Play the note
     Rectangle rect = (Rectangle) event.getSource();
     String note = rect.getId();
-    MenuController.playMedia("/sounds/notes/" + note + ".mp3");
-    currentSelectionText.setText("Current selection: " + note);
-    if (note.equals("E4")) {
+    MenuController.playMedia("/sounds/notes/" + note.substring(3) + ".mp3");
+    currentSelectionText.setText("Current selection: " + note.substring(3));
+    if (note.equals("recE4")) {
       handleBackButtonClick(event);
       MenuController.playMedia("/sounds/sound23.mp3");
     }
@@ -586,30 +586,30 @@ public class MainRoomController {
     backButtonImage.setVisible(false);
 
     // Disable all the piano keys
-    C3.setDisable(true);
-    Db3.setDisable(true);
-    D3.setDisable(true);
-    Eb3.setDisable(true);
-    E3.setDisable(true);
-    F3.setDisable(true);
-    Gb3.setDisable(true);
-    G3.setDisable(true);
-    Ab3.setDisable(true);
-    A3.setDisable(true);
-    Bb3.setDisable(true);
-    B3.setDisable(true);
-    C4.setDisable(true);
-    Db4.setDisable(true);
-    D4.setDisable(true);
-    Eb4.setDisable(true);
-    E4.setDisable(true);
-    F4.setDisable(true);
-    Gb4.setDisable(true);
-    G4.setDisable(true);
-    Ab4.setDisable(true);
-    A4.setDisable(true);
-    Bb4.setDisable(true);
-    B4.setDisable(true);
+    recC3.setDisable(true);
+    recDb3.setDisable(true);
+    recD3.setDisable(true);
+    recEb3.setDisable(true);
+    recE3.setDisable(true);
+    recF3.setDisable(true);
+    recGb3.setDisable(true);
+    recG3.setDisable(true);
+    recAb3.setDisable(true);
+    recA3.setDisable(true);
+    recBb3.setDisable(true);
+    recB3.setDisable(true);
+    recC4.setDisable(true);
+    recDb4.setDisable(true);
+    recD4.setDisable(true);
+    recEb4.setDisable(true);
+    recE4.setDisable(true);
+    recF4.setDisable(true);
+    recGb4.setDisable(true);
+    recG4.setDisable(true);
+    recAb4.setDisable(true);
+    recA4.setDisable(true);
+    recBb4.setDisable(true);
+    recB4.setDisable(true);
   }
 
   /**
