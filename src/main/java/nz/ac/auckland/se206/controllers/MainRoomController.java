@@ -672,27 +672,10 @@ public class MainRoomController {
       // clear the text field
       txtaInput.clear();
       return;
-    } else if (isPianoClicked) {
-      if (userInput.equalsIgnoreCase("C")) {
-        txtaChat.clear();
-        txtaChat.appendText("Correct! The note is C\n\n");
-        MenuController.playMedia("/sounds/sound12.mp3");
-
-        // set case and piano clicked to false
-        isCaseClicked = false;
-        isPianoClicked = false;
-
-      } else if (userInput.equalsIgnoreCase("E")) {
-        txtaChat.clear();
-        txtaChat.appendText("Incorrect! Try again!\n\n");
-      } else {
-        txtaChat.clear();
-        txtaChat.appendText("Invalid input! Please type C or E\n\n");
-      }
     } else if (isCaseClicked) {
       if (userInput.equalsIgnoreCase("1105") || userInput.equalsIgnoreCase("11/05")) {
         txtaChat.clear();
-        txtaChat.appendText("System: Correct Pasword! Opened the case.\n\n");
+        txtaChat.appendText("Correct Pasword! Opened the case.\n\n");
         txtaChat.appendText("Dr. Watson: Oh! I see blonde hair inside the case.\n\n");
         MenuController.playMedia("/sounds/sound14.mp3");
 
